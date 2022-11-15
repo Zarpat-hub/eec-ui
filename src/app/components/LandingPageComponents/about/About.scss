@@ -1,0 +1,31 @@
+.about {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 70px;
+    @media screen and (max-width: 768px) {
+        margin: 0 20px;
+    }
+
+    &__cards {
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+    }
+}
+
+.card {
+    border: 1px solid black;
+    max-width: 350px;
+    height: 300px;
+
+    &--full {
+        color: var(--color-secondary);
+    }
+}
