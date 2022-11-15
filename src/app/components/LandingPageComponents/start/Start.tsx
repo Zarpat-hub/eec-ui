@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button'
 import './Start.scss'
+import img from '../../../../assets/start.png'
 
 export function Start() {
   return (
@@ -8,7 +9,7 @@ export function Start() {
         <div className="start__header">
           <h1>Energy</h1>
           <h1>
-            Energency <span style={{ color: 'red' }}>Home</span>
+            Energency <span className="start__header--color">Home</span>
           </h1>
         </div>
         <p className="start__paragraph">
@@ -25,7 +26,8 @@ export function Start() {
           </Button>
         </div>
       </div>
-      <div className="img">fdsfsdfs</div>
+
+      <img src={img} className="img" />
     </section>
   )
 }

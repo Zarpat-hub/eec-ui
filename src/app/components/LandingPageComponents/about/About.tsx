@@ -1,10 +1,11 @@
 import './About.scss'
+import src from '../../../../assets/about.png'
 
 export function About() {
   return (
     <section className="about">
-      <h2>Your ECO household starts today</h2>
-      <h3>How we do it</h3>
+      <h2 className="about__header">Your ECO household starts today</h2>
+      <h3 className="about__ndHeader">How we do it</h3>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, nihil
         provident delectus perspiciatis porro, ea laboriosam alias quasi ipsa ut
@@ -26,7 +27,6 @@ export function About() {
             consequatur?
           </p>
         </div>
-        <div>IMG</div>
       </div>
       <div className="card--full">
         <h3>Lorem ipsum dolor sit amet.</h3>

@@ -1,9 +1,10 @@
 import './Header.scss'
+import logo from '../../../../assets/logo.png'
 
 export function Header() {
   return (
     <header className="header">
-      <h1>Logo</h1>
+      <img src={logo} />
       <nav className="header__nav">
         <ul className="header__nav--list">
           <li>About</li>

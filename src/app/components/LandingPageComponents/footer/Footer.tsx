@@ -9,10 +9,10 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer__icons">
-        <FacebookIcon />
-        <TwitterIcon />
-        <LinkedInIcon />
-        <InstagramIcon />
+        <FacebookIcon className="icon" />
+        <TwitterIcon className="icon" />
+        <LinkedInIcon className="icon" />
+        <InstagramIcon className="icon" />
       </div>
       <div>{new Date().getFullYear()} All rights reserved</div>
     </footer>
