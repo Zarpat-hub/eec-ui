@@ -1,4 +1,8 @@
 import './LandingPage.scss'
+import elip from '../../../assets/elipse_1.png'
+import elip2 from '../../../assets/elipse_2.png'
+import elip3 from '../../../assets/el_header.png'
+import elip4 from '../../../assets/el_about.png'
 
 import { About } from '../../components/LandingPageComponents/about/About'
 import { Footer } from '../../components/LandingPageComponents/footer/Footer'
@@ -7,11 +11,12 @@ import { Start } from '../../components/LandingPageComponents/start/Start'
 
 export function LandingPage() {
   return (
-    <>
+    <section>
+      <img src={elip3} className="elipse1" />
       <Header />
       <Start />
       <About />
       <Footer />
-    </>
+    </section>
   )
 }

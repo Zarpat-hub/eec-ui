@@ -16,6 +16,12 @@
     font-size: 36px;
   }
 
+  &__paragraph {
+    color: #1d1d1d8a;
+    font-size: 20px;
+    margin: 50px 0;
+  }
+
   @media screen and (max-width: 768px) {
     margin: 0 20px;
   }
@@ -31,18 +37,32 @@
 }
 
 .card {
-  border: 1px solid black;
   max-width: 350px;
   height: 300px;
-  margin: 0 20px 0;
+  margin: 0 150px 0 0px;
+
+  &__header {
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  &__description {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #656565;
+  }
 
   &--full {
-    color: var(--color-secondary);
+    padding: 50px 0;
+    //color: var(--color-secondary);
   }
 }
 
 .test {
-  background-image: url('../../../../assets/about.png');
+  //background-image: url("../../../../assets/about.png");
   width: 700px;
   height: 400px;
   background-repeat: no-repeat;
