@@ -1,3 +1,5 @@
+@import '../../../../index.scss';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -13,17 +15,16 @@
 
     &--list {
       list-style-type: none;
-      color: black;
+      color: $primaryBlack;
       display: flex;
       width: 100%;
       justify-content: space-between;
 
       li {
         font-weight: bold;
-      }
-
-      li:hover {
-        cursor: pointer;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }

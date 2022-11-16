@@ -1,11 +1,12 @@
+@import '../../../../index.scss';
+
 .footer {
   display: flex;
   background-color: black;
-  color: whitesmoke;
+  color: $dividers;
   justify-content: space-between;
   padding: 20px 20px;
 }
 .icon {
   margin: 0 15px;
-  color: #adadad;
 }

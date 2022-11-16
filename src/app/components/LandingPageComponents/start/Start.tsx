@@ -19,10 +19,10 @@ export function Start() {
         </p>
         <div className="start__buttons">
           <Button href="/homepage" variant="contained">
-            Get started
+            Get started {`>`}
           </Button>
           <Button href="/homepage" variant="outlined">
-            How does eco works?
+            How does eco {`>`}
           </Button>
         </div>
       </div>

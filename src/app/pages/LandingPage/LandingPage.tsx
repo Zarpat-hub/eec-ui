@@ -1,6 +1,4 @@
 import './LandingPage.scss'
-import elip from '../../../assets/elipse_1.png'
-import elip2 from '../../../assets/elipse_2.png'
 import elip3 from '../../../assets/el_header.png'
 import elip4 from '../../../assets/el_about.png'
 

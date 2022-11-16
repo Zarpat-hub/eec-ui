@@ -1,3 +1,5 @@
+@import '../../../../index.scss';
+
 .about {
   padding: 20px 20px;
   display: flex;
@@ -8,16 +10,16 @@
 
   &__header {
     font-size: 48px;
-    color: #1d1d1d;
+    color: $primaryBlack;
   }
 
   &__ndHeader {
-    color: #1d1d1d8a;
+    color: $primaryGrey;
     font-size: 36px;
   }
 
   &__paragraph {
-    color: #1d1d1d8a;
+    color: $primaryBlack;
     font-size: 20px;
     margin: 50px 0;
   }
@@ -38,14 +40,16 @@
 
 .card {
   max-width: 350px;
-  height: 300px;
-  margin: 0 150px 0 0px;
+  margin-right: 70px;
+  &__icon {
+    color: $primaryBlack;
+  }
 
   &__header {
     padding: 20px 0;
     font-size: 28px;
     font-weight: 600;
-    color: #000000;
+    color: $primaryBlack;
   }
 
   &__description {
@@ -57,12 +61,10 @@
 
   &--full {
     padding: 50px 0;
-    //color: var(--color-secondary);
   }
 }
 
 .test {
-  //background-image: url("../../../../assets/about.png");
   width: 700px;
   height: 400px;
   background-repeat: no-repeat;

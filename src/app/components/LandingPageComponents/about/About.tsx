@@ -1,4 +1,7 @@
 import './About.scss'
+import HomeIcon from '@mui/icons-material/Home'
+import MenuIcon from '@mui/icons-material/Menu'
+import TimelineIcon from '@mui/icons-material/Timeline'
 
 export function About() {
   return (
@@ -13,6 +16,7 @@ export function About() {
       </p>
       <div className="about__cards">
         <div className="card">
+          <TimelineIcon className="card__icon" />
           <h4 className="card__header">Lorem ipsum dolor sit amet</h4>
           <p className="card__description">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea,
@@ -21,6 +25,7 @@ export function About() {
           </p>
         </div>
         <div className="card">
+          <MenuIcon className="card__icon" />
           <h4 className="card__header">Lorem, ipsum dolor. lor</h4>
           <p className="card__description">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea,
@@ -30,6 +35,7 @@ export function About() {
         </div>
       </div>
       <div className="card--full">
+        <HomeIcon className="card__icon" />
         <h3 className="card__header">
           Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur,
           adipisicing elit. Voluptates reprehenderit ipsam officiis dolorum
