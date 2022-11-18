@@ -24,7 +24,7 @@
     margin: 50px 0;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $mobile) {
     margin: 0 20px;
   }
 
@@ -32,7 +32,7 @@
     padding: 20px 0;
     display: flex;
     align-items: center;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $mobile) {
       flex-direction: column;
     }
   }
@@ -62,12 +62,4 @@
   &--full {
     padding: 50px 0;
   }
-}
-
-.test {
-  width: 700px;
-  height: 400px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }

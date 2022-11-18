@@ -1,6 +1,6 @@
 import './HomePage.scss'
 
-export function HomePage() {
+export const HomePage: React.FC = () => {
   return (
     <div>
       <div>HomePage</div>

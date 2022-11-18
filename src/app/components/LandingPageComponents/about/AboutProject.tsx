@@ -1,12 +1,12 @@
-import './About.scss'
+import './AboutProject.scss'
 import HomeIcon from '@mui/icons-material/Home'
 import MenuIcon from '@mui/icons-material/Menu'
 import TimelineIcon from '@mui/icons-material/Timeline'
 
-export function About() {
+export const AboutProject: React.FC = () => {
   return (
     <section className="about">
-      <h2 className="about__header">Your ECO household starts today</h2>
+      <h2 className="about__header">Your ECO household starts today 🍃</h2>
       <h3 className="about__ndHeader">How we do it</h3>
       <p className="about__paragraph">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, nihil

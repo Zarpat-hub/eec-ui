@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button'
-import './Start.scss'
+import './Header.scss'
 import img from '../../../../assets/start.png'
+import { NavLink } from 'react-router-dom'
 
-export function Start() {
+export const Header: React.FC = () => {
   return (
     <section className="start">
-      <div className="start__leftPanel">
+      <div>
         <div className="start__header">
           <h1>Energy</h1>
           <h1>
@@ -18,12 +18,17 @@ export function Start() {
           Nihil?
         </p>
         <div className="start__buttons">
-          <Button href="/homepage" variant="contained">
-            Get started {`>`}
-          </Button>
-          <Button href="/homepage" variant="outlined">
-            How does eco {`>`}
-          </Button>
+          <NavLink to="/homepage" className="link">
+            <button className="start__buttons--button primary">
+              Get started {`>`}
+            </button>
+          </NavLink>
+
+          <NavLink to="/homepage" className="link">
+            <button className="start__buttons--button">
+              How eco works? {`>`}
+            </button>
+          </NavLink>
         </div>
       </div>
 

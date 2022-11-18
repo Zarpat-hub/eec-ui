@@ -1,19 +1,16 @@
 import './LandingPage.scss'
-import elip3 from '../../../assets/el_header.png'
-import elip4 from '../../../assets/el_about.png'
 
-import { About } from '../../components/LandingPageComponents/about/About'
+import { AboutProject } from '../../components/LandingPageComponents/about/AboutProject'
 import { Footer } from '../../components/LandingPageComponents/footer/Footer'
-import { Header } from '../../components/LandingPageComponents/header/Header'
-import { Start } from '../../components/LandingPageComponents/start/Start'
+import { Navigation } from '../../components/LandingPageComponents/header/Navigation'
+import { Header } from '../../components/LandingPageComponents/start/Header'
 
-export function LandingPage() {
+export const LandingPage: React.FC = () => {
   return (
     <section>
-      <img src={elip3} className="elipse1" />
+      <Navigation />
       <Header />
-      <Start />
-      <About />
+      <AboutProject />
       <Footer />
     </section>
   )
