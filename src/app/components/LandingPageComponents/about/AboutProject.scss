@@ -1,0 +1,65 @@
+@import '../../../../index.scss';
+
+.about {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 70px;
+
+  &__header {
+    font-size: 48px;
+    color: $primaryBlack;
+  }
+
+  &__ndHeader {
+    color: $primaryGrey;
+    font-size: 36px;
+  }
+
+  &__paragraph {
+    color: $primaryBlack;
+    font-size: 20px;
+    margin: 50px 0;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 0 20px;
+  }
+
+  &__cards {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+}
+
+.card {
+  max-width: 350px;
+  margin-right: 70px;
+  &__icon {
+    color: $primaryBlack;
+  }
+
+  &__header {
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: $primaryBlack;
+  }
+
+  &__description {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #656565;
+  }
+
+  &--full {
+    padding: 50px 0;
+  }
+}
