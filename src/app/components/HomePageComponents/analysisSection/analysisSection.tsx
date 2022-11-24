@@ -3,10 +3,10 @@ import { Improvement } from '../improvement/improvement'
 import './analysisSection.scss'
 
 export const AnalysisSection: React.FC = () => {
-    return (
-        <div className="analysis">
-            <Improvement />
-            <EcoScore />
-        </div>
-    )
+  return (
+    <div className="analysis">
+      <Improvement />
+      <EcoScore />
+    </div>
+  )
 }

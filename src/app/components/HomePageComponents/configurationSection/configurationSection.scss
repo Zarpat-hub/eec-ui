@@ -1,25 +1,25 @@
 .configuration {
-    display: grid;
-    grid-template: repeat(2, minmax(min-content, max-content)) 1fr / 1fr;
-    padding: 2rem;
-    padding-top: 1rem;
-    gap: 1rem;
+  display: grid;
+  grid-template: repeat(2, minmax(min-content, max-content)) 1fr / 1fr;
+  padding: 2rem;
+  padding-top: 1rem;
+  gap: 1rem;
 }
 
 .configuration__headers {
-    background-color: violet;
+  border: 2px dashed red;
 }
 
 .configuration__navbar {
-    display: flex;
-    background-color: pink;
+  display: flex;
+  border: 2px dashed red;
 }
 
 .configuration__appliances {
-    background-color: darkgreen;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1.5rem;
-    border-radius: 1rem;
+  border: 2px dashed red;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
