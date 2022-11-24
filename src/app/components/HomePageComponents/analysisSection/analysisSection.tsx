@@ -1,5 +1,5 @@
-import { EcoScore } from '../ecoScore/EcoScore'
-import { Improvement } from '../improvement/Improvement'
+import { EcoScore } from '../ecoScore/ecoScore'
+import { Improvement } from '../improvement/improvement'
 import './analysisSection.scss'
 
 export const AnalysisSection: React.FC = () => {
