@@ -18,14 +18,10 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette: {
     primary: {
-      dark: variables.primaryBlack,
       main: variables.primaryBlue,
-      light: variables.primaryGrey,
     },
     secondary: {
-      dark: variables.accentVibrantBlue,
-      main: variables.secondaryBlue,
-      light: variables.accentBlue,
+      main: variables.accentVibrantBlue,
     },
   },
   breakpoints: {
