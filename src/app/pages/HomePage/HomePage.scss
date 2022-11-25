@@ -3,7 +3,6 @@
 main {
   display: grid;
   grid-template: minmax(min-content, max-content) 1fr / 1fr 5fr;
-  // grid-template: minmax(50vh, max-content) minmax(min-content, max-content) / 1fr 5fr;
   min-height: 100vh;
 
   @media screen and (max-width: $mobile) {

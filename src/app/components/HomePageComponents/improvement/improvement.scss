@@ -8,17 +8,17 @@
   @media screen and (max-width: $mobile) {
     gap: 1rem;
   }
-}
 
-.improvement__labels {
-  height: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
+  &__labels {
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
-.improvement__container {
-  border: 2px dashed red;
-  border-radius: 1.5rem;
-  height: 400px;
+  &__container {
+    border: 2px dashed red;
+    border-radius: 1.5rem;
+    height: 400px;
+  }
 }

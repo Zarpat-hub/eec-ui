@@ -1,4 +1,4 @@
-import './configurationSection.scss'
+import './ConfigurationSection.scss'
 
 export const ConfigurationSection: React.FC = () => {
   return (

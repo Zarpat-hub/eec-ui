@@ -1,4 +1,4 @@
-import './ecoScore.scss'
+import './EcoScore.scss'
 
 export const EcoScore: React.FC = () => {
   return (

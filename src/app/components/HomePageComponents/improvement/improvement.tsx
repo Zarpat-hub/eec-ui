@@ -1,4 +1,4 @@
-import './improvement.scss'
+import './Improvement.scss'
 
 export const Improvement: React.FC = () => {
   return (
