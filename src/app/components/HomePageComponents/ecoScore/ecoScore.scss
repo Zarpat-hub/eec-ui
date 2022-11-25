@@ -1,0 +1,24 @@
+@import '../../../../index.scss';
+
+.eco-score {
+  display: grid;
+  grid-template: auto 1fr / 1fr;
+  gap: 2rem;
+
+  @media screen and (max-width: $mobile) {
+    gap: 1rem;
+  }
+
+  &__labels {
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__container {
+    border: 2px dashed red;
+    border-radius: 1.5rem;
+    height: 400px;
+  }
+}
