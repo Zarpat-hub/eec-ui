@@ -7,6 +7,7 @@ $accentBlue: #f1f8ff;
 $backgroudnGray: #f6f8fa;
 $dividers: #d9d9d9;
 $accentVibrantBlue: #2f69fe;
+$accentVibrantBlueDarker: #2558dc;
 
 //breakpoints
 $mobile: 768px;
@@ -21,6 +22,7 @@ $desktop: 1200px;
   backgroudnGray: $backgroudnGray;
   dividers: $dividers;
   accentVibrantBlue: $accentVibrantBlue;
+  accentVibrantBlueDarker: $accentVibrantBlueDarker;
   desktop: $desktop;
   mobile: $mobile;
 }
