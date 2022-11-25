@@ -26,7 +26,7 @@ export const AddAppliancePopup: React.FC = () => {
   } = useForm()
   const [open, setOpen] = useState(true)
   const fullScreen = useMediaQuery('(max-width:768px)')
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => console.log(data)
 
   const handleClickOpen = () => {
     setOpen(true)
