@@ -1,3 +1,19 @@
+* {
+  user-select: none;
+}
+
 section {
   overflow: hidden;
+}
+.background_image__top {
+  background-image: url('src/assets/el_header.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+@media screen and (max-width: 1200px) {
+  .background_image__top {
+    background-image: none;
+  }
 }

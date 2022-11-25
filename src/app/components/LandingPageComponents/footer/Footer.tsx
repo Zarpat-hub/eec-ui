@@ -14,7 +14,11 @@ export const Footer: React.FC = () => {
         <LinkedInIcon className="icon" />
         <InstagramIcon className="icon" />
       </div>
-      <div>{new Date().getFullYear()} All rights reserved</div>
+      <div>
+        <span id="footer_credentials">
+          {new Date().getFullYear()} echo. All rights reserved.
+        </span>
+      </div>
     </footer>
   )
 }
