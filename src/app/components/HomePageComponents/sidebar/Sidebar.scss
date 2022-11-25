@@ -1,0 +1,17 @@
+@import '../../../../index.scss';
+
+aside {
+  position: sticky;
+  top: 0;
+  background-color: lightblue;
+  grid-row: span 2;
+  height: 100vh;
+  background-color: $backgroudnGray;
+  border-right: 1px solid #f0f0f0; // new variable?
+
+  @media screen and (max-width: $mobile) {
+    height: fit-content;
+    padding: 2rem 0;
+    grid-row: 1;
+  }
+}

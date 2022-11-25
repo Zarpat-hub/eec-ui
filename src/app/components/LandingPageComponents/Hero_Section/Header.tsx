@@ -9,13 +9,12 @@ export const Header: React.FC = () => {
         <div className="start__header">
           <h1>Energy</h1>
           <h1>
-            Energency <span className="start__header--color">Home</span>
+            Efficient <span className="start__header--color">Home.</span>
           </h1>
         </div>
         <p className="start__paragraph">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sit
-          reiciendis laborum illo tempore minima commodi sint obcaecati nostrum.
-          Nihil?
+          Optimise your home energy efficiency with our smart calculator that
+          offers real-time improvements suggestions.
         </p>
         <div className="start__buttons">
           <NavLink to="/homepage" className="link">
@@ -25,14 +24,14 @@ export const Header: React.FC = () => {
           </NavLink>
 
           <NavLink to="/homepage" className="link">
-            <button className="start__buttons--button">
+            <button className="start__buttons--button" id="secondary_cta">
               How eco works? {`>`}
             </button>
           </NavLink>
         </div>
       </div>
 
-      <img src={img} className="img" />
+      <img src={img} className="img" draggable="false" />
     </section>
   )
 }

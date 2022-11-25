@@ -1,18 +1,18 @@
 import './LandingPage.scss'
 
-import { AboutProject } from '../../components/LandingPageComponents/about/AboutProject'
+import { AboutProject } from '../../components/LandingPageComponents/About_Section/AboutProject'
+import { Navigation } from '../../components/LandingPageComponents/Navbar/Navigation'
+import { Header } from '../../components/LandingPageComponents/Hero_Section/Header'
 import { Footer } from '../../components/LandingPageComponents/footer/Footer'
-import { Navigation } from '../../components/LandingPageComponents/header/Navigation'
-import { Header } from '../../components/LandingPageComponents/start/Header'
-import { AddAppliancePopup } from '../../components/addAppliancePopup/AddAppliancePopup'
 
 export const LandingPage: React.FC = () => {
   return (
     <section>
-      <AddAppliancePopup />
-      <Navigation />
-      <Header />
-      <AboutProject />
+      <div className="background_image__top">
+        <Navigation />
+        <Header />
+        <AboutProject />
+      </div>
       <Footer />
     </section>
   )
