@@ -11,22 +11,29 @@ import {
   useMediaQuery,
 } from '@mui/material'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import img from '../../../assets/appliance_serial_number.png'
 import info from '../../../assets/info.png'
 
 import './AddAppliancePopup.scss'
 
-export const AddAppliancePopup: React.FC = () => {
+type Inputs = {
+  example: string,
+};
+
+export const AddAppliancePopup = () => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm<Inputs>()
   const [open, setOpen] = useState(true)
   const fullScreen = useMediaQuery('(max-width:768px)')
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = (data: any) => {
+    console.log(data);
+    
+  }
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -54,12 +61,12 @@ export const AddAppliancePopup: React.FC = () => {
       </div>
 
       <DialogContent sx={{ p: '1.5rem', py: 0 }}>
-        {/* <form onSubmit={handleSubmit(onSubmit)} className="form"> */}
-        <form className="form">
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
+          {/* <form className="form"> */}
           <div className="input-group">
             <p className="input-group__label">Select manufacturer</p>
             <p className="input-group__text">Find producent of your device .</p>
-            <input className="input-group__input" />
+            <input className="input-group__input" {...register("example")}/>
           </div>
 
           <div className="input-group">
