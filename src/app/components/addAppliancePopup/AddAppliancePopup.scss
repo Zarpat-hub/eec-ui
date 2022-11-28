@@ -28,9 +28,14 @@
     height: 100%;
     width: fit-content;
     justify-content: space-evenly;
+    padding: 1.5rem 0;
     align-content: center;
     border-top: 1px solid $dividers;
     border-bottom: 1px solid $dividers;
+  }
+
+  @media screen and (max-height: 800px) {
+    height: fit-content;
   }
 }
 
@@ -42,6 +47,10 @@
 
   &__label {
     font-weight: bolder;
+  }
+
+  &__label--disabled {
+    color: $primaryGrey;
   }
 
   &__text {
