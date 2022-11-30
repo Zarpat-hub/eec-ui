@@ -1,3 +1,5 @@
+import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
+import { NewItem } from '../../Shared/NewItem/NewItem'
 import './ConfigurationSection.scss'
 
 export const ConfigurationSection: React.FC = () => {
@@ -10,6 +12,7 @@ export const ConfigurationSection: React.FC = () => {
 
       <div className="configuration__navbar">
         {/* placeholder */}
+
         <div
           style={{
             height: '64px',
@@ -45,76 +48,14 @@ export const ConfigurationSection: React.FC = () => {
 
       <div className="configuration__appliances">
         {/* placeholder */}
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '128px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
+        <ConfigurationItem energyClassName="A" cost={250} category="Fridge" />
+        <ConfigurationItem energyClassName="B" cost={230} category="Fridge" />
+
+        <ConfigurationItem energyClassName="D" cost={270} category="Fridge" />
+        <ConfigurationItem energyClassName="F" cost={210} category="Fridge" />
+
+        <NewItem />
+
         {/* placeholder */}
       </div>
     </div>
