@@ -1,4 +1,4 @@
-import { EcoScore } from '../ecoScore/ecoScore'
+import { EcoScore } from '../ecoScore/EcoScore'
 import { Improvement } from '../improvement/improvement'
 import './analysisSection.scss'
 
