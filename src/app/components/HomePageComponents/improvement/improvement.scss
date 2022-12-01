@@ -92,7 +92,7 @@ $border: 2px solid #e5e5e5;
   &__main {
     display: grid;
     max-height: 350px;
-    grid-template: 140px minmax(160px, auto) / auto;
+    grid-template: 150px minmax(160px, auto) / auto;
   }
 
   &__footer {
@@ -126,7 +126,11 @@ $border: 2px solid #e5e5e5;
   &__card {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+
+    &--selected {
+      padding-bottom: 20px;
+    }
   }
 
   &__info {
@@ -134,11 +138,15 @@ $border: 2px solid #e5e5e5;
     grid-template: auto / 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
+  }
+}
 
-    & > div {
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-    }
+.info {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__value {
+    font-weight: bold;
   }
 }

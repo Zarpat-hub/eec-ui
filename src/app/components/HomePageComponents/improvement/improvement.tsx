@@ -1,4 +1,6 @@
 import { Button } from '@mui/material'
+import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
+import { SuggestionsStepper } from '../suggestionsStepper/SuggestionsStepper'
 import './improvement.scss'
 
 export const Improvement: React.FC = () => {
@@ -14,34 +16,56 @@ export const Improvement: React.FC = () => {
             <p>Selected device</p>
           </div>
           <div className="improvement-card__main improvement-card--border-right improvement-card--border-bottom appliance">
-            <div className="appliance__card improvement-card--border-bottom">
-              <div
-                style={{
-                  height: '109px',
-                  width: '174px',
-                  backgroundColor: 'black',
-                }}
+            <div className="appliance__card improvement-card--border-bottom appliance__card--selected">
+              <ConfigurationItem
+                category="Fridge"
+                energyClassName="D"
+                cost={270}
               />
             </div>
             <div className="appliance__info">
-              <div>
-                <p>
-                  Manufacturer: <b>Yamaha</b>
+              <div className="info">
+                <p className="info__label">
+                  Manufacturer:{' '}
+                  <span
+                    className="info__value"
+                    id="info__manufacturer--selected"
+                  >
+                    Yamaha
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Annual cost: <b>390,-</b>
+              <div className="info">
+                <p className="info__label">
+                  Annual cost:{' '}
+                  <span
+                    className="info__value"
+                    id="info__annual-cost--selected"
+                  >
+                    390,-
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Serial number: <b>R3JX3PDAXC31</b>
+              <div className="info">
+                <p className="info__label">
+                  Serial number:{' '}
+                  <span
+                    className="info__value"
+                    id="info__model-identifier--selected"
+                  >
+                    R3JX3PDAXC31
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Power Consumption: <b>124kWh</b>
+              <div className="info">
+                <p className="info__label">
+                  Power Consumption:{' '}
+                  <span
+                    className="info__value"
+                    id="info__power-consumtpion--selected"
+                  >
+                    124kWh
+                  </span>
                 </p>
               </div>
             </div>
@@ -54,33 +78,58 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom">
-              <div
-                style={{
-                  height: '109px',
-                  width: '174px',
-                  backgroundColor: 'black',
-                }}
+              {/* <ConfigurationItem category='Fridge' energyClassName='A' cost={220} /> */}
+              <SuggestionsStepper
+                suggestions={[
+                  { category: 'Fridge', energyClassName: 'B', cost: 220 },
+                  { category: 'Fridge', energyClassName: 'A', cost: 210 },
+                  { category: 'Fridge', energyClassName: 'A', cost: 215 },
+                ]}
               />
             </div>
             <div className="appliance__info">
-              <div>
-                <p>
-                  Manufacturer: <b>Bosch</b>
+              <div className="info">
+                <p className="info__label">
+                  Manufacturer:{' '}
+                  <span
+                    className="info__value"
+                    id="info__manufacturer--suggested"
+                  >
+                    Bosch
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Annual cost: <b>280,-</b>
+              <div className="info">
+                <p className="info__label">
+                  Annual cost:{' '}
+                  <span
+                    className="info__value"
+                    id="info__annual-cost--suggested"
+                  >
+                    280,-
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Serial number: <b>B2JF3PDAFCD</b>
+              <div className="info">
+                <p className="info__label">
+                  Serial number:{' '}
+                  <span
+                    className="info__value"
+                    id="info__model-identifier--suggested"
+                  >
+                    B2JF3PDAFCD
+                  </span>
                 </p>
               </div>
-              <div>
-                <p>
-                  Power Consumption: <b>114kWh</b>
+              <div className="info">
+                <p className="info__label">
+                  Power Consumption:{' '}
+                  <span
+                    className="info__value"
+                    id="info__power-consumtpion--suggested"
+                  >
+                    114kWh
+                  </span>
                 </p>
               </div>
             </div>

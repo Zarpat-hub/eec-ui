@@ -1,6 +1,6 @@
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import { NewItem } from '../../Shared/NewItem/NewItem'
-import './ConfigurationSection.scss'
+import './configurationSection.scss'
 
 export const ConfigurationSection: React.FC = () => {
   return (
