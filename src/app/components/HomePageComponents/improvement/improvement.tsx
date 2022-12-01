@@ -21,7 +21,7 @@ export const Improvement: React.FC = () => {
                   width: '174px',
                   backgroundColor: 'black',
                 }}
-              ></div>
+              />
             </div>
             <div className="appliance__info">
               <div>
@@ -60,7 +60,7 @@ export const Improvement: React.FC = () => {
                   width: '174px',
                   backgroundColor: 'black',
                 }}
-              ></div>
+              />
             </div>
             <div className="appliance__info">
               <div>
