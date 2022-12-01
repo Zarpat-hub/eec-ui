@@ -1,5 +1,7 @@
 @import '../../../../index.scss';
 
+$border: 2px solid #e5e5e5;
+
 .improvement {
   display: grid;
   grid-template: auto 1fr / 1fr;
@@ -17,10 +19,126 @@
   }
 
   &__container {
-    border: 2px dashed red;
+    border: $border;
     border-radius: 1.5rem;
-    height: 400px;
     display: grid;
-    grid-template: 1fr 8fr 1fr / 1fr 1fr;
+    grid-template: auto auto / 1fr 1fr;
+
+    @media screen and (max-width: $mobile) {
+      height: fit-content;
+      grid-template: auto / 1fr;
+    }
+  }
+
+  &__footer {
+    min-height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    grid-column: span 2;
+    gap: 1rem;
+    color: $primaryBlue;
+
+    @media screen and (max-width: $mobile) {
+      grid-column: 1;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-end;
+      padding: 0.75rem 2rem;
+
+      .footer-container {
+        &__label {
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+}
+
+.improvement-card {
+  display: grid;
+  grid-template: auto auto / 1fr;
+  grid-row: span 2;
+
+  &__header {
+    height: 3rem;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+
+    &--left {
+      background-color: $backgroudnGray;
+      color: $primaryBlue;
+      border-top-left-radius: 1.5rem;
+
+      @media screen and (max-width: $mobile) {
+        border-top-right-radius: 1.5rem;
+      }
+    }
+
+    &--right {
+      background-color: $primaryBlue;
+      color: #ffffff;
+      border-top-right-radius: 1.5rem;
+
+      @media screen and (max-width: $mobile) {
+        border-top-right-radius: 0;
+      }
+    }
+  }
+
+  &__main {
+    display: grid;
+    max-height: 350px;
+    grid-template: 140px minmax(160px, auto) / auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+
+    &--left {
+      padding-left: 2rem;
+    }
+
+    &--right {
+      padding-right: 2rem;
+      justify-content: flex-end;
+    }
+  }
+
+  &--border-right {
+    border-right: $border;
+
+    @media screen and (max-width: $mobile) {
+      border: 0;
+    }
+  }
+
+  &--border-bottom {
+    border-bottom: $border;
+  }
+}
+
+.appliance {
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
   }
 }

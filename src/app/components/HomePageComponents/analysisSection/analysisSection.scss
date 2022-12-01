@@ -7,7 +7,7 @@
   padding-bottom: 1rem;
   gap: 4rem;
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: $desktop) {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
