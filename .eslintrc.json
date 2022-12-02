@@ -19,6 +19,9 @@
   "plugins": ["react"],
   "rules": {
     "no-console": "warn",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/restrict-template-expressions": "error",
+    "no-case-declarations": "off",
     "react/prop-types": "off",
     "react/self-closing-comp": "warn",
     "no-unused-vars": "off",

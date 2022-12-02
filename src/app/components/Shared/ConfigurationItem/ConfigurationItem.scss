@@ -1,15 +1,33 @@
-@import '../../../../index.scss';
+@import "../../../../index.scss";
 
-.configurationCard {
+.configurationCardActive {
   box-sizing: border-box;
   position: relative;
-  //z-index: 1;
+  z-index: 2;
+  height: 109px;
+  width: 174px;
+  border-radius: 10px;
+  border: 3px solid $accentVibrantBlueDarker;
+  background-color: white;
+  color: black;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.configurationCard {
+  position: relative;
   height: 109px;
   width: 174px;
   border-radius: 10px;
   border: 1px solid $dividers;
   background-color: white;
   color: black;
+
+  &:hover {
+    cursor: pointer;
+  }
+
   &__header {
     border-bottom: 1px solid $dividers;
     &--price {
@@ -26,11 +44,11 @@
   &__content {
     display: flex;
     color: $accentVibrantBlueDarker;
+    height: 72px;
 
     &--deviceImg {
       color: $primaryBlue;
       min-width: 68px;
-      height: 76px;
       border-radius: 0px 0px 0px 9px;
       background-color: #f1f8ff;
       display: flex;
@@ -51,7 +69,7 @@
   }
 }
 
-.test {
+.icon_position {
   position: absolute;
   right: 10px;
   top: 10px;

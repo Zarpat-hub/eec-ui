@@ -1,8 +1,18 @@
+import { useDevices } from '../../../context/DevicesContext'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
+import { DEVICE } from '../../Shared/models/Device'
 import { NewItem } from '../../Shared/NewItem/NewItem'
 import './ConfigurationSection.scss'
 
-export const ConfigurationSection: React.FC = () => {
+export const ConfigurationSection = () => {
+  const { devices } = useDevices()
+
+  const DEVICES: JSX.Element[] = devices.map((device: DEVICE) => {
+    return (
+      <ConfigurationItem key={device.modelIdentifier} deviceParams={device} />
+    )
+  })
+
   return (
     <div className="configuration">
       <div className="configuration__headers">
@@ -47,16 +57,8 @@ export const ConfigurationSection: React.FC = () => {
       </div>
 
       <div className="configuration__appliances">
-        {/* placeholder */}
-        <ConfigurationItem energyClassName="A" cost={250} category="Fridge" />
-        <ConfigurationItem energyClassName="B" cost={230} category="Fridge" />
-
-        <ConfigurationItem energyClassName="D" cost={270} category="Fridge" />
-        <ConfigurationItem energyClassName="F" cost={210} category="Fridge" />
-
+        {DEVICES}
         <NewItem />
-
-        {/* placeholder */}
       </div>
     </div>
   )
