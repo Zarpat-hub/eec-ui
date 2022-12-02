@@ -1,0 +1,123 @@
+@import '../../../../index.scss';
+
+// .ecometer {
+//     width: 100%;
+//     height: 155px;
+//     position: relative;
+//     overflow: hidden;
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-start;
+// }
+
+// .one,
+// .two,
+// .three {
+//     position: absolute;
+//     width: 300px;
+//     aspect-ratio: 1/1;
+//     border-radius: 50%;
+//     border: 30px solid orange;
+//     border-bottom-color: transparent;
+//     border-left-color: transparent;
+//     border-right-color: transparent;
+// }
+
+// .one {
+//     transform: rotate(-95deg);
+//     border-top-color: red;
+// }
+
+// .two {
+//     transform: rotate(95deg);
+//     border-top-color: green;
+// }
+
+$animation-duration: 500ms;
+
+.ecometer {
+  position: relative;
+
+  &__labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+  }
+
+  &__indicator {
+    width: 50%;
+    height: 5px;
+    // background-color: darkblue;
+    position: absolute;
+    top: 87.5%;
+    transform: rotate(0deg);
+    transform-origin: right;
+
+    &--dot {
+      content: '';
+      width: 28px;
+      position: absolute;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      transform: translateX(-25%) translateY(-33%);
+      border: 7px solid $accentVibrantBlue;
+      background-color: #ffffff;
+      display: none;
+    }
+  }
+}
+
+.labels {
+  font-weight: 800;
+  height: fit-content;
+
+  &__current {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: $primaryBlack;
+    transition: font-size $animation-duration ease-in-out;
+
+    &--upgradeless {
+      font-size: 3rem;
+      transform: translateY(2%);
+    }
+  }
+
+  &__upgraded {
+    width: 6rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #8dea89;
+    transform: translateY(200%);
+    font-size: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform $animation-duration ease-in-out,
+      opacity $animation-duration ease-in-out,
+      font-size $animation-duration ease-in-out;
+
+    &--upgraded {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      font-size: 3rem;
+    }
+  }
+
+  &__arrow {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(200%);
+    transition: transform $animation-duration ease-in-out,
+      opacity $animation-duration ease-in-out;
+
+    &--upgraded {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

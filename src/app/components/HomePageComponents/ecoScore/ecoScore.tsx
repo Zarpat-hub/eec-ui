@@ -1,3 +1,4 @@
+import Ecometer from '../ecometer/Ecometer'
 import './EcoScore.scss'
 
 export const EcoScore: React.FC = () => {
@@ -8,7 +9,9 @@ export const EcoScore: React.FC = () => {
         <h5>Lorem ipsum dolor sit amet consectetur.</h5>
       </div>
 
-      <div className="eco-score__container" />
+      <div className="eco-score__container">
+        <Ecometer />
+      </div>
     </div>
   )
 }
