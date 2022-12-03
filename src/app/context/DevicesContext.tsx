@@ -23,6 +23,10 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     dispatch({ type: 'change', payload: { modelIdentifier } })
   }
 
+  const upgradeDevice = (modelIdentifier: string) => {
+    dispatch({ type: 'upgrade', payload: { modelIdentifier } })
+  }
+
   const value = {
     waterPrice: state.waterCost,
     energyPrice: state.energyCost,
@@ -30,6 +34,7 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     changeActiveDevice,
     addDevice,
     removeDevice,
+    upgradeDevice,
     activeDevice: state.activeDevice,
   }
 

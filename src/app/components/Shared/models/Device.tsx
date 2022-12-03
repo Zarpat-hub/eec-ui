@@ -4,6 +4,9 @@ export type DEVICE = {
   annualCost: number
   energyEfficencyClass: string
   category: string
+  powerConsumption: number
+  manufacturer: string
+  ecoScore?: number
   upgrade?: DEVICE[]
 }
 export type STATE = {

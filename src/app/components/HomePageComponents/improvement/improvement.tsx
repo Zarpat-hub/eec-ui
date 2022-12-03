@@ -2,16 +2,17 @@ import './Improvement.scss'
 
 import { useDevices } from '../../../context/DevicesContext'
 import { DEVICE } from '../../Shared/models/Device'
+import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 
 export const Improvement: React.FC = () => {
-  const { activeDevice, removeDevice } = useDevices()
+  const { activeDevice, removeDevice, upgradeDevice } = useDevices()
 
-  const handleClick = () => {
+  const handleRemove = () => {
     removeDevice(activeDevice.modelIdentifier)
   }
 
   const handleUpgrade = (modelIdentifier: string) => {
-    // console.log(modelIdentifier)
+    upgradeDevice(modelIdentifier)
   }
 
   return (
@@ -23,19 +24,25 @@ export const Improvement: React.FC = () => {
       <div className="improvement__container">
         {activeDevice !== null ? (
           <div>
-            <p onClick={handleClick}>{activeDevice.deviceName}</p>
-            <h3>Upgrade</h3>
-            {activeDevice.upgrade.map((device: DEVICE) => {
-              return (
-                <div
-                  key={device.modelIdentifier}
-                  onClick={() => handleUpgrade(device.modelIdentifier)}
-                >
-                  <h1>{device.modelIdentifier}</h1>
-                  <p>{device.deviceName}</p>
-                </div>
-              )
-            })}
+            <div onClick={handleRemove}>
+              <ConfigurationItem deviceParams={activeDevice} />
+            </div>
+            {activeDevice.upgrade !== undefined ? (
+              activeDevice.upgrade.map((device: DEVICE) => {
+                // console.log(device)
+                return (
+                  <div
+                    key={device.modelIdentifier}
+                    onClick={() => handleUpgrade(device.modelIdentifier)}
+                  >
+                    <div>Ugrade</div>
+                    <ConfigurationItem deviceParams={device} />
+                  </div>
+                )
+              })
+            ) : (
+              <p>Brak dostępnych ugradów</p>
+            )}
           </div>
         ) : (
           <p>Brak</p>

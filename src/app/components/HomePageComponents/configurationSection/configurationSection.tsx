@@ -5,11 +5,20 @@ import { NewItem } from '../../Shared/NewItem/NewItem'
 import './ConfigurationSection.scss'
 
 export const ConfigurationSection = () => {
-  const { devices } = useDevices()
+  const { devices, changeActiveDevice, activeDevice } = useDevices()
+
+  const handleClick = (modelIdentifier: string) => {
+    changeActiveDevice(modelIdentifier)
+  }
 
   const DEVICES: JSX.Element[] = devices.map((device: DEVICE) => {
     return (
-      <ConfigurationItem key={device.modelIdentifier} deviceParams={device} />
+      <div
+        key={device.modelIdentifier}
+        onClick={() => handleClick(device.modelIdentifier)}
+      >
+        <ConfigurationItem deviceParams={device} />
+      </div>
     )
   })
 

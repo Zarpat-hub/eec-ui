@@ -8,11 +8,7 @@ type ConfigurationItemProps = {
 }
 
 export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
-  const { changeActiveDevice, activeDevice } = useDevices()
-
-  const handleClick = () => {
-    changeActiveDevice(deviceParams.modelIdentifier)
-  }
+  const { activeDevice } = useDevices()
 
   return (
     <div
@@ -21,7 +17,6 @@ export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
           ? 'configurationCard'
           : 'configurationCardActive'
       }
-      onClick={handleClick}
     >
       <div className="configurationCard__header">
         <div className="configurationCard__header--price">
