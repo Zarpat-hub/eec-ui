@@ -20,7 +20,7 @@ export const Improvement: React.FC = () => {
               <ConfigurationItem
                 category="Fridge"
                 energyClassName="D"
-                cost={270}
+                cost={280}
               />
             </div>
             <div className="appliance__info">
