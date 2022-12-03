@@ -23,7 +23,8 @@
     "react/self-closing-comp": "warn",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-case-declarations": "off"
   },
   "settings": {
     "react": {

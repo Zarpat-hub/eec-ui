@@ -14,6 +14,7 @@
   &__navbar {
     display: flex;
     border: 2px dashed red;
+    flex-wrap: wrap;
   }
 
   &__appliances {

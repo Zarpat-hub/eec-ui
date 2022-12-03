@@ -21,7 +21,7 @@ const Ecometer: React.FC = () => {
   const setDot = (i: number) => {
     indicatorDotRef.current.style.display = 'block'
     indicatorRef.current.style.transform = `rotate(${i * 1.8}deg)`
-    indicatorRef.current.style.top = `${85 + Math.abs(i * 0.025)}%`
+    indicatorRef.current.style.top = `${85 + Math.abs(i * 0.015)}%`
   }
 
   const test = () => {
@@ -60,16 +60,7 @@ const Ecometer: React.FC = () => {
   }
 
   return (
-    <div
-      style={{
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        flexDirection: 'column',
-      }}
-    >
+    <div className="ecometer-container">
       {/* <div className="ecometer">
                 <div className="one"></div>
                 <div className="two"></div>
@@ -78,7 +69,7 @@ const Ecometer: React.FC = () => {
       <div className="ecometer">
         <img src={ecometerGraphic} className="ecometer__graphic" />
         <div className="ecometer__indicator" ref={indicatorRef}>
-          <div className="ecometer__indicator--dot" ref={indicatorDotRef}></div>
+          <div className="ecometer__indicator--dot" ref={indicatorDotRef} />
         </div>
         <div
           className="ecometer__labels ecometer__labels--upgradeless labels"
