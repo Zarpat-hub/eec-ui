@@ -7,10 +7,6 @@ import { DEVICE } from '../../Shared/models/Device'
 import { useState } from 'react'
 import ApplianceInfo from '../applianceInfo/ApplianceInfo'
 
-import { useDevices } from '../../../context/DevicesContext'
-import { DEVICE } from '../../Shared/models/Device'
-import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
-
 export const Improvement: React.FC = () => {
   const { activeDevice, removeDevice, upgradeDevice } = useDevices()
   const [upgradeIndex, setUpgradeIndex] = useState<number>(0)
