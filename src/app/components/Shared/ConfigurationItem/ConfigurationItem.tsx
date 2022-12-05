@@ -1,31 +1,37 @@
+import { useDevices } from '../../../context/DevicesContext'
 import { EnergyClass } from '../EnergyClass/EnergyClass'
+import { DEVICE } from '../models/Device'
 import './ConfigurationItem.scss'
 
-interface ConfigurationItemProps {
-  energyClassName: string
-  cost: number
-  category: string
+type ConfigurationItemProps = {
+  deviceParams: DEVICE
 }
 
-export const ConfigurationItem = ({
-  energyClassName,
-  cost,
-  category,
-}: ConfigurationItemProps) => {
+export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
+  const { activeDevice } = useDevices()
+
   return (
-    <div className="configurationCard">
+    <div
+      className={
+        deviceParams.modelIdentifier !== activeDevice.modelIdentifier
+          ? 'configurationCard'
+          : 'configurationCardActive'
+      }
+    >
       <div className="configurationCard__header">
-        <div className="configurationCard__header--price">{cost},-</div>
-        <div className="test">
-          <EnergyClass energyClassName={energyClassName} />
+        <div className="configurationCard__header--price">
+          {deviceParams.annualCost},-
+        </div>
+        <div className="icon_position">
+          <EnergyClass energyClassName={deviceParams.energyEfficencyClass} />
         </div>
       </div>
       <div className="configurationCard__content">
         <div className="configurationCard__content--deviceImg">
-          <img src={`/src/assets/CategoriesImg/${category}.png`} />
+          <img src={`/src/assets/CategoriesImg/${deviceParams.category}.png`} />
         </div>
         <div className="configurationCard__content--deviceName">
-          <p>{category}</p>
+          <p>{deviceParams.deviceName}</p>
         </div>
       </div>
     </div>

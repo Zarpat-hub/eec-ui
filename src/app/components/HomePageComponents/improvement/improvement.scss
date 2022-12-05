@@ -146,6 +146,11 @@ $border: 2px solid #e5e5e5;
   align-items: center;
   box-sizing: border-box;
 
+  &__label {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__value {
     font-weight: bold;
   }

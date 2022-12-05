@@ -1,26 +1,40 @@
 import { Button, MobileStepper, Box } from '@mui/material'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
-import { useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import variables from '../../../../variables.module.scss'
 import './SuggestionsStepper.scss'
+import { useDevices } from '../../../context/DevicesContext'
 
 interface Props {
-  suggestions: any[]
+  setUpgradeIndex: Dispatch<SetStateAction<number>>
 }
 
-export const SuggestionsStepper: React.FC<Props> = ({ suggestions }: Props) => {
+export const SuggestionsStepper: React.FC<Props> = ({
+  setUpgradeIndex,
+}: Props) => {
+  const {
+    activeDevice: { upgrade },
+  } = useDevices()
   const [activeStep, setActiveStep] = useState(0)
   const [delayedStep, setDelayedStep] = useState(0)
   const [lock, setLock] = useState(false)
   const animatingBox = useRef<any>()
-  const maxSteps = suggestions.length
+  const maxSteps = upgrade.length
+
+  useEffect(() => {
+    console.log(upgrade)
+    setActiveStep(0)
+    setDelayedStep(0)
+    setUpgradeIndex(0)
+  }, [upgrade])
 
   const handleNext = () => {
     if (!lock) {
       setTimeout(() => {
         setDelayedStep((prev) => prev + 1)
+        setUpgradeIndex((prev) => prev + 1)
       }, 375)
       setActiveStep((prevActiveStep) => prevActiveStep + 1)
       animatingBox.current.classList.add('animate--right')
@@ -32,6 +46,7 @@ export const SuggestionsStepper: React.FC<Props> = ({ suggestions }: Props) => {
       setActiveStep((prevActiveStep) => prevActiveStep - 1)
       setTimeout(() => {
         setDelayedStep((prev) => prev - 1)
+        setUpgradeIndex((prev) => prev - 1)
       }, 375)
       animatingBox.current.classList.add('animate--left')
     }
@@ -80,11 +95,7 @@ export const SuggestionsStepper: React.FC<Props> = ({ suggestions }: Props) => {
           onAnimationEnd={animationEndHandler}
           onAnimationStart={animationStartHandler}
         >
-          <ConfigurationItem
-            category={suggestions[delayedStep].category}
-            cost={suggestions[delayedStep].cost}
-            energyClassName={suggestions[delayedStep].energyClassName}
-          />
+          <ConfigurationItem deviceParams={upgrade[delayedStep]} />
         </div>
 
         <MobileStepper

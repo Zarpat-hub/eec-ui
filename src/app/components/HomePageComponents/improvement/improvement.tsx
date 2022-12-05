@@ -2,8 +2,23 @@ import { Button } from '@mui/material'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import { SuggestionsStepper } from '../suggestionsStepper/SuggestionsStepper'
 import './improvement.scss'
+import { useDevices } from '../../../context/DevicesContext'
+import { DEVICE } from '../../Shared/models/Device'
+import { useState } from 'react'
+import ApplianceInfo from '../applianceInfo/ApplianceInfo'
 
 export const Improvement: React.FC = () => {
+  const { activeDevice, removeDevice, upgradeDevice } = useDevices()
+  const [upgradeIndex, setUpgradeIndex] = useState<number>(0)
+
+  const handleRemove = () => {
+    removeDevice(activeDevice.modelIdentifier)
+  }
+
+  const handleUpgrade = (modelIdentifier: string) => {
+    upgradeDevice(modelIdentifier)
+  }
+
   return (
     <div className="improvement">
       <div className="improvement__labels">
@@ -17,57 +32,16 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-right improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom appliance__card--selected">
-              <ConfigurationItem
-                category="Fridge"
-                energyClassName="D"
-                cost={280}
-              />
+              {activeDevice !== null ? (
+                <ConfigurationItem deviceParams={activeDevice} />
+              ) : null}
             </div>
             <div className="appliance__info">
-              <div className="info">
-                <p className="info__label">
-                  Manufacturer:{' '}
-                  <span
-                    className="info__value"
-                    id="info__manufacturer--selected"
-                  >
-                    Yamaha
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Annual cost:{' '}
-                  <span
-                    className="info__value"
-                    id="info__annual-cost--selected"
-                  >
-                    390,-
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Serial number:{' '}
-                  <span
-                    className="info__value"
-                    id="info__model-identifier--selected"
-                  >
-                    R3JX3PDAXC31
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Power Consumption:{' '}
-                  <span
-                    className="info__value"
-                    id="info__power-consumtpion--selected"
-                  >
-                    124kWh
-                  </span>
-                </p>
-              </div>
+              {activeDevice !== null ? (
+                <ApplianceInfo deviceParams={activeDevice} />
+              ) : (
+                <ApplianceInfo deviceParams={null} />
+              )}
             </div>
           </div>
         </div>
@@ -78,60 +52,18 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom">
-              {/* <ConfigurationItem category='Fridge' energyClassName='A' cost={220} /> */}
-              <SuggestionsStepper
-                suggestions={[
-                  { category: 'Fridge', energyClassName: 'B', cost: 220 },
-                  { category: 'Fridge', energyClassName: 'A', cost: 210 },
-                  { category: 'Fridge', energyClassName: 'A', cost: 215 },
-                ]}
-              />
+              {activeDevice.upgrade !== null ? (
+                <SuggestionsStepper setUpgradeIndex={setUpgradeIndex} />
+              ) : null}
             </div>
             <div className="appliance__info">
-              <div className="info">
-                <p className="info__label">
-                  Manufacturer:{' '}
-                  <span
-                    className="info__value"
-                    id="info__manufacturer--suggested"
-                  >
-                    Bosch
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Annual cost:{' '}
-                  <span
-                    className="info__value"
-                    id="info__annual-cost--suggested"
-                  >
-                    280,-
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Serial number:{' '}
-                  <span
-                    className="info__value"
-                    id="info__model-identifier--suggested"
-                  >
-                    B2JF3PDAFCD
-                  </span>
-                </p>
-              </div>
-              <div className="info">
-                <p className="info__label">
-                  Power Consumption:{' '}
-                  <span
-                    className="info__value"
-                    id="info__power-consumtpion--suggested"
-                  >
-                    114kWh
-                  </span>
-                </p>
-              </div>
+              {activeDevice.upgrade !== null ? (
+                <ApplianceInfo
+                  deviceParams={activeDevice.upgrade[upgradeIndex]}
+                />
+              ) : (
+                <ApplianceInfo deviceParams={null} />
+              )}
             </div>
           </div>
         </div>
