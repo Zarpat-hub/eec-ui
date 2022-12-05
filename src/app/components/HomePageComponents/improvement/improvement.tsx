@@ -32,12 +32,12 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-right improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom appliance__card--selected">
-              {activeDevice !== null ? (
+              {activeDevice ? (
                 <ConfigurationItem deviceParams={activeDevice} />
               ) : null}
             </div>
             <div className="appliance__info">
-              {activeDevice !== null ? (
+              {activeDevice ? (
                 <ApplianceInfo deviceParams={activeDevice} />
               ) : (
                 <ApplianceInfo deviceParams={null} />
@@ -52,12 +52,12 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom">
-              {activeDevice.upgrade !== null ? (
+              {activeDevice.upgrade ? (
                 <SuggestionsStepper setUpgradeIndex={setUpgradeIndex} />
               ) : null}
             </div>
             <div className="appliance__info">
-              {activeDevice.upgrade !== null ? (
+              {activeDevice.upgrade ? (
                 <ApplianceInfo
                   deviceParams={activeDevice.upgrade[upgradeIndex]}
                 />
