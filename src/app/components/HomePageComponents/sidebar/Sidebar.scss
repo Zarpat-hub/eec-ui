@@ -8,8 +8,9 @@ aside {
   height: 100vh;
   background-color: $backgroudnGray;
   border-right: 1px solid #f0f0f0; // new variable?
+  z-index: 1;
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: $desktop) {
     height: fit-content;
     padding: 2rem 0;
     grid-row: 1;

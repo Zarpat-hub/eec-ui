@@ -1,0 +1,49 @@
+.animating-box.animate--right {
+  animation-duration: 750ms;
+  animation-timing-function: ease-in-out;
+  animation-name: slide--right;
+}
+
+.animating-box.animate--left {
+  animation-timing-function: ease-in-out;
+  animation-duration: 750ms;
+  animation-name: slide--left;
+}
+
+@keyframes slide--right {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  48% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  52% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide--left {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  48% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  52% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

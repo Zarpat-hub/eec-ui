@@ -2,8 +2,9 @@ import { useDevices } from '../../../context/DevicesContext'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import { DEVICE } from '../../Shared/models/Device'
 import { NewItem } from '../../Shared/NewItem/NewItem'
-import './ConfigurationSection.scss'
+import './configurationSection.scss'
 
+export const ConfigurationSection = () => {
 export const ConfigurationSection = () => {
   const { devices, changeActiveDevice, activeDevice } = useDevices()
 
