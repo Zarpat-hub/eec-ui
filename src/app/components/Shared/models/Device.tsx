@@ -1,4 +1,4 @@
-export interface DEVICE {
+export type DEVICE = {
   modelIdentifier: string
   deviceName: string
   annualCost: number
@@ -9,18 +9,18 @@ export interface DEVICE {
   ecoScore?: number
   upgrade?: DEVICE[]
 }
-export interface STATE {
+export type STATE = {
   energyCost: number
   waterCost: number
   devices: DEVICE[]
   activeDevice: DEVICE
 }
-export interface PAYLOAD {
+export type PAYLOAD = {
   modelIdentifier?: string
   device?: DEVICE
 }
 
-export interface ACTION {
+export type ACTION = {
   type: string
   payload: PAYLOAD
 }

@@ -4,7 +4,7 @@ import devicesReducer, { initialState } from './devicesReducer'
 
 const DevicesContext = createContext<any>(initialState)
 
-interface DevicesProviderProps {
+type DevicesProviderProps = {
   children?: JSX.Element | JSX.Element[]
 }
 
