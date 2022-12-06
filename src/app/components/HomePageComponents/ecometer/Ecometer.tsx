@@ -28,21 +28,30 @@ const Ecometer: React.FC = () => {
     const nextValue = Math.floor(Math.random() * 100) + 1
     const prevValue = Number(upgradedEcoScore)
 
-    if (prevValue < nextValue) {
-      for (let i = prevValue; i <= nextValue; i++) {
-        setTimeout(() => {
-          setUpgradedEcoScore(i)
-          setDot(i)
-        }, (i - prevValue) * 30)
-      }
-    } else {
-      for (let i = prevValue; i >= nextValue; i--) {
-        setTimeout(() => {
-          setUpgradedEcoScore(i)
-          setDot(i)
-        }, (prevValue - i) * 30)
-      }
-    }
+    // if (prevValue < nextValue) {
+    //   for (let i = prevValue; i <= nextValue; i++) {
+    //     setTimeout(() => {
+    //       setUpgradedEcoScore(i)
+    //       setDot(i)
+    //     }, (i - prevValue) * 30)
+    //   }
+    // } else {
+    //   for (let i = prevValue; i >= nextValue; i--) {
+    //     setTimeout(() => {
+    //       setUpgradedEcoScore(i)
+    //       setDot(i)
+    //     }, (prevValue - i) * 30)
+    //   }
+    // }
+    indicatorDotRef.current.style.display = 'block'
+    indicatorRef.current.animate(
+      {
+        transform: `rotate(${nextValue * 1.8}deg)`,
+        top: `${85 + Math.abs(nextValue * 0.015)}%`,
+      },
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    setUpgradedEcoScore(nextValue)
 
     console.log(Math.random)
     currentRef.current.classList.remove('labels__current--upgradeless')
@@ -87,8 +96,12 @@ const Ecometer: React.FC = () => {
           </p>
         </div>
       </div>
-      <button onClick={test}>test</button>
-      <button onClick={hide}>hide</button>
+      <button style={{ position: 'absolute', top: '0px' }} onClick={test}>
+        test
+      </button>
+      <button style={{ position: 'absolute', top: '20px' }} onClick={hide}>
+        hide
+      </button>
     </div>
   )
 }
