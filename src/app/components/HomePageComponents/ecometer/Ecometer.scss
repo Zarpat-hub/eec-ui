@@ -20,7 +20,11 @@ $animation-duration: 500ms;
     align-items: center;
     position: absolute;
     top: 40%;
-    width: 100%;
+    left: 35%;
+
+    @media screen and (max-width: $mobile) {
+      left: 30%;
+    }
   }
 
   &__graphic {
