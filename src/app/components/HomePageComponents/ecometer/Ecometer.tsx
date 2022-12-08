@@ -1,64 +1,100 @@
 import './Ecometer.scss'
 import ecometerGraphic from '../../../../assets/ecometer.png'
 import upgradeArrow from '../../../../assets/upgrade_arrow.png'
+import CountUp from 'react-countup'
 import { useEffect, useRef, useState } from 'react'
+import { useDevices } from '../../../context/DevicesContext'
+import { DEVICE } from '../../Shared/models/Device'
 
 const Ecometer: React.FC = () => {
-  const [currentEcoScore, setCurrentEcoScore] = useState<number | null>(null)
+  const [defaultEcoScore, setDefaultEcoScore] = useState<number | null>(null)
   const [upgradedEcoScore, setUpgradedEcoScore] = useState<number | null>(null)
+  const [previousDefaultEcoScore, setPreviousDefaultEcoScore] = useState<
+    number | null
+  >(0)
+  const { devices } = useDevices()
   const currentRef = useRef<any>()
   const labelsRef = useRef<any>()
   const upgradedRef = useRef<any>()
   const arrowRef = useRef<any>()
+  const indicatorPreviousRef = useRef<any>()
+  const indicatorPreviousDotRef = useRef<any>()
   const indicatorRef = useRef<any>()
   const indicatorDotRef = useRef<any>()
+  const [d, setD] = useState<number>(0)
 
   useEffect(() => {
-    setCurrentEcoScore(24)
-    setUpgradedEcoScore(24)
-  }, [])
+    setPreviousDefaultEcoScore(defaultEcoScore)
+    const [e1, e2] = ecoScoreCalc(devices)
 
-  const setDot = (i: number) => {
-    indicatorDotRef.current.style.display = 'block'
-    indicatorRef.current.style.transform = `rotate(${i * 1.8}deg)`
-    indicatorRef.current.style.top = `${85 + Math.abs(i * 0.015)}%`
+    if (d === devices.length) {
+      updateUpgradedEcoScore(e2)
+    } else {
+      updateDefaultEcoScore(e1)
+      const isUpgrade = Boolean(
+        devices.find((device: DEVICE) => device.previousDevice !== undefined)
+      )
+      if (isUpgrade) {
+        updateUpgradedEcoScore(e2)
+      }
+    }
+
+    setD(devices.length)
+  }, [devices])
+
+  const ecoScoreCalc = (devices: DEVICE[]): number[] => {
+    let ecoScoreDefault = 0
+    let ecoScoreUpgraded = 0
+
+    for (const device of devices) {
+      if (device.previousDevice !== undefined) {
+        ecoScoreUpgraded += Number(device.ecoScore)
+        ecoScoreDefault += Number(device.previousDevice.ecoScore)
+      } else {
+        ecoScoreUpgraded += Number(device.ecoScore)
+        ecoScoreDefault += Number(device.ecoScore)
+      }
+    }
+
+    return [
+      Math.floor(ecoScoreDefault / devices.length),
+      Math.floor(ecoScoreUpgraded / devices.length),
+    ]
   }
 
-  const test = () => {
-    const nextValue = Math.floor(Math.random() * 100) + 1
-    const prevValue = Number(upgradedEcoScore)
-
-    // if (prevValue < nextValue) {
-    //   for (let i = prevValue; i <= nextValue; i++) {
-    //     setTimeout(() => {
-    //       setUpgradedEcoScore(i)
-    //       setDot(i)
-    //     }, (i - prevValue) * 30)
-    //   }
-    // } else {
-    //   for (let i = prevValue; i >= nextValue; i--) {
-    //     setTimeout(() => {
-    //       setUpgradedEcoScore(i)
-    //       setDot(i)
-    //     }, (prevValue - i) * 30)
-    //   }
-    // }
+  const updateUpgradedEcoScore = (ecoScore: number) => {
     indicatorDotRef.current.style.display = 'block'
+    indicatorRef.current.style.transform = `rotate(${
+      Number(defaultEcoScore) * 1.8
+    }deg`
+    indicatorRef.current.style.top = `${
+      83 + Math.abs(Number(defaultEcoScore) * 0.015)
+    }%`
     indicatorRef.current.animate(
       {
-        transform: `rotate(${nextValue * 1.8}deg)`,
-        top: `${85 + Math.abs(nextValue * 0.015)}%`,
+        transform: `rotate(${ecoScore * 1.8}deg)`,
+        top: `${83 + Math.abs(ecoScore * 0.015)}%`,
       },
       { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
     )
-    setUpgradedEcoScore(nextValue)
+    setUpgradedEcoScore(ecoScore)
 
-    console.log(Math.random)
     currentRef.current.classList.remove('labels__current--upgradeless')
     upgradedRef.current.classList.add('labels__upgraded--upgraded')
     arrowRef.current.classList.add('labels__arrow--upgraded')
     labelsRef.current.classList.remove('ecometer__labels--upgradeless')
-    console.log(upgradedRef.current)
+  }
+
+  const updateDefaultEcoScore = (ecoScore: number) => {
+    indicatorPreviousDotRef.current.style.display = 'block'
+    indicatorPreviousRef.current.animate(
+      {
+        transform: `rotate(${ecoScore * 1.8}deg)`,
+        top: `${83 + Math.abs(ecoScore * 0.015)}%`,
+      },
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    setDefaultEcoScore(ecoScore)
   }
 
   const hide = () => {
@@ -70,13 +106,17 @@ const Ecometer: React.FC = () => {
 
   return (
     <div className="ecometer-container">
-      {/* <div className="ecometer">
-                <div className="one"></div>
-                <div className="two"></div>
-                <div className="three"></div>
-            </div> */}
       <div className="ecometer">
         <img src={ecometerGraphic} className="ecometer__graphic" />
+        <div
+          className="ecometer__indicator-previous"
+          ref={indicatorPreviousRef}
+        >
+          <div
+            className="ecometer__indicator-previous--dot"
+            ref={indicatorPreviousDotRef}
+          />
+        </div>
         <div className="ecometer__indicator" ref={indicatorRef}>
           <div className="ecometer__indicator--dot" ref={indicatorDotRef} />
         </div>
@@ -85,23 +125,25 @@ const Ecometer: React.FC = () => {
           ref={labelsRef}
         >
           <p className="labels__upgraded" ref={upgradedRef}>
-            {upgradedEcoScore}
+            <CountUp
+              start={Number(defaultEcoScore)}
+              end={Number(upgradedEcoScore)}
+              duration={1}
+            />
           </p>
           <img src={upgradeArrow} className="labels__arrow" ref={arrowRef} />
           <p
             className="labels__current labels__current--upgradeless"
             ref={currentRef}
           >
-            {currentEcoScore}
+            <CountUp
+              start={Number(previousDefaultEcoScore)}
+              end={Number(defaultEcoScore)}
+              duration={1}
+            />
           </p>
         </div>
       </div>
-      <button style={{ position: 'absolute', top: '0px' }} onClick={test}>
-        test
-      </button>
-      <button style={{ position: 'absolute', top: '20px' }} onClick={hide}>
-        hide
-      </button>
     </div>
   )
 }

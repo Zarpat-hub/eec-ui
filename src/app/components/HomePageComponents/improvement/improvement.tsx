@@ -10,13 +10,17 @@ import ApplianceInfo from '../applianceInfo/ApplianceInfo'
 export const Improvement: React.FC = () => {
   const { activeDevice, removeDevice, upgradeDevice } = useDevices()
   const [upgradeIndex, setUpgradeIndex] = useState<number>(0)
-
+  console.log(activeDevice)
   const handleRemove = () => {
     removeDevice(activeDevice.modelIdentifier)
   }
 
   const handleUpgrade = (modelIdentifier: string) => {
     upgradeDevice(modelIdentifier)
+  }
+
+  const upgradeHandler = () => {
+    upgradeDevice(activeDevice.upgrade[upgradeIndex].modelIdentifier)
   }
 
   return (
@@ -74,6 +78,7 @@ export const Improvement: React.FC = () => {
           </p>
           <div className="footer-container__button">
             <Button
+              onClick={upgradeHandler}
               variant="contained"
               color="secondary"
               sx={{ borderRadius: '38px' }}

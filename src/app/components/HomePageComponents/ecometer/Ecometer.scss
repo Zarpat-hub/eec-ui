@@ -20,11 +20,7 @@ $animation-duration: 500ms;
     align-items: center;
     position: absolute;
     top: 40%;
-    left: 35%;
-
-    @media screen and (max-width: $mobile) {
-      left: 30%;
-    }
+    width: 100%;
   }
 
   &__graphic {
@@ -33,13 +29,18 @@ $animation-duration: 500ms;
     }
   }
 
-  &__indicator {
+  &__indicator,
+  &__indicator-previous {
     width: 50%;
-    height: 5px;
+    height: 10px;
     position: absolute;
     top: 87.5%;
     transform: rotate(0deg);
     transform-origin: right;
+
+    @media screen and (max-width: $mobile) {
+      height: 6px;
+    }
 
     &--dot {
       content: '';
@@ -57,6 +58,10 @@ $animation-duration: 500ms;
         border-width: 4px;
       }
     }
+  }
+
+  &__indicator-previous {
+    filter: grayscale(1);
   }
 }
 
