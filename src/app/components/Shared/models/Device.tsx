@@ -6,6 +6,7 @@ export type DEVICE = {
   category: string
   powerConsumption: number
   manufacturer: string
+  upgradedIndex?: number
   ecoScore?: number
   upgrade?: DEVICE[]
 }

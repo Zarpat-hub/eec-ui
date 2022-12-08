@@ -19,7 +19,7 @@ export const initialState: STATE = {
       deviceName: 'test_2',
       annualCost: 134,
       energyEfficencyClass: 'B',
-      ecoScore: 43,
+      ecoScore: 50,
       category: 'Fridge',
       powerConsumption: 2234,
       manufacturer: 'Samsung',
@@ -29,7 +29,7 @@ export const initialState: STATE = {
           deviceName: 'test_4343',
           annualCost: 111,
           energyEfficencyClass: 'A',
-          ecoScore: 43,
+          ecoScore: 55,
           category: 'Fridge',
           powerConsumption: 1234,
           manufacturer: 'BSH',
@@ -39,7 +39,7 @@ export const initialState: STATE = {
           deviceName: 'test_33343',
           annualCost: 121,
           energyEfficencyClass: 'A',
-          ecoScore: 43,
+          ecoScore: 57,
           category: 'Fridge',
           powerConsumption: 1234,
           manufacturer: 'BSH1',
@@ -54,6 +54,7 @@ export const initialState: STATE = {
     energyEfficencyClass: 'B',
     category: 'Fridge',
     powerConsumption: 2234,
+    ecoScore: 50,
     manufacturer: 'Samsung',
     upgrade: [
       {
@@ -62,7 +63,7 @@ export const initialState: STATE = {
         annualCost: 111,
         energyEfficencyClass: 'A',
         category: 'Fridge',
-        ecoScore: 23,
+        ecoScore: 55,
         powerConsumption: 2234,
         manufacturer: 'Samsung1',
       },
@@ -72,7 +73,7 @@ export const initialState: STATE = {
         annualCost: 121,
         energyEfficencyClass: 'A',
         category: 'Fridge',
-        ecoScore: 23,
+        ecoScore: 57,
         powerConsumption: 2234,
         manufacturer: 'Samsung2',
       },
@@ -100,6 +101,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
         annualCost: 144,
         energyEfficencyClass: 'B',
         category: 'Fridge',
+        ecoScore: Math.random() * 100,
         powerConsumption: 2234,
         manufacturer: 'Samsung2',
       }
@@ -137,7 +139,26 @@ function devicesReducer(state: any, action: ACTION): STATE {
         activeDevice,
       }
     case ACTIONS.UPGRADE:
-      const findUpgradedDevice = state.activeDevice.upgrade.find(
+      // const findUpgradedDevice = state.activeDevice.upgrade.find(
+      //   (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
+      // )
+
+      // const findIndex: number = state.devices.findIndex(
+      //   (device: DEVICE) =>
+      //     state.activeDevice.modelIdentifier === device.modelIdentifier
+      // )
+
+      // const devicesWithUpgrade = [...state.devices]
+
+      // devicesWithUpgrade.splice(findIndex, 1)
+      // devicesWithUpgrade.push(findUpgradedDevice)
+
+      // return {
+      //   ...state,
+      //   activeDevice: findUpgradedDevice,
+      //   devices: devicesWithUpgrade,
+      // }
+      const findUpgradedDevice = state.activeDevice.upgrade.findIndex(
         (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
       )
 
@@ -146,14 +167,16 @@ function devicesReducer(state: any, action: ACTION): STATE {
           state.activeDevice.modelIdentifier === device.modelIdentifier
       )
 
+      const upgradedDevice = {
+        ...state.activeDevice,
+        upgradedIndex: findUpgradedDevice,
+      }
       const devicesWithUpgrade = [...state.devices]
-
-      devicesWithUpgrade.splice(findIndex, 1)
-      devicesWithUpgrade.push(findUpgradedDevice)
+      devicesWithUpgrade[findIndex] = upgradedDevice
 
       return {
         ...state,
-        activeDevice: findUpgradedDevice,
+        activeDevice: upgradedDevice,
         devices: devicesWithUpgrade,
       }
 

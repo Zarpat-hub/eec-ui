@@ -19,6 +19,10 @@ export const Improvement: React.FC = () => {
     upgradeDevice(modelIdentifier)
   }
 
+  const upgradeHandler = () => {
+    upgradeDevice(activeDevice.upgrade[upgradeIndex].modelIdentifier)
+  }
+
   return (
     <div className="improvement">
       <div className="improvement__labels">
@@ -74,6 +78,7 @@ export const Improvement: React.FC = () => {
           </p>
           <div className="footer-container__button">
             <Button
+              onClick={upgradeHandler}
               variant="contained"
               color="secondary"
               sx={{ borderRadius: '38px' }}

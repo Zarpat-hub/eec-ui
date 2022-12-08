@@ -122,7 +122,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
       <Button
         onClick={handleNext}
         disabled={activeStep === maxSteps - 1}
-        sx={{ height: '100%' }}
+        sx={{ height: '100%', minWidth: 'auto' }}
       >
         <KeyboardArrowRight sx={{ fontSize: '32px' }} />
       </Button>
