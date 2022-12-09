@@ -1,0 +1,76 @@
+@import '../../../../index.scss';
+
+.configurationCardActive {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  height: 109px;
+  width: 174px;
+  border-radius: 10px;
+  border: 3px solid $accentVibrantBlueDarker;
+  background-color: white;
+  color: black;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.configurationCard {
+  position: relative;
+  height: 109px;
+  width: 174px;
+  border-radius: 10px;
+  border: 1px solid $dividers;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__header {
+    border-bottom: 1px solid $dividers;
+    &--price {
+      background-color: #cae2f7;
+      border-radius: 9px 0px 0px 0px;
+      color: $primaryBlue;
+      width: 68px;
+      font-weight: 700;
+      text-align: center;
+      padding: 5px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    color: $accentVibrantBlueDarker;
+    height: 72px;
+
+    &--deviceImg {
+      color: $primaryBlue;
+      min-width: 68px;
+      border-radius: 0px 0px 0px 9px;
+      background-color: #f1f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 55%;
+        height: 55%;
+      }
+    }
+    &--deviceName {
+      color: $primaryBlack;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px;
+    }
+  }
+}
+
+.icon_position {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

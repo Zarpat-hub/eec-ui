@@ -1,0 +1,39 @@
+@import '../../../../index.scss';
+
+.footer {
+  display: flex;
+  background-color: black;
+  color: $dividers;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 20px 20px;
+  min-height: 100px;
+  padding: 0 10% 0 10%;
+}
+.icon {
+  margin: 0 15px;
+  width: 20px !important;
+  opacity: 0.5;
+}
+.icon:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+#footer_credentials {
+  font-size: 14px;
+  font-weight: 200;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: $mobile) {
+  #footer_credentials {
+    position: absolute;
+    visibility: hidden;
+  }
+  .footer {
+    justify-content: center;
+    gap: 10px;
+  }
+}

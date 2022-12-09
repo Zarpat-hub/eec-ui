@@ -1,0 +1,11 @@
+@import '../../../index.scss';
+
+main {
+  display: grid;
+  grid-template: minmax(min-content, max-content) 1fr / 1fr 5fr;
+  min-height: 100vh;
+
+  @media screen and (max-width: $desktop) {
+    grid-template: minmax(min-content, max-content) repeat(2, auto) / auto;
+  }
+}

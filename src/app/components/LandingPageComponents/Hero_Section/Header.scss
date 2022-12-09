@@ -1,0 +1,105 @@
+@import '../../../../index.scss';
+
+.start {
+  padding: 0px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__header {
+    padding: 20px 0 0 0;
+    line-height: 6rem;
+    font-size: clamp(2rem, 6rem, 72px);
+    font-weight: 500;
+    line-height: 8rem;
+
+    @media screen and (max-width: $mobile) {
+      font-size: 46px;
+      line-height: 4rem;
+    }
+
+    &--color {
+      color: $accentVibrantBlue;
+    }
+  }
+  &__paragraph {
+    margin: 35px 0;
+    max-width: 700px;
+    font-size: clamp(1.2rem, 1.4rem, 1.4rem);
+    line-height: 2.25rem;
+    font-weight: 400;
+    color: #1d1d1d;
+    opacity: 80%;
+  }
+
+  &__buttons {
+    margin: 50px 0;
+    width: 25%;
+
+    display: flex;
+    gap: 64px;
+    justify-content: space-between;
+    @media screen and (max-width: 1200px) {
+      height: 85px;
+      flex-direction: column;
+    }
+
+    &--button {
+      padding: 20px 10px;
+      border: none;
+      border-radius: 7px;
+      width: 242px;
+      font-weight: 400;
+      font-size: 20px;
+      background: none;
+      &:hover {
+        cursor: pointer;
+        font-weight: bolder;
+        transition: all 0.2s ease;
+      }
+      transition: all 0.1s ease;
+    }
+  }
+}
+
+.primary {
+  background-color: $accentVibrantBlue;
+  color: $accentBlue;
+}
+
+.primary:hover {
+  background-color: $accentVibrantBlueDarker;
+}
+
+.img {
+  width: 45%;
+  height: auto;
+  @media screen and (max-width: $desktop) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .start {
+    &__paragraph {
+      font-size: 1.1rem;
+    }
+
+    #secondary_cta {
+      visibility: collapse;
+      pointer-events: none;
+    }
+
+    &--button {
+      min-width: 40px;
+      min-height: 48px;
+      padding: 20px 10px;
+      border: none;
+      border-radius: 7px;
+      width: 242px;
+      font-weight: 500;
+      font-size: 6px;
+      background: none;
+    }
+  }
+}
