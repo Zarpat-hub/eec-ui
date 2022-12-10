@@ -9,16 +9,19 @@ export type DEVICE = {
   previousDevice?: DEVICE
   ecoScore?: number
   upgrade?: DEVICE[]
+  upgrades?: any
 }
 export type STATE = {
   energyCost: number
   waterCost: number
   devices: DEVICE[]
+  upgrades?: any
   activeDevice: DEVICE
 }
 export type PAYLOAD = {
   modelIdentifier?: string
   device?: DEVICE
+  category?: any
 }
 
 export type ACTION = {

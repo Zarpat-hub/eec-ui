@@ -9,26 +9,33 @@ import { useDevices } from '../../../context/DevicesContext'
 
 interface Props {
   setUpgradeIndex: Dispatch<SetStateAction<number>>
+  setCategory: any
+  category: string
 }
 
 export const SuggestionsStepper: React.FC<Props> = ({
   setUpgradeIndex,
+  setCategory,
+  category,
 }: Props) => {
   const {
-    activeDevice: { upgrade },
+    activeDevice: { upgrade, upgrades },
   } = useDevices()
   const [activeStep, setActiveStep] = useState(0)
   const [delayedStep, setDelayedStep] = useState(0)
   const [lock, setLock] = useState(false)
   const animatingBox = useRef<any>()
-  const maxSteps = upgrade.length
+  const maxSteps = upgrades[category].length
 
   useEffect(() => {
-    console.log(upgrade)
+    // console.log(upgrade)
+    // console.log(upgrades[category])
+    // console.log(category)
+    setCategory(category)
     setActiveStep(0)
     setDelayedStep(0)
     setUpgradeIndex(0)
-  }, [upgrade])
+  }, [upgrades[category]])
 
   const handleNext = () => {
     if (!lock) {
@@ -95,7 +102,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
           onAnimationEnd={animationEndHandler}
           onAnimationStart={animationStartHandler}
         >
-          <ConfigurationItem deviceParams={upgrade[delayedStep]} />
+          <ConfigurationItem deviceParams={upgrades[category][delayedStep]} />
         </div>
 
         <MobileStepper

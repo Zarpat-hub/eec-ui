@@ -23,8 +23,8 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     dispatch({ type: 'change', payload: { modelIdentifier } })
   }
 
-  const upgradeDevice = (modelIdentifier: string) => {
-    dispatch({ type: 'upgrade', payload: { modelIdentifier } })
+  const upgradeDevice = (modelIdentifier: string, category: string) => {
+    dispatch({ type: 'upgrade', payload: { modelIdentifier, category } })
   }
 
   const value = {
