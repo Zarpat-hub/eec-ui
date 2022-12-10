@@ -109,12 +109,12 @@ export const Improvement: React.FC = () => {
           </div>
           <div className="improvement-card__main improvement-card--border-right improvement-card--border-bottom appliance">
             <div className="appliance__card improvement-card--border-bottom appliance__card--selected">
-              {activeDevice ? (
+              {activeDevice.modelIdentifier ? (
                 <ConfigurationItem deviceParams={activeDevice} />
               ) : null}
             </div>
             <div className="appliance__info">
-              {activeDevice ? (
+              {activeDevice?.modelIdentifier ? (
                 <ApplianceInfo deviceParams={activeDevice} />
               ) : (
                 <ApplianceInfo deviceParams={null} />

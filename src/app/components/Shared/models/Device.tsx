@@ -14,9 +14,9 @@ export type DEVICE = {
 export type STATE = {
   energyCost: number
   waterCost: number
-  devices: DEVICE[]
+  devices?: DEVICE[]
   upgrades?: any
-  activeDevice: DEVICE
+  activeDevice?: DEVICE
 }
 export type PAYLOAD = {
   modelIdentifier?: string

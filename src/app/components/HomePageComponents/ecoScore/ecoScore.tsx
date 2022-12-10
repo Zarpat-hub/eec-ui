@@ -9,6 +9,11 @@ export const EcoScore: React.FC = () => {
   const [ecoScore, setEcoScore] = useState<number>(0)
 
   useEffect(() => {
+    console.log(devices)
+    if (devices.length === 0) {
+      setEcoScore(0)
+      return
+    }
     const e = ecoScoreCalc(devices)
     setEcoScore(e)
   }, [devices])
