@@ -290,10 +290,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
       return {
         ...state,
         devices,
-        activeDevice: {
-          ...activeDevice,
-          upgrades: {},
-        },
+        activeDevice,
       }
     case ACTIONS.UPGRADE:
       // const findUpgradedDevice = state.activeDevice.upgrade.find(

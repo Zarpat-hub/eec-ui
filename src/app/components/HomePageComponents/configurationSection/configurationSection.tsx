@@ -66,7 +66,7 @@ export const ConfigurationSection = () => {
       </div>
 
       <div className="configuration__appliances">
-        {DEVICES}
+        {DEVICES.length ? DEVICES : <p>Add devices</p>}
         <NewItem />
       </div>
     </div>
