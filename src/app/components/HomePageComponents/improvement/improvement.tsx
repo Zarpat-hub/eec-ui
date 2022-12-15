@@ -1,24 +1,18 @@
 import {
   Button,
   FormControl,
-  FormHelperText,
   IconButton,
-  InputBase,
-  InputLabel,
   Menu,
   MenuItem,
   Select,
   SelectChangeEvent,
-  styled,
 } from '@mui/material'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import { SuggestionsStepper } from '../suggestionsStepper/SuggestionsStepper'
 import './improvement.scss'
 import { useDevices } from '../../../context/DevicesContext'
-import { DEVICE } from '../../Shared/models/Device'
 import { useEffect, useState } from 'react'
 import ApplianceInfo from '../applianceInfo/ApplianceInfo'
-import { EcoScore } from '../ecoScore/ecoScore'
 import { EnergyClass } from '../../Shared/EnergyClass/EnergyClass'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 

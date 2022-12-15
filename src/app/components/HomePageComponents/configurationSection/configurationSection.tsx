@@ -5,7 +5,7 @@ import { NewItem } from '../../Shared/NewItem/NewItem'
 import './configurationSection.scss'
 
 export const ConfigurationSection = () => {
-  const { devices, changeActiveDevice, activeDevice } = useDevices()
+  const { devices, changeActiveDevice } = useDevices()
 
   const handleClick = (modelIdentifier: string) => {
     changeActiveDevice(modelIdentifier)

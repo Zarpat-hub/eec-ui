@@ -114,29 +114,6 @@ export const initialState: STATE = {
           },
         ],
       },
-
-      upgrade: [
-        {
-          modelIdentifier: '3',
-          deviceName: 'test_4343',
-          annualCost: 111,
-          energyEfficencyClass: 'A',
-          ecoScore: 60,
-          category: 'Fridge',
-          powerConsumption: 1234,
-          manufacturer: 'BSH',
-        },
-        {
-          modelIdentifier: '4',
-          deviceName: 'test_33343',
-          annualCost: 121,
-          energyEfficencyClass: 'A',
-          ecoScore: 80,
-          category: 'Fridge',
-          powerConsumption: 1234,
-          manufacturer: 'BSH1',
-        },
-      ],
     },
   ],
   activeDevice: {
@@ -148,29 +125,6 @@ export const initialState: STATE = {
     powerConsumption: 2234,
     ecoScore: 50,
     manufacturer: 'Samsung',
-
-    upgrade: [
-      {
-        modelIdentifier: '3',
-        deviceName: 'test_4343',
-        annualCost: 111,
-        energyEfficencyClass: 'A',
-        category: 'Fridge',
-        ecoScore: 60,
-        powerConsumption: 2234,
-        manufacturer: 'Samsung1',
-      },
-      {
-        modelIdentifier: '4',
-        deviceName: 'test_33343',
-        annualCost: 121,
-        energyEfficencyClass: 'A',
-        category: 'Fridge',
-        ecoScore: 80,
-        powerConsumption: 2234,
-        manufacturer: 'Samsung2',
-      },
-    ],
     upgrades: {
       B: [
         {
