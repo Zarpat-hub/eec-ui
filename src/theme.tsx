@@ -30,6 +30,27 @@ const theme = createTheme({
       desktop: Number(variables.desktop.slice(0, -2)),
     },
   },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& > div > input': {
+            padding: '.5rem',
+          },
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          '.MuiOutlinedInput-root': {
+            paddingTop: 0,
+            paddingBottom: 0,
+          },
+        },
+      },
+    },
+  },
 })
 
 export default theme
