@@ -18,6 +18,7 @@ export const initialState: STATE = {
           {
             annualCost: 477.7849,
             ecoScore: 100,
+            deviceName: 'test_1_upgraded',
             energyEfficiencyClass: 'B',
             modelIdentifier: '7525.0110',
             index: 12,
@@ -29,6 +30,7 @@ export const initialState: STATE = {
             annualCost: 384.99999,
             ecoScore: 100,
             energyEfficiencyClass: 'B',
+            deviceName: 'test_1_upgraded',
             modelIdentifier: '7525.0100',
             index: 13,
             category: 'refrigeratingappliances2019',
@@ -39,6 +41,7 @@ export const initialState: STATE = {
             annualCost: 160.15999,
             ecoScore: 100,
             energyEfficiencyClass: 'B',
+            deviceName: 'test_1_upgraded',
             modelIdentifier: 'AR51N',
             index: 13,
             category: 'refrigeratingappliances2019',
@@ -61,6 +64,7 @@ export const initialState: STATE = {
         B: [
           {
             annualCost: 477.7849,
+            deviceName: 'test_2_upgraded',
             ecoScore: 100,
             energyEfficiencyClass: 'B',
             modelIdentifier: '7525.0110',
@@ -72,6 +76,7 @@ export const initialState: STATE = {
           {
             annualCost: 384.99999,
             ecoScore: 100,
+            deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
             modelIdentifier: '7525.0100',
             index: 13,
@@ -82,6 +87,7 @@ export const initialState: STATE = {
           {
             annualCost: 160.15999,
             ecoScore: 100,
+            deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
             modelIdentifier: 'AR51N',
             index: 13,
@@ -94,6 +100,7 @@ export const initialState: STATE = {
           {
             annualCost: 0.7699999,
             ecoScore: 100,
+            deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'MD 30000',
             index: 1,
@@ -104,6 +111,7 @@ export const initialState: STATE = {
           {
             annualCost: 0.76999998,
             ecoScore: 100,
+            deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'SKF 502 W',
             index: 1,
@@ -114,6 +122,7 @@ export const initialState: STATE = {
           {
             annualCost: 147.8399963,
             ecoScore: 100,
+            deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'SL-65',
             index: 7,
@@ -130,7 +139,7 @@ export const initialState: STATE = {
     deviceName: 'test_2',
     annualCost: 134,
     energyEfficiencyClass: 'B',
-    category: 'Fridge',
+    category: 'refrigeratingappliances2019',
     powerConsumption: 2234,
     ecoScore: 50,
     manufacturer: 'Samsung',
@@ -139,6 +148,7 @@ export const initialState: STATE = {
         {
           annualCost: 477.7849,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
           modelIdentifier: '7525.0110',
           index: 12,
@@ -149,6 +159,7 @@ export const initialState: STATE = {
         {
           annualCost: 384.99999,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
           modelIdentifier: '7525.0100',
           index: 13,
@@ -159,6 +170,7 @@ export const initialState: STATE = {
         {
           annualCost: 160.15999,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
           modelIdentifier: 'AR51N',
           index: 13,
@@ -171,6 +183,7 @@ export const initialState: STATE = {
         {
           annualCost: 0.7699999,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'MD 30000',
           index: 1,
@@ -181,6 +194,7 @@ export const initialState: STATE = {
         {
           annualCost: 0.76999998,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'SKF 502 W',
           index: 1,
@@ -191,6 +205,7 @@ export const initialState: STATE = {
         {
           annualCost: 147.8399963,
           ecoScore: 100,
+          deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'SL-65',
           index: 7,
@@ -208,6 +223,7 @@ enum ACTIONS {
   REMOVE = 'remove',
   UPGRADE = 'upgrade',
   CHANGE_ACTIVE_DEVICE = 'change',
+  RESTORE = 'restore',
 }
 
 function devicesReducer(state: any, action: ACTION): STATE {
@@ -248,26 +264,6 @@ function devicesReducer(state: any, action: ACTION): STATE {
         activeDevice,
       }
     case ACTIONS.UPGRADE:
-      // const findUpgradedDevice = state.activeDevice.upgrade.find(
-      //   (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
-      // )
-
-      // const findIndex: number = state.devices.findIndex(
-      //   (device: DEVICE) =>
-      //     state.activeDevice.modelIdentifier === device.modelIdentifier
-      // )
-
-      // const devicesWithUpgrade = [...state.devices]
-
-      // devicesWithUpgrade.splice(findIndex, 1)
-      // devicesWithUpgrade.push(findUpgradedDevice)
-
-      // return {
-      //   ...state,
-      //   activeDevice: findUpgradedDevice,
-      //   devices: devicesWithUpgrade,
-      // }
-      // console.log(payload.category)
       const upgradedCategory = payload.category
 
       const findUpgradedDevice = state.activeDevice.upgrades[
@@ -303,6 +299,24 @@ function devicesReducer(state: any, action: ACTION): STATE {
       return {
         ...state,
         activeDevice: device,
+      }
+
+    case ACTIONS.RESTORE:
+      /* const deviceToRestore = state.devices.find(
+        (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
+      ) */
+
+      const findIndex1: number = state.devices.findIndex((device: DEVICE) => {
+        return state.activeDevice.modelIdentifier === device.modelIdentifier
+      })
+
+      const devicesWithUpgrade1 = [...state.devices]
+      devicesWithUpgrade1[findIndex1] = state.activeDevice.previousDevice
+
+      return {
+        ...state,
+        devices: devicesWithUpgrade1,
+        activeDevice: state.activeDevice.previousDevice,
       }
 
     default:

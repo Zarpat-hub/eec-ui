@@ -17,7 +17,7 @@ export const ConfigurationSection = () => {
         key={device.modelIdentifier}
         onClick={() => handleClick(device.modelIdentifier)}
       >
-        <ConfigurationItem deviceParams={device} />
+        <ConfigurationItem deviceParams={device} configSection={true} />
       </div>
     )
   })

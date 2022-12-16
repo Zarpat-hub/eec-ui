@@ -5,9 +5,13 @@ import './ConfigurationItem.scss'
 
 type ConfigurationItemProps = {
   deviceParams: DEVICE
+  configSection?: boolean
 }
 
-export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
+export const ConfigurationItem = ({
+  deviceParams,
+  configSection,
+}: ConfigurationItemProps) => {
   const { activeDevice } = useDevices()
 
   return (
@@ -32,6 +36,9 @@ export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
         </div>
         <div className="configurationCard__content--deviceName">
           <p>{deviceParams.deviceName}</p>
+          <div>
+            {deviceParams.previousDevice && configSection ? 'NEW' : null}
+          </div>
         </div>
       </div>
     </div>
