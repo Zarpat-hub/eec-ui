@@ -10,7 +10,7 @@ export const initialState: STATE = {
       annualCost: 200,
       energyEfficiencyClass: 'A',
       ecoScore: 40,
-      category: 'Fridge',
+      category: 'refrigeratingappliances2019',
       powerConsumption: 1234,
       manufacturer: 'Bosh',
       upgrades: {
@@ -54,7 +54,7 @@ export const initialState: STATE = {
       annualCost: 134,
       energyEfficiencyClass: 'B',
       ecoScore: 50,
-      category: 'Fridge',
+      category: 'refrigeratingappliances2019',
       powerConsumption: 2234,
       manufacturer: 'Samsung',
       upgrades: {
@@ -215,7 +215,6 @@ function devicesReducer(state: any, action: ACTION): STATE {
 
   switch (type) {
     case ACTIONS.ADD:
-      console.log(payload.device)
       return {
         ...state,
         devices: [...state.devices, payload.device],

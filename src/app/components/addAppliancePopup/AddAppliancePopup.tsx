@@ -100,10 +100,10 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
         waterPrice,
         deviceName: data.deviceName,
       })
-      .then((res: any) => {
-        const newee = res.data
-        console.log(newee)
-        addDevice(newee)
+      .then((res) => {
+        const newDevice = res.data
+
+        addDevice(newDevice)
         setCategory(null)
         setManufacturer(null)
         setSerialNumber(null)
