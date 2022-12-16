@@ -5,7 +5,7 @@ import { NewItem } from '../../Shared/NewItem/NewItem'
 import './configurationSection.scss'
 
 export const ConfigurationSection = () => {
-  const { devices, changeActiveDevice, activeDevice } = useDevices()
+  const { devices, changeActiveDevice } = useDevices()
 
   const handleClick = (modelIdentifier: string) => {
     changeActiveDevice(modelIdentifier)
@@ -66,7 +66,7 @@ export const ConfigurationSection = () => {
       </div>
 
       <div className="configuration__appliances">
-        {DEVICES}
+        {DEVICES.length ? DEVICES : <p>Add devices</p>}
         <NewItem />
       </div>
     </div>

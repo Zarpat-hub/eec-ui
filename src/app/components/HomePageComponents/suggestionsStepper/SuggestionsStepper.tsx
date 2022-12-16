@@ -7,7 +7,7 @@ import variables from '../../../../variables.module.scss'
 import './SuggestionsStepper.scss'
 import { useDevices } from '../../../context/DevicesContext'
 
-interface Props {
+type Props = {
   setUpgradeIndex: Dispatch<SetStateAction<number>>
   setCategory: any
   category: string
@@ -19,7 +19,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
   category,
 }: Props) => {
   const {
-    activeDevice: { upgrade, upgrades },
+    activeDevice: { upgrades },
   } = useDevices()
   const [activeStep, setActiveStep] = useState(0)
   const [delayedStep, setDelayedStep] = useState(0)
@@ -28,9 +28,6 @@ export const SuggestionsStepper: React.FC<Props> = ({
   const maxSteps = upgrades[category].length
 
   useEffect(() => {
-    // console.log(upgrade)
-    // console.log(upgrades[category])
-    // console.log(category)
     setCategory(category)
     setActiveStep(0)
     setDelayedStep(0)

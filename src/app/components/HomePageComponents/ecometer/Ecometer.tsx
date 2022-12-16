@@ -56,6 +56,7 @@ const Ecometer: React.FC = () => {
   }, [devices])
 
   const ecoScoreCalc = (devices: DEVICE[]): number[] => {
+    if (devices.length === 0) return [0, 0]
     let ecoScoreDefault = 0
     let ecoScoreUpgraded = 0
 
