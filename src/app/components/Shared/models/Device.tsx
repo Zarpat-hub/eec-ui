@@ -4,8 +4,8 @@ export type DEVICE = {
   annualCost: number
   energyEfficiencyClass: string
   category: string
-  energyConsumption: number
-  supplierOrTrademark: string
+  powerConsumption: number
+  manufacturer: string
   previousDevice?: DEVICE
   ecoScore?: number
   upgrade?: DEVICE[]

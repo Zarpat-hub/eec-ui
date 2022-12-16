@@ -63,6 +63,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   }, [])
 
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
+    /*
     Promise.all([
       client.get(`Product/${String(serialNumber)}`),
       client.post(`Calculation`, {
@@ -90,6 +91,30 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       })
       props.setOpen(false)
     })
+    */
+    client
+      .post(`Calculation`, {
+        modelIdentifier: serialNumber,
+        weeklyCycles: 2,
+        energyPrice,
+        waterPrice,
+        deviceName: data.deviceName,
+      })
+      .then((res: any) => {
+        const newee = res.data
+        console.log(newee)
+        addDevice(newee)
+        setCategory(null)
+        setManufacturer(null)
+        setSerialNumber(null)
+        reset({
+          category: '',
+          supplierOrTrademark: '',
+          modelIdentifier: '',
+          deviceName: '',
+        })
+        props.setOpen(false)
+      })
   }
 
   const handleCategoryChange = (

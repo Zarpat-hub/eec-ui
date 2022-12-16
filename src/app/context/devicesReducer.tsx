@@ -11,8 +11,8 @@ export const initialState: STATE = {
       energyEfficiencyClass: 'A',
       ecoScore: 40,
       category: 'Fridge',
-      energyConsumption: 1234,
-      supplierOrTrademark: 'Bosh',
+      powerConsumption: 1234,
+      manufacturer: 'Bosh',
       upgrades: {
         B: [
           {
@@ -22,8 +22,8 @@ export const initialState: STATE = {
             modelIdentifier: '7525.0110',
             index: 12,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Combisteel',
-            energyConsumption: 100,
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
           },
           {
             annualCost: 384.99999,
@@ -32,8 +32,8 @@ export const initialState: STATE = {
             modelIdentifier: '7525.0100',
             index: 13,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Combisteel',
-            energyConsumption: 100,
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
           },
           {
             annualCost: 160.15999,
@@ -42,8 +42,8 @@ export const initialState: STATE = {
             modelIdentifier: 'AR51N',
             index: 13,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Lyfco',
-            energyConsumption: 100,
+            manufacturer: 'Lyfco',
+            powerConsumption: 100,
           },
         ],
       },
@@ -55,8 +55,8 @@ export const initialState: STATE = {
       energyEfficiencyClass: 'B',
       ecoScore: 50,
       category: 'Fridge',
-      energyConsumption: 2234,
-      supplierOrTrademark: 'Samsung',
+      powerConsumption: 2234,
+      manufacturer: 'Samsung',
       upgrades: {
         B: [
           {
@@ -66,8 +66,8 @@ export const initialState: STATE = {
             modelIdentifier: '7525.0110',
             index: 12,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Combisteel',
-            energyConsumption: 100,
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
           },
           {
             annualCost: 384.99999,
@@ -76,8 +76,8 @@ export const initialState: STATE = {
             modelIdentifier: '7525.0100',
             index: 13,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Combisteel',
-            energyConsumption: 100,
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
           },
           {
             annualCost: 160.15999,
@@ -86,8 +86,8 @@ export const initialState: STATE = {
             modelIdentifier: 'AR51N',
             index: 13,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Lyfco',
-            energyConsumption: 100,
+            manufacturer: 'Lyfco',
+            powerConsumption: 100,
           },
         ],
         A: [
@@ -98,8 +98,8 @@ export const initialState: STATE = {
             modelIdentifier: 'MD 30000',
             index: 1,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'MEDION',
-            energyConsumption: 100,
+            manufacturer: 'MEDION',
+            powerConsumption: 100,
           },
           {
             annualCost: 0.76999998,
@@ -108,8 +108,8 @@ export const initialState: STATE = {
             modelIdentifier: 'SKF 502 W',
             index: 1,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Scandomestic A/S ',
-            energyConsumption: 100,
+            manufacturer: 'Scandomestic A/S ',
+            powerConsumption: 100,
           },
           {
             annualCost: 147.8399963,
@@ -118,8 +118,8 @@ export const initialState: STATE = {
             modelIdentifier: 'SL-65',
             index: 7,
             category: 'refrigeratingappliances2019',
-            supplierOrTrademark: 'Buschbeck GmbH',
-            energyConsumption: 100,
+            manufacturer: 'Buschbeck GmbH',
+            powerConsumption: 100,
           },
         ],
       },
@@ -131,9 +131,9 @@ export const initialState: STATE = {
     annualCost: 134,
     energyEfficiencyClass: 'B',
     category: 'Fridge',
-    energyConsumption: 2234,
+    powerConsumption: 2234,
     ecoScore: 50,
-    supplierOrTrademark: 'Samsung',
+    manufacturer: 'Samsung',
     upgrades: {
       B: [
         {
@@ -143,8 +143,8 @@ export const initialState: STATE = {
           modelIdentifier: '7525.0110',
           index: 12,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'Combisteel',
-          energyConsumption: 100,
+          manufacturer: 'Combisteel',
+          powerConsumption: 100,
         },
         {
           annualCost: 384.99999,
@@ -153,8 +153,8 @@ export const initialState: STATE = {
           modelIdentifier: '7525.0100',
           index: 13,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'Combisteel',
-          energyConsumption: 100,
+          manufacturer: 'Combisteel',
+          powerConsumption: 100,
         },
         {
           annualCost: 160.15999,
@@ -163,8 +163,8 @@ export const initialState: STATE = {
           modelIdentifier: 'AR51N',
           index: 13,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'Lyfco',
-          energyConsumption: 100,
+          manufacturer: 'Lyfco',
+          powerConsumption: 100,
         },
       ],
       A: [
@@ -175,8 +175,8 @@ export const initialState: STATE = {
           modelIdentifier: 'MD 30000',
           index: 1,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'MEDION',
-          energyConsumption: 100,
+          manufacturer: 'MEDION',
+          powerConsumption: 100,
         },
         {
           annualCost: 0.76999998,
@@ -185,8 +185,8 @@ export const initialState: STATE = {
           modelIdentifier: 'SKF 502 W',
           index: 1,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'Scandomestic A/S ',
-          energyConsumption: 100,
+          manufacturer: 'Scandomestic A/S ',
+          powerConsumption: 100,
         },
         {
           annualCost: 147.8399963,
@@ -195,8 +195,8 @@ export const initialState: STATE = {
           modelIdentifier: 'SL-65',
           index: 7,
           category: 'refrigeratingappliances2019',
-          supplierOrTrademark: 'Buschbeck GmbH',
-          energyConsumption: 100,
+          manufacturer: 'Buschbeck GmbH',
+          powerConsumption: 100,
         },
       ],
     },
