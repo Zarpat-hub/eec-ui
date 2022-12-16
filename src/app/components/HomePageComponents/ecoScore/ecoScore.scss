@@ -1,5 +1,7 @@
 @import '../../../../index.scss';
 
+$border: 2px solid #e5e5e5;
+
 .eco-score {
   display: grid;
   grid-template: auto 1fr / 1fr;
@@ -17,8 +19,103 @@
   }
 
   &__container {
-    border: 2px dashed red;
+    border: $border;
     border-radius: 1.5rem;
-    height: 400px;
+  }
+}
+
+.eco-score-card {
+  height: 100%;
+  display: grid;
+  grid-template: minmax(120px, max-content) auto / auto;
+
+  &__header {
+    display: grid;
+    grid-template: minmax(4rem, auto) / auto;
+  }
+
+  &__ecometer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    @media screen and (max-width: $mobile) {
+      padding-bottom: 3.5rem;
+    }
+  }
+
+  &--border-right {
+    border-right: $border;
+  }
+
+  &--border-bottom {
+    border-bottom: $border;
+  }
+}
+
+.header {
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $backgroudnGray;
+    border-top-right-radius: 1.5rem;
+    border-top-left-radius: 1.5rem;
+  }
+
+  &__savings {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+
+    @media screen and (max-width: $mobile) {
+      grid-template: 1fr 1fr / auto;
+    }
+  }
+}
+
+.label {
+  font-size: 1.3rem;
+
+  &__value {
+    font-weight: 700;
+  }
+}
+
+.savings {
+  &__money {
+    position: relative;
+    min-height: 4rem;
+
+    @media screen and (max-width: $mobile) {
+      border-bottom: $border;
+    }
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      opacity: 0.25;
+      position: absolute;
+      background-image: url('../../../../assets/dollar_icon.png');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+    }
+  }
+
+  &__energy {
+    position: relative;
+    min-height: 4rem;
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      opacity: 0.25;
+      position: absolute;
+      background-image: url('../../../../assets/thunder_icon.png');
+      background-repeat: no-repeat;
+      background-position: bottom left;
+    }
   }
 }

@@ -1,0 +1,118 @@
+@import '../../../../index.scss';
+
+$animation-duration: 500ms;
+
+.ecometer-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ecometer {
+  position: relative;
+
+  &__labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+  }
+
+  &__graphic {
+    @media screen and (max-width: $mobile) {
+      height: 120px;
+    }
+  }
+
+  &__indicator,
+  &__indicator-previous {
+    width: 50%;
+    height: 10px;
+    position: absolute;
+    top: 87.5%;
+    transform: rotate(0deg);
+    transform-origin: right;
+
+    @media screen and (max-width: $mobile) {
+      height: 6px;
+    }
+
+    &--dot {
+      content: '';
+      width: 28px;
+      position: absolute;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      transform: translateX(-25%) translateY(-33%);
+      border: 7px solid $accentVibrantBlue;
+      background-color: #ffffff;
+      visibility: hidden;
+
+      @media screen and (max-width: $mobile) {
+        width: 20px;
+        border-width: 4px;
+      }
+    }
+  }
+
+  &__indicator-previous {
+    filter: grayscale(1);
+  }
+}
+
+.labels {
+  font-weight: 800;
+  height: fit-content;
+
+  &__current {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: $primaryBlack;
+    transition: font-size $animation-duration ease-in-out;
+
+    &--upgradeless {
+      font-size: 3rem;
+      transform: translateY(2%);
+    }
+  }
+
+  &__upgraded {
+    width: 6rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #8dea89;
+    transform: translateY(200%);
+    font-size: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform $animation-duration ease-in-out,
+      opacity $animation-duration ease-in-out,
+      font-size $animation-duration ease-in-out;
+
+    &--upgraded {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      font-size: 3rem;
+    }
+  }
+
+  &__arrow {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(200%);
+    transition: transform $animation-duration ease-in-out,
+      opacity $animation-duration ease-in-out;
+
+    &--upgraded {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

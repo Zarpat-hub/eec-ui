@@ -5,7 +5,6 @@ interface Props {
 }
 
 const ApplianceInfo: React.FC<Props> = ({ deviceParams }: Props) => {
-  console.log(deviceParams)
   return (
     <>
       <div className="info">

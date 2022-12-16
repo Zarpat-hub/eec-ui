@@ -23,7 +23,7 @@ export const ConfigurationItem = ({ deviceParams }: ConfigurationItemProps) => {
           {deviceParams.annualCost},-
         </div>
         <div className="icon_position">
-          <EnergyClass energyClassName={deviceParams.energyEfficencyClass} />
+          <EnergyClass energyClassName={deviceParams.energyEfficiencyClass} />
         </div>
       </div>
       <div className="configurationCard__content">

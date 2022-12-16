@@ -7,28 +7,32 @@ import variables from '../../../../variables.module.scss'
 import './SuggestionsStepper.scss'
 import { useDevices } from '../../../context/DevicesContext'
 
-interface Props {
+type Props = {
   setUpgradeIndex: Dispatch<SetStateAction<number>>
+  setCategory: any
+  category: string
 }
 
 export const SuggestionsStepper: React.FC<Props> = ({
   setUpgradeIndex,
+  setCategory,
+  category,
 }: Props) => {
   const {
-    activeDevice: { upgrade },
+    activeDevice: { upgrades },
   } = useDevices()
   const [activeStep, setActiveStep] = useState(0)
   const [delayedStep, setDelayedStep] = useState(0)
   const [lock, setLock] = useState(false)
   const animatingBox = useRef<any>()
-  const maxSteps = upgrade.length
+  const maxSteps = upgrades[category].length
 
   useEffect(() => {
-    console.log(upgrade)
+    setCategory(category)
     setActiveStep(0)
     setDelayedStep(0)
     setUpgradeIndex(0)
-  }, [upgrade])
+  }, [upgrades[category]])
 
   const handleNext = () => {
     if (!lock) {
@@ -95,7 +99,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
           onAnimationEnd={animationEndHandler}
           onAnimationStart={animationStartHandler}
         >
-          <ConfigurationItem deviceParams={upgrade[delayedStep]} />
+          <ConfigurationItem deviceParams={upgrades[category][delayedStep]} />
         </div>
 
         <MobileStepper
@@ -122,7 +126,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
       <Button
         onClick={handleNext}
         disabled={activeStep === maxSteps - 1}
-        sx={{ height: '100%' }}
+        sx={{ height: '100%', minWidth: 'auto' }}
       >
         <KeyboardArrowRight sx={{ fontSize: '32px' }} />
       </Button>

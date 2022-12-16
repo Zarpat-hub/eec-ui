@@ -8,75 +8,198 @@ export const initialState: STATE = {
       modelIdentifier: '1',
       deviceName: 'test_1',
       annualCost: 200,
-      energyEfficencyClass: 'A',
-      ecoScore: 43,
-      category: 'Fridge',
+      energyEfficiencyClass: 'A',
+      ecoScore: 40,
+      category: 'refrigeratingappliances2019',
       powerConsumption: 1234,
       manufacturer: 'Bosh',
+      upgrades: {
+        B: [
+          {
+            annualCost: 477.7849,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: '7525.0110',
+            index: 12,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 384.99999,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: '7525.0100',
+            index: 13,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 160.15999,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: 'AR51N',
+            index: 13,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Lyfco',
+            powerConsumption: 100,
+          },
+        ],
+      },
     },
     {
       modelIdentifier: '2',
       deviceName: 'test_2',
       annualCost: 134,
-      energyEfficencyClass: 'B',
-      ecoScore: 43,
-      category: 'Fridge',
+      energyEfficiencyClass: 'B',
+      ecoScore: 50,
+      category: 'refrigeratingappliances2019',
       powerConsumption: 2234,
       manufacturer: 'Samsung',
-      upgrade: [
-        {
-          modelIdentifier: '3',
-          deviceName: 'test_4343',
-          annualCost: 111,
-          energyEfficencyClass: 'A',
-          ecoScore: 43,
-          category: 'Fridge',
-          powerConsumption: 1234,
-          manufacturer: 'BSH',
-        },
-        {
-          modelIdentifier: '4',
-          deviceName: 'test_33343',
-          annualCost: 121,
-          energyEfficencyClass: 'A',
-          ecoScore: 43,
-          category: 'Fridge',
-          powerConsumption: 1234,
-          manufacturer: 'BSH1',
-        },
-      ],
+      upgrades: {
+        B: [
+          {
+            annualCost: 477.7849,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: '7525.0110',
+            index: 12,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 384.99999,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: '7525.0100',
+            index: 13,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Combisteel',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 160.15999,
+            ecoScore: 100,
+            energyEfficiencyClass: 'B',
+            modelIdentifier: 'AR51N',
+            index: 13,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Lyfco',
+            powerConsumption: 100,
+          },
+        ],
+        A: [
+          {
+            annualCost: 0.7699999,
+            ecoScore: 100,
+            energyEfficiencyClass: 'A',
+            modelIdentifier: 'MD 30000',
+            index: 1,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'MEDION',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 0.76999998,
+            ecoScore: 100,
+            energyEfficiencyClass: 'A',
+            modelIdentifier: 'SKF 502 W',
+            index: 1,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Scandomestic A/S ',
+            powerConsumption: 100,
+          },
+          {
+            annualCost: 147.8399963,
+            ecoScore: 100,
+            energyEfficiencyClass: 'A',
+            modelIdentifier: 'SL-65',
+            index: 7,
+            category: 'refrigeratingappliances2019',
+            manufacturer: 'Buschbeck GmbH',
+            powerConsumption: 100,
+          },
+        ],
+      },
     },
   ],
   activeDevice: {
     modelIdentifier: '2',
     deviceName: 'test_2',
     annualCost: 134,
-    energyEfficencyClass: 'B',
+    energyEfficiencyClass: 'B',
     category: 'Fridge',
     powerConsumption: 2234,
+    ecoScore: 50,
     manufacturer: 'Samsung',
-    upgrade: [
-      {
-        modelIdentifier: '3',
-        deviceName: 'test_4343',
-        annualCost: 111,
-        energyEfficencyClass: 'A',
-        category: 'Fridge',
-        ecoScore: 23,
-        powerConsumption: 2234,
-        manufacturer: 'Samsung1',
-      },
-      {
-        modelIdentifier: '4',
-        deviceName: 'test_33343',
-        annualCost: 121,
-        energyEfficencyClass: 'A',
-        category: 'Fridge',
-        ecoScore: 23,
-        powerConsumption: 2234,
-        manufacturer: 'Samsung2',
-      },
-    ],
+    upgrades: {
+      B: [
+        {
+          annualCost: 477.7849,
+          ecoScore: 100,
+          energyEfficiencyClass: 'B',
+          modelIdentifier: '7525.0110',
+          index: 12,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'Combisteel',
+          powerConsumption: 100,
+        },
+        {
+          annualCost: 384.99999,
+          ecoScore: 100,
+          energyEfficiencyClass: 'B',
+          modelIdentifier: '7525.0100',
+          index: 13,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'Combisteel',
+          powerConsumption: 100,
+        },
+        {
+          annualCost: 160.15999,
+          ecoScore: 100,
+          energyEfficiencyClass: 'B',
+          modelIdentifier: 'AR51N',
+          index: 13,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'Lyfco',
+          powerConsumption: 100,
+        },
+      ],
+      A: [
+        {
+          annualCost: 0.7699999,
+          ecoScore: 100,
+          energyEfficiencyClass: 'A',
+          modelIdentifier: 'MD 30000',
+          index: 1,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'MEDION',
+          powerConsumption: 100,
+        },
+        {
+          annualCost: 0.76999998,
+          ecoScore: 100,
+          energyEfficiencyClass: 'A',
+          modelIdentifier: 'SKF 502 W',
+          index: 1,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'Scandomestic A/S ',
+          powerConsumption: 100,
+        },
+        {
+          annualCost: 147.8399963,
+          ecoScore: 100,
+          energyEfficiencyClass: 'A',
+          modelIdentifier: 'SL-65',
+          index: 7,
+          category: 'refrigeratingappliances2019',
+          manufacturer: 'Buschbeck GmbH',
+          powerConsumption: 100,
+        },
+      ],
+    },
   },
 }
 
@@ -92,22 +215,10 @@ function devicesReducer(state: any, action: ACTION): STATE {
 
   switch (type) {
     case ACTIONS.ADD:
-      const rand = Math.round(Math.random() * 100)
-
-      const newDevice: DEVICE = {
-        deviceName: `test_${rand}`,
-        modelIdentifier: rand.toString(),
-        annualCost: 144,
-        energyEfficencyClass: 'B',
-        category: 'Fridge',
-        powerConsumption: 2234,
-        manufacturer: 'Samsung2',
-      }
-
       return {
         ...state,
-        devices: [...state.devices, newDevice],
-        activeDevice: newDevice,
+        devices: [...state.devices, payload.device],
+        activeDevice: payload.device,
       }
 
     case ACTIONS.REMOVE:
@@ -118,7 +229,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
       const devices = [...state.devices]
       devices.splice(index, 1)
 
-      let activeDevice = null
+      let activeDevice = {}
 
       // we-we-welcome in the hell we-we-welcome in the hell
       // do optymalizaji
@@ -137,23 +248,50 @@ function devicesReducer(state: any, action: ACTION): STATE {
         activeDevice,
       }
     case ACTIONS.UPGRADE:
-      const findUpgradedDevice = state.activeDevice.upgrade.find(
+      // const findUpgradedDevice = state.activeDevice.upgrade.find(
+      //   (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
+      // )
+
+      // const findIndex: number = state.devices.findIndex(
+      //   (device: DEVICE) =>
+      //     state.activeDevice.modelIdentifier === device.modelIdentifier
+      // )
+
+      // const devicesWithUpgrade = [...state.devices]
+
+      // devicesWithUpgrade.splice(findIndex, 1)
+      // devicesWithUpgrade.push(findUpgradedDevice)
+
+      // return {
+      //   ...state,
+      //   activeDevice: findUpgradedDevice,
+      //   devices: devicesWithUpgrade,
+      // }
+      // console.log(payload.category)
+      const upgradedCategory = payload.category
+
+      const findUpgradedDevice = state.activeDevice.upgrades[
+        upgradedCategory
+      ].find(
         (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
       )
 
-      const findIndex: number = state.devices.findIndex(
-        (device: DEVICE) =>
-          state.activeDevice.modelIdentifier === device.modelIdentifier
-      )
+      const findIndex: number = state.devices.findIndex((device: DEVICE) => {
+        return state.activeDevice.modelIdentifier === device.modelIdentifier
+      })
+
+      const upgradedDevice = {
+        ...findUpgradedDevice,
+        upgrades: {},
+        previousDevice: { ...state.activeDevice },
+      }
 
       const devicesWithUpgrade = [...state.devices]
-
-      devicesWithUpgrade.splice(findIndex, 1)
-      devicesWithUpgrade.push(findUpgradedDevice)
+      devicesWithUpgrade[findIndex] = upgradedDevice
 
       return {
         ...state,
-        activeDevice: findUpgradedDevice,
+        activeDevice: upgradedDevice,
         devices: devicesWithUpgrade,
       }
 
