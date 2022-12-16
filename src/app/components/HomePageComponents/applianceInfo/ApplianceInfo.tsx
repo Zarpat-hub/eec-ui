@@ -11,7 +11,9 @@ const ApplianceInfo: React.FC<Props> = ({ deviceParams }: Props) => {
         <p className="info__label">
           Manufacturer:{' '}
           <span className="info__value" id="info__manufacturer--selected">
-            {deviceParams != null ? deviceParams.manufacturer : 'unknown'}
+            {deviceParams != null
+              ? deviceParams.supplierOrTrademark
+              : 'unknown'}
           </span>
         </p>
       </div>
@@ -36,7 +38,7 @@ const ApplianceInfo: React.FC<Props> = ({ deviceParams }: Props) => {
           Power Consumption:{' '}
           <span className="info__value" id="info__power-consumtpion--selected">
             {deviceParams != null
-              ? `${deviceParams.powerConsumption}kWh`
+              ? `${deviceParams.energyConsumption}kWh`
               : 'unknown'}
           </span>
         </p>

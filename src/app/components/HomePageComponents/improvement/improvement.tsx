@@ -134,6 +134,7 @@ export const Improvement: React.FC = () => {
                   id="demo-customized-select"
                   value={energyClass}
                   onChange={handleChange}
+                  sx={{ borderTopRightRadius: '1.5rem' }}
                   className="categorySelect"
                 >
                   {categoriesList}

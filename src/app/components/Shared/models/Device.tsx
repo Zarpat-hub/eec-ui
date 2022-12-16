@@ -2,10 +2,10 @@ export type DEVICE = {
   modelIdentifier: string
   deviceName: string
   annualCost: number
-  energyEfficencyClass: string
+  energyEfficiencyClass: string
   category: string
-  powerConsumption: number
-  manufacturer: string
+  energyConsumption: number
+  supplierOrTrademark: string
   previousDevice?: DEVICE
   ecoScore?: number
   upgrade?: DEVICE[]

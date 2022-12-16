@@ -8,7 +8,13 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { SyntheticEvent, Dispatch, SetStateAction, useState } from 'react'
+import {
+  SyntheticEvent,
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+} from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import img from '../../../assets/appliance_serial_number.png'
 import infoIcon from '../../../assets/info_icon.png'
@@ -16,6 +22,9 @@ import CloseIcon from '@mui/icons-material/Close'
 import variables from '../../../variables.module.scss'
 import { InputGroupLabel } from './InputGroupLabel'
 import './AddAppliancePopup.scss'
+import client from '../../services/API'
+import { useDevices } from '../../context/DevicesContext'
+import { DEVICE } from '../Shared/models/Device'
 
 type Inputs = {
   category: string
@@ -29,31 +38,6 @@ interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const categoriesDummy = [
-  // DUMMY
-  'Dishwashers',
-  'Ovens',
-  'Washing machines',
-  'Refrigerators',
-  'Air conditioners',
-]
-
-let manufacturersDummy = [
-  // DUMMY
-  'tesla',
-  'blachotrapez',
-  'januszex',
-  'w goracej wodzie company',
-]
-
-const serialNumbersDummy = [
-  // DUMMY
-  'aa123bcd',
-  'cddsf21312',
-  '324f32f32f32',
-  'sdfsd214312',
-]
-
 export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   const {
     register,
@@ -64,14 +48,48 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
     reset,
     formState: { errors },
   } = useForm<Inputs>()
+  const { addDevice, waterPrice, energyPrice } = useDevices()
   const [category, setCategory] = useState<string | null>(null)
   const [manufacturer, setManufacturer] = useState<string | null>(null)
   const [serialNumber, setSerialNumber] = useState<string | null>(null)
+  const [categoriesDummy, setCategoriesDummy] = useState<string[]>([])
+  const [manufacturersDummy, setManufacturersDummy] = useState<string[]>([])
+  const [serialNumbersDummy, setSerialNumbersDummy] = useState<string[]>([])
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('mobile'))
 
+  useEffect(() => {
+    client.get('Product/categories').then((res) => setCategoriesDummy(res.data))
+  }, [])
+
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
-    console.log(data)
+    Promise.all([
+      client.get(`Product/${String(serialNumber)}`),
+      client.post(`Calculation`, {
+        modelIdentifier: serialNumber,
+        weeklyCycles: 2,
+        energyPrice,
+        waterPrice,
+      }),
+    ]).then((res) => {
+      const [first, second] = res
+      const newDevice: DEVICE = {
+        ...first.data,
+        ...second.data,
+        upgrades: [],
+      }
+      addDevice(newDevice)
+      setCategory(null)
+      setManufacturer(null)
+      setSerialNumber(null)
+      reset({
+        category: '',
+        supplierOrTrademark: '',
+        modelIdentifier: '',
+        deviceName: '',
+      })
+      props.setOpen(false)
+    })
   }
 
   const handleCategoryChange = (
@@ -88,12 +106,10 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       deviceName: '',
     })
 
-    if (value === 'Air conditioners') {
-      // TO DELETE
-      manufacturersDummy = ['test1', 'test2']
-    }
-
     if (categoriesDummy.includes(String(value))) {
+      client
+        .get(`Product/suppliers/${String(value)}`)
+        .then((res) => setManufacturersDummy(res.data))
       clearErrors(['category', 'supplierOrTrademark'])
       return
     }
@@ -116,6 +132,9 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
     })
 
     if (manufacturersDummy.includes(String(value))) {
+      client
+        .get(`Product/modelIdentifiers/${String(category)}/${String(value)}`)
+        .then((res) => setSerialNumbersDummy(res.data))
       clearErrors('supplierOrTrademark')
       return
     }
