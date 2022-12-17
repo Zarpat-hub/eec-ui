@@ -229,6 +229,8 @@ enum ACTIONS {
 function devicesReducer(state: any, action: ACTION): STATE {
   const { type, payload } = action
 
+  const findDevice = () => {}
+
   switch (type) {
     case ACTIONS.ADD:
       return {
@@ -302,20 +304,18 @@ function devicesReducer(state: any, action: ACTION): STATE {
       }
 
     case ACTIONS.RESTORE:
-      /* const deviceToRestore = state.devices.find(
-        (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
-      ) */
+      const findIndexOfOriginDevice: number = state.devices.findIndex(
+        (device: DEVICE) => {
+          return state.activeDevice.modelIdentifier === device.modelIdentifier
+        }
+      )
 
-      const findIndex1: number = state.devices.findIndex((device: DEVICE) => {
-        return state.activeDevice.modelIdentifier === device.modelIdentifier
-      })
-
-      const devicesWithUpgrade1 = [...state.devices]
-      devicesWithUpgrade1[findIndex1] = state.activeDevice.previousDevice
+      const devicesState = [...state.devices]
+      devicesState[findIndexOfOriginDevice] = state.activeDevice.previousDevice
 
       return {
         ...state,
-        devices: devicesWithUpgrade1,
+        devices: devicesState,
         activeDevice: state.activeDevice.previousDevice,
       }
 
