@@ -1,4 +1,4 @@
-@import "../../../../index.scss";
+@import '../../../../index.scss';
 
 .configurationCardActive {
   box-sizing: border-box;
@@ -16,7 +16,7 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     box-sizing: border-box;
     position: absolute;
     height: 100%;
