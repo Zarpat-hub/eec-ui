@@ -2,13 +2,14 @@
 
 aside {
   position: sticky;
+
   top: 0;
   background-color: lightblue;
   grid-row: span 2;
   height: 100vh;
   background-color: $backgroudnGray;
   border-right: 1px solid #f0f0f0; // new variable?
-  z-index: 1;
+  z-index: 5;
 
   @media screen and (max-width: $desktop) {
     height: fit-content;

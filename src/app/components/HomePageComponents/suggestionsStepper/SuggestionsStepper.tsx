@@ -20,6 +20,7 @@ export const SuggestionsStepper: React.FC<Props> = ({
 }: Props) => {
   const {
     activeDevice: { upgrades },
+    activeDevice,
   } = useDevices()
   const [activeStep, setActiveStep] = useState(0)
   const [delayedStep, setDelayedStep] = useState(0)
@@ -29,10 +30,12 @@ export const SuggestionsStepper: React.FC<Props> = ({
 
   useEffect(() => {
     setCategory(category)
+  }, [upgrades[category]])
+
+  useEffect(() => {
     setActiveStep(0)
     setDelayedStep(0)
-    setUpgradeIndex(0)
-  }, [upgrades[category]])
+  }, [activeDevice])
 
   const handleNext = () => {
     if (!lock) {

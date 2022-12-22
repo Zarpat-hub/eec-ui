@@ -13,7 +13,7 @@ const Ecometer: React.FC = () => {
     useState<number>(0)
   const [previousUpgradedEcoScore, setPreviousUpgradedEcoScore] =
     useState<number>(0)
-  const { devices } = useDevices()
+  const { devices, suggestedDevice, activeDevice } = useDevices()
   const currentRef = useRef<any>()
   const labelsRef = useRef<any>()
   const upgradedRef = useRef<any>()
@@ -24,36 +24,27 @@ const Ecometer: React.FC = () => {
   const indicatorDotRef = useRef<any>()
 
   useEffect(() => {
-    // if (devices.length === 0) {
-    //   setPreviousDefaultEcoScore(0);
-    //   setPreviousUpgradedEcoScore(0);
-    //   setDefaultEcoScore(0);
-    //   setUpgradedEcoScore(0);
-    //   hideUpgradeDot();
-    //   return;
-    // }
-
+    if (suggestedDevice === undefined) {
+      hideUpgradeDot()
+      return
+    }
     setPreviousDefaultEcoScore(defaultEcoScore)
     setPreviousUpgradedEcoScore(upgradedEcoScore)
     const [e1, e2] = ecoScoreCalc(devices)
 
-    const includeUpgrade = Boolean(
-      devices.find((device: DEVICE) => device.previousDevice !== undefined)
-    )
+    console.log(defaultEcoScore, e1)
+    console.log(upgradedEcoScore, e2)
     setDefaultEcoScore((prev) => {
       updateDefaultEcoScore(prev, e1)
       return e1
     })
 
+    console.log(suggestedDevice)
     setUpgradedEcoScore((prev) => {
-      if (includeUpgrade) {
-        updateUpgradedEcoScore(prev, e2)
-      } else {
-        hideUpgradeDot()
-      }
+      updateUpgradedEcoScore(prev, e2)
       return e2
     })
-  }, [devices])
+  }, [suggestedDevice, devices])
 
   const ecoScoreCalc = (devices: DEVICE[]): number[] => {
     if (devices.length === 0) return [0, 0]
@@ -61,9 +52,13 @@ const Ecometer: React.FC = () => {
     let ecoScoreUpgraded = 0
 
     for (const device of devices) {
-      if (device.previousDevice !== undefined) {
-        ecoScoreUpgraded += Number(device.ecoScore)
-        ecoScoreDefault += Number(device.previousDevice.ecoScore)
+      if (
+        device.modelIdentifier === activeDevice.modelIdentifier &&
+        suggestedDevice !== undefined
+      ) {
+        console.log('x')
+        ecoScoreUpgraded += Number(suggestedDevice.ecoScore)
+        ecoScoreDefault += Number(activeDevice.ecoScore)
       } else {
         ecoScoreUpgraded += Number(device.ecoScore)
         ecoScoreDefault += Number(device.ecoScore)
@@ -77,13 +72,16 @@ const Ecometer: React.FC = () => {
   }
 
   const updateUpgradedEcoScore = (prevEcoScore: number, ecoScore: number) => {
-    indicatorDotRef.current.style.visibility = 'visible'
-    indicatorRef.current.animate(
+    indicatorDotRef.current.animate(
       [
         {
-          transform: `rotate(${prevEcoScore * 1.8}deg)`,
-          top: `${83 + Math.abs(prevEcoScore * 0.015)}%`,
+          opacity: 1,
         },
+      ],
+      { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    indicatorRef.current.animate(
+      [
         {
           transform: `rotate(${ecoScore * 1.8}deg)`,
           top: `${83 + Math.abs(ecoScore * 0.015)}%`,
@@ -103,10 +101,6 @@ const Ecometer: React.FC = () => {
     indicatorPreviousRef.current.animate(
       [
         {
-          transform: `rotate(${prevEcoScore * 1.8}deg)`,
-          top: `${83 + Math.abs(prevEcoScore * 0.015)}%`,
-        },
-        {
           transform: `rotate(${ecoScore * 1.8}deg)`,
           top: `${83 + Math.abs(ecoScore * 0.015)}%`,
         },
@@ -116,11 +110,18 @@ const Ecometer: React.FC = () => {
   }
 
   const hideUpgradeDot = () => {
-    indicatorDotRef.current.style.visibility = 'hidden'
     currentRef.current.classList.add('labels__current--upgradeless')
     upgradedRef.current.classList.remove('labels__upgraded--upgraded')
     arrowRef.current.classList.remove('labels__arrow--upgraded')
     labelsRef.current.classList.add('ecometer__labels--upgradeless')
+    indicatorDotRef.current.animate(
+      [
+        {
+          opacity: 0,
+        },
+      ],
+      { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
+    )
   }
 
   return (

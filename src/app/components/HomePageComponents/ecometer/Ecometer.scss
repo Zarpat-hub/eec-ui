@@ -51,7 +51,6 @@ $animation-duration: 500ms;
       transform: translateX(-25%) translateY(-33%);
       border: 7px solid $accentVibrantBlue;
       background-color: #ffffff;
-      visibility: hidden;
 
       @media screen and (max-width: $mobile) {
         width: 20px;
@@ -92,13 +91,17 @@ $animation-duration: 500ms;
     visibility: hidden;
     transition: transform $animation-duration ease-in-out,
       opacity $animation-duration ease-in-out,
-      font-size $animation-duration ease-in-out;
+      font-size $animation-duration ease-in-out,
+      visibility 0ms linear calc($animation-duration/2);
 
     &--upgraded {
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
       font-size: 3rem;
+      transition: transform $animation-duration ease-in-out,
+        opacity $animation-duration ease-in-out,
+        font-size $animation-duration ease-in-out;
     }
   }
 
@@ -107,12 +110,15 @@ $animation-duration: 500ms;
     visibility: hidden;
     transform: translateY(200%);
     transition: transform $animation-duration ease-in-out,
-      opacity $animation-duration ease-in-out;
+      opacity $animation-duration ease-in-out,
+      visibility 0ms linear calc($animation-duration/2);
 
     &--upgraded {
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
+      transition: transform $animation-duration ease-in-out,
+        opacity $animation-duration ease-in-out;
     }
   }
 }

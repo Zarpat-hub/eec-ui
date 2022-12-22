@@ -17,7 +17,14 @@ import { EnergyClass } from '../../Shared/EnergyClass/EnergyClass'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
 export const Improvement: React.FC = () => {
-  const { activeDevice, removeDevice, upgradeDevice } = useDevices()
+  const {
+    activeDevice,
+    removeDevice,
+    upgradeDevice,
+    restoreDevice,
+    updateSuggestedDevice,
+    suggestedDevice,
+  } = useDevices()
   const [upgradeIndex, setUpgradeIndex] = useState<number>(0)
 
   const [energyClass, setEnergyClass] = useState<string>('')
@@ -36,12 +43,22 @@ export const Improvement: React.FC = () => {
   useEffect(() => {
     if (Object.keys(activeDevice).length > 0) {
       if (Object.keys(activeDevice.upgrades).length > 0) {
-        setEnergyClass(Object.keys(activeDevice.upgrades)[0])
+        const newEnergyClass = Object.keys(activeDevice.upgrades)[0]
+        setEnergyClass(newEnergyClass)
+        updateSuggestedDevice(newEnergyClass, 0)
       } else {
         setEnergyClass('')
+        updateSuggestedDevice(undefined, undefined)
       }
+
+      setUpgradeIndex(0)
     }
   }, [activeDevice])
+
+  useEffect(() => {
+    console.log(energyClass, upgradeIndex)
+    if (energyClass !== '') updateSuggestedDevice(energyClass, upgradeIndex)
+  }, [upgradeIndex, energyClass])
 
   const handleRemove = () => {
     removeDevice(activeDevice.modelIdentifier)
@@ -71,6 +88,11 @@ export const Improvement: React.FC = () => {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleRestore = () => {
+    restoreDevice(activeDevice.modelIdentifier)
+    handleClose()
   }
 
   return (
@@ -104,7 +126,9 @@ export const Improvement: React.FC = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleRemove}>Remove</MenuItem>
-                <MenuItem onClick={handleClose}>Restore</MenuItem>
+                {activeDevice.previousDevice ? (
+                  <MenuItem onClick={handleRestore}>Restore</MenuItem>
+                ) : null}
               </Menu>
             </div>
             <div className="improvement-card__main improvement-card--border-right improvement-card--border-bottom appliance">

@@ -27,6 +27,14 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     dispatch({ type: 'upgrade', payload: { modelIdentifier, category } })
   }
 
+  const restoreDevice = (modelIdentifier: string) => {
+    dispatch({ type: 'restore', payload: { modelIdentifier } })
+  }
+
+  const updateSuggestedDevice = (energyClass: string, index: number) => {
+    dispatch({ type: 'update', payload: { energyClass, index } })
+  }
+
   const value = {
     waterPrice: state.waterCost,
     energyPrice: state.energyCost,
@@ -35,7 +43,10 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     addDevice,
     removeDevice,
     upgradeDevice,
+    restoreDevice,
+    updateSuggestedDevice,
     activeDevice: state.activeDevice,
+    suggestedDevice: state.suggestedDevice,
   }
 
   return (
