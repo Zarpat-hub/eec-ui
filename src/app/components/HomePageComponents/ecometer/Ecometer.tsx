@@ -13,7 +13,7 @@ const Ecometer: React.FC = () => {
     useState<number>(0)
   const [previousUpgradedEcoScore, setPreviousUpgradedEcoScore] =
     useState<number>(0)
-  const { devices } = useDevices()
+  const { devices, suggestedDevice, activeDevice } = useDevices()
   const currentRef = useRef<any>()
   const labelsRef = useRef<any>()
   const upgradedRef = useRef<any>()
@@ -23,37 +23,72 @@ const Ecometer: React.FC = () => {
   const indicatorRef = useRef<any>()
   const indicatorDotRef = useRef<any>()
 
-  useEffect(() => {
-    // if (devices.length === 0) {
-    //   setPreviousDefaultEcoScore(0);
-    //   setPreviousUpgradedEcoScore(0);
-    //   setDefaultEcoScore(0);
-    //   setUpgradedEcoScore(0);
-    //   hideUpgradeDot();
-    //   return;
-    // }
+  // useEffect(() => {
+  //   setPreviousDefaultEcoScore(defaultEcoScore)
+  //   setPreviousUpgradedEcoScore(upgradedEcoScore)
+  //   const [e1, e2] = ecoScoreCalc(devices)
 
+  //   const includeUpgrade = Boolean(
+  //     devices.find((device: DEVICE) => device.previousDevice !== undefined)
+  //   )
+  //   setDefaultEcoScore((prev) => {
+  //     updateDefaultEcoScore(prev, e1)
+  //     return e1
+  //   })
+
+  //   setUpgradedEcoScore((prev) => {
+  //     if (includeUpgrade) {
+  //       updateUpgradedEcoScore(prev, e2)
+  //     } else {
+  //       hideUpgradeDot()
+  //     }
+  //     return e2
+  //   })
+  // }, [devices])
+
+  useEffect(() => {
+    if (suggestedDevice === undefined) {
+      hideUpgradeDot()
+      return
+    }
     setPreviousDefaultEcoScore(defaultEcoScore)
     setPreviousUpgradedEcoScore(upgradedEcoScore)
     const [e1, e2] = ecoScoreCalc(devices)
 
-    const includeUpgrade = Boolean(
-      devices.find((device: DEVICE) => device.previousDevice !== undefined)
-    )
+    console.log(defaultEcoScore, e1)
+    console.log(upgradedEcoScore, e2)
     setDefaultEcoScore((prev) => {
       updateDefaultEcoScore(prev, e1)
       return e1
     })
 
+    console.log(suggestedDevice)
     setUpgradedEcoScore((prev) => {
-      if (includeUpgrade) {
-        updateUpgradedEcoScore(prev, e2)
-      } else {
-        hideUpgradeDot()
-      }
+      updateUpgradedEcoScore(prev, e2)
       return e2
     })
-  }, [devices])
+  }, [suggestedDevice, devices])
+
+  // const ecoScoreCalc = (devices: DEVICE[]): number[] => {
+  //   if (devices.length === 0) return [0, 0]
+  //   let ecoScoreDefault = 0
+  //   let ecoScoreUpgraded = 0
+
+  //   for (const device of devices) {
+  //     if (device.previousDevice !== undefined) {
+  //       ecoScoreUpgraded += Number(device.ecoScore)
+  //       ecoScoreDefault += Number(device.previousDevice.ecoScore)
+  //     } else {
+  //       ecoScoreUpgraded += Number(device.ecoScore)
+  //       ecoScoreDefault += Number(device.ecoScore)
+  //     }
+  //   }
+
+  //   return [
+  //     Math.floor(ecoScoreDefault / devices.length),
+  //     Math.floor(ecoScoreUpgraded / devices.length),
+  //   ]
+  // }
 
   const ecoScoreCalc = (devices: DEVICE[]): number[] => {
     if (devices.length === 0) return [0, 0]
@@ -61,9 +96,13 @@ const Ecometer: React.FC = () => {
     let ecoScoreUpgraded = 0
 
     for (const device of devices) {
-      if (device.previousDevice !== undefined) {
-        ecoScoreUpgraded += Number(device.ecoScore)
-        ecoScoreDefault += Number(device.previousDevice.ecoScore)
+      if (
+        device.modelIdentifier === activeDevice.modelIdentifier &&
+        suggestedDevice !== undefined
+      ) {
+        console.log('x')
+        ecoScoreUpgraded += Number(suggestedDevice.ecoScore)
+        ecoScoreDefault += Number(activeDevice.ecoScore)
       } else {
         ecoScoreUpgraded += Number(device.ecoScore)
         ecoScoreDefault += Number(device.ecoScore)
@@ -80,10 +119,6 @@ const Ecometer: React.FC = () => {
     indicatorDotRef.current.style.visibility = 'visible'
     indicatorRef.current.animate(
       [
-        {
-          transform: `rotate(${prevEcoScore * 1.8}deg)`,
-          top: `${83 + Math.abs(prevEcoScore * 0.015)}%`,
-        },
         {
           transform: `rotate(${ecoScore * 1.8}deg)`,
           top: `${83 + Math.abs(ecoScore * 0.015)}%`,
@@ -102,10 +137,6 @@ const Ecometer: React.FC = () => {
     indicatorPreviousDotRef.current.style.visibility = 'visible'
     indicatorPreviousRef.current.animate(
       [
-        {
-          transform: `rotate(${prevEcoScore * 1.8}deg)`,
-          top: `${83 + Math.abs(prevEcoScore * 0.015)}%`,
-        },
         {
           transform: `rotate(${ecoScore * 1.8}deg)`,
           top: `${83 + Math.abs(ecoScore * 0.015)}%`,

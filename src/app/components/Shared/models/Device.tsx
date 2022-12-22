@@ -17,11 +17,14 @@ export type STATE = {
   devices?: DEVICE[]
   upgrades?: any
   activeDevice?: DEVICE
+  suggestedDevice?: DEVICE
 }
 export type PAYLOAD = {
   modelIdentifier?: string
   device?: DEVICE
   category?: any
+  index?: number
+  energyClass?: string
 }
 
 export type ACTION = {

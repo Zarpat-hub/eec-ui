@@ -17,8 +17,14 @@ import { EnergyClass } from '../../Shared/EnergyClass/EnergyClass'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
 export const Improvement: React.FC = () => {
-  const { activeDevice, removeDevice, upgradeDevice, restoreDevice } =
-    useDevices()
+  const {
+    activeDevice,
+    removeDevice,
+    upgradeDevice,
+    restoreDevice,
+    updateSuggestedDevice,
+    suggestedDevice,
+  } = useDevices()
   const [upgradeIndex, setUpgradeIndex] = useState<number>(0)
 
   const [energyClass, setEnergyClass] = useState<string>('')
@@ -37,12 +43,22 @@ export const Improvement: React.FC = () => {
   useEffect(() => {
     if (Object.keys(activeDevice).length > 0) {
       if (Object.keys(activeDevice.upgrades).length > 0) {
-        setEnergyClass(Object.keys(activeDevice.upgrades)[0])
+        const newEnergyClass = Object.keys(activeDevice.upgrades)[0]
+        setEnergyClass(newEnergyClass)
+        updateSuggestedDevice(newEnergyClass, 0)
       } else {
         setEnergyClass('')
+        updateSuggestedDevice(undefined, undefined)
       }
+
+      setUpgradeIndex(0)
     }
   }, [activeDevice])
+
+  useEffect(() => {
+    console.log(energyClass, upgradeIndex)
+    if (energyClass !== '') updateSuggestedDevice(energyClass, upgradeIndex)
+  }, [upgradeIndex, energyClass])
 
   const handleRemove = () => {
     removeDevice(activeDevice.modelIdentifier)
