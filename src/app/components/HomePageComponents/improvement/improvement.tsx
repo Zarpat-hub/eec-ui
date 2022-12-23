@@ -160,6 +160,7 @@ export const Improvement: React.FC = () => {
                     value={energyClass}
                     onChange={handleChange}
                     className="categorySelect"
+                    sx={{ borderTopRightRadius: '20px' }}
                   >
                     {categoriesList}
                   </Select>
