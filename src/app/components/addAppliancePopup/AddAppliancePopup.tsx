@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  LinearProgress,
   TextField,
   useMediaQuery,
   useTheme,
@@ -31,6 +32,7 @@ type Inputs = {
   supplierOrTrademark: string
   deviceName: string
   modelIdentifier: string
+  weeklyCycles: number | null
 }
 
 interface Props {
@@ -55,6 +57,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   const [categoriesDummy, setCategoriesDummy] = useState<string[]>([])
   const [manufacturersDummy, setManufacturersDummy] = useState<string[]>([])
   const [serialNumbersDummy, setSerialNumbersDummy] = useState<string[]>([])
+  const [loader, setLoader] = useState<boolean>(false)
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('mobile'))
 
@@ -63,45 +66,18 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   }, [])
 
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
-    /*
-    Promise.all([
-      client.get(`Product/${String(serialNumber)}`),
-      client.post(`Calculation`, {
-        modelIdentifier: serialNumber,
-        weeklyCycles: 2,
-        energyPrice,
-        waterPrice,
-      }),
-    ]).then((res) => {
-      const [first, second] = res
-      const newDevice: DEVICE = {
-        ...first.data,
-        ...second.data,
-        upgrades: [],
-      }
-      addDevice(newDevice)
-      setCategory(null)
-      setManufacturer(null)
-      setSerialNumber(null)
-      reset({
-        category: '',
-        supplierOrTrademark: '',
-        modelIdentifier: '',
-        deviceName: '',
-      })
-      props.setOpen(false)
-    })
-    */
+    setLoader(true)
     client
       .post(`Calculation`, {
         modelIdentifier: serialNumber,
-        weeklyCycles: 2,
+        weeklyCycles: data.weeklyCycles,
         energyPrice,
         waterPrice,
         deviceName: data.deviceName,
       })
       .then((res) => {
         const newDevice = res.data
+        setLoader(false)
 
         addDevice(newDevice)
         setCategory(null)
@@ -129,6 +105,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       supplierOrTrademark: '',
       modelIdentifier: '',
       deviceName: '',
+      weeklyCycles: null,
     })
 
     if (categoriesDummy.includes(String(value))) {
@@ -154,6 +131,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
     reset({
       modelIdentifier: '',
       deviceName: '',
+      weeklyCycles: null,
     })
 
     if (manufacturersDummy.includes(String(value))) {
@@ -205,6 +183,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       fullScreen={fullScreen}
       sx={{ '& > div > div': { borderRadius: '16px' } }}
     >
+      {loader ? <LinearProgress /> : null}
       <div className="header-group">
         <span>
           <p className="header-group__label">Add Device</p>
@@ -317,6 +296,37 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
               )}
             />
           </div>
+          {category === 'washingmachines2019' ||
+          category === 'dishwashers2019' ? (
+            <div className="input-group">
+              <InputGroupLabel
+                disabled={
+                  !(errors.category == null) ||
+                  category == null ||
+                  manufacturer == null ||
+                  serialNumber == null
+                }
+              >
+                Number of cycles
+              </InputGroupLabel>
+              <p className="input-group__text">
+                How often do you use this device in a week
+              </p>
+              <TextField
+                sx={{ '& div input': { pl: '15px' } }}
+                className="input-group__input"
+                inputProps={{ inputMode: 'numeric' }}
+                type="number"
+                disabled={
+                  !(errors.category == null) ||
+                  category == null ||
+                  manufacturer == null ||
+                  serialNumber == null
+                }
+                {...register('weeklyCycles')}
+              />
+            </div>
+          ) : null}
 
           <div className="input-group">
             {/* <p className="input-group__label">Device name</p> */}
