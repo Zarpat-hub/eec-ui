@@ -165,3 +165,52 @@ $border: 2px solid #e5e5e5;
     font-weight: bold;
   }
 }
+
+.noBetterDevice {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  &__text {
+    padding: 10px 0;
+    h3 {
+      color: $primaryBlack;
+    }
+    p {
+      color: $primaryGrey;
+    }
+  }
+
+  img {
+    margin-top: 50px;
+    max-width: 80%;
+    height: auto;
+  }
+}
+.noDeviceSelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  border: $border;
+  border-radius: 1.5rem;
+  img {
+    max-width: 40%;
+    height: auto;
+    padding: 20px 0;
+  }
+  &__text {
+    padding: 10px 0;
+    text-align: center;
+    h3 {
+      font-size: 36px;
+      color: $primaryBlack;
+    }
+    p {
+      font-size: 16px;
+      color: $primaryGrey;
+    }
+  }
+}

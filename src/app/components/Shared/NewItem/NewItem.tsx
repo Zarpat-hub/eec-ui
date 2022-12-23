@@ -3,7 +3,12 @@ import { AddAppliancePopup } from '../../addAppliancePopup/AddAppliancePopup'
 import { useState } from 'react'
 import './NewItem.scss'
 
-export const NewItem = () => {
+type newItemProps = {
+  text: string
+  first: boolean
+}
+
+export const NewItem = ({ text, first }: newItemProps) => {
   const { addDevice } = useDevices()
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
@@ -15,11 +20,21 @@ export const NewItem = () => {
     <>
       <AddAppliancePopup open={openPopup} setOpen={setOpenPopup} />
 
-      <div className="newItem" onClick={handleClick}>
-        <span className="newItem__sign">
-          <span>+</span>
-        </span>
-      </div>
+      {!first ? (
+        <div className="newItem" onClick={handleClick}>
+          <span className="newItem__sign">
+            <span>+</span>
+          </span>
+          <span>{text}</span>
+        </div>
+      ) : (
+        <div className="newItemFirst" onClick={handleClick}>
+          <span className="newItemFirst__sign">
+            <span>+</span>
+          </span>
+          <span>{text}</span>
+        </div>
+      )}
     </>
   )
 }

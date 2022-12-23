@@ -65,10 +65,23 @@ export const ConfigurationSection = () => {
         {/* placeholder */}
       </div>
 
-      <div className="configuration__appliances">
-        {DEVICES.length ? DEVICES : <p>Add devices</p>}
-        <NewItem />
-      </div>
+      {DEVICES.length ? (
+        <div className="configuration__appliances">
+          {DEVICES}
+          <NewItem text={'Add Device'} first={false} />
+        </div>
+      ) : (
+        <div className="configuration__noDevices">
+          <div className="configuration__noDevices--text">
+            <h3>No devices has beed added</h3>
+            <p>
+              Add devices to your configuration your ECO score and get
+              improvments suggestions
+            </p>
+          </div>
+          <NewItem text={'Add First Device'} first={true} />
+        </div>
+      )}
     </div>
   )
 }
