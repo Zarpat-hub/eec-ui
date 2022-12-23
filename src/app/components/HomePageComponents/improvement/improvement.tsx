@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react'
 import ApplianceInfo from '../applianceInfo/ApplianceInfo'
 import { EnergyClass } from '../../Shared/EnergyClass/EnergyClass'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import NoBetterDeviceImg from '../../../../assets/no_better_device.png'
+import NoDeviceSelected from '../../../../assets/no_device_selected.png'
 
 export const Improvement: React.FC = () => {
   const {
@@ -56,7 +58,6 @@ export const Improvement: React.FC = () => {
   }, [activeDevice])
 
   useEffect(() => {
-    console.log(energyClass, upgradeIndex)
     if (energyClass !== '') updateSuggestedDevice(energyClass, upgradeIndex)
   }, [upgradeIndex, energyClass])
 
@@ -166,26 +167,33 @@ export const Improvement: React.FC = () => {
               ) : null}
             </div>
             <div className="improvement-card__main improvement-card--border-bottom appliance">
-              <div className="appliance__card improvement-card--border-bottom">
-                {activeDevice?.upgrades[energyClass] ? (
-                  <SuggestionsStepper
-                    setUpgradeIndex={setUpgradeIndex}
-                    setCategory={setEnergyClass}
-                    category={energyClass}
-                  />
-                ) : null}
-              </div>
-              <div className="appliance__info">
-                {activeDevice?.upgrades[energyClass] ? (
-                  <ApplianceInfo
-                    deviceParams={
-                      activeDevice.upgrades[energyClass][upgradeIndex]
-                    }
-                  />
-                ) : (
-                  <ApplianceInfo deviceParams={null} />
-                )}
-              </div>
+              {activeDevice?.upgrades[energyClass] ? (
+                <>
+                  <div className="appliance__card improvement-card--border-bottom">
+                    <SuggestionsStepper
+                      setUpgradeIndex={setUpgradeIndex}
+                      setCategory={setEnergyClass}
+                      category={energyClass}
+                    />
+                  </div>
+                  <div className="appliance__info">
+                    <ApplianceInfo
+                      deviceParams={
+                        activeDevice.upgrades[energyClass][upgradeIndex]
+                      }
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="noBetterDevice">
+                  <img src={NoBetterDeviceImg} />
+                  <div className="noBetterDevice__text">
+                    <h3>Congratulations</h3>
+                    <p>You cannot do any better than this!</p>
+                    <p>No better devices has been found</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -199,6 +207,7 @@ export const Improvement: React.FC = () => {
                 variant="contained"
                 color="secondary"
                 sx={{ borderRadius: '38px' }}
+                disabled={Object.keys(activeDevice.upgrades).length === 0}
               >
                 Upgrade
               </Button>
@@ -206,8 +215,14 @@ export const Improvement: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="improvement__container">
-          <div className="improvement-card">No devices img</div>
+        <div className="d">
+          <div className="noDeviceSelected">
+            <img src={NoDeviceSelected} />
+            <div className="noDeviceSelected__text">
+              <h3>No device selected</h3>
+              <p>Select device configuration to get improvements suggestions</p>
+            </div>
+          </div>
         </div>
       )}
     </div>

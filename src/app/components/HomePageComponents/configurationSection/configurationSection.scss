@@ -8,7 +8,14 @@
   gap: 1rem;
 
   &__headers {
-    border: 2px dashed red;
+    h2 {
+      font-size: 24px;
+      color: $primaryBlack;
+    }
+    h5 {
+      font-size: 14px;
+      color: $primaryGrey;
+    }
   }
 
   &__navbar {
@@ -25,5 +32,25 @@
     padding: 1.5rem;
     border-radius: 10px;
     background-color: $backgroudnGray;
+    align-items: center;
+  }
+
+  &__noDevices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      padding: 20px 0;
+      text-align: center;
+    }
+    h3 {
+      color: $primaryBlack;
+      font-size: 36px;
+    }
+    p {
+      color: $primaryGrey;
+      font-size: 16px;
+    }
   }
 }

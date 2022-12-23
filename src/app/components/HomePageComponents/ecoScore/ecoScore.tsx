@@ -3,6 +3,7 @@ import { DEVICE } from '../../Shared/models/Device'
 import Ecometer from '../ecometer/Ecometer'
 import { useState, useEffect } from 'react'
 import './ecoScore.scss'
+import NoEnoughData from '../../../../assets/not_enough_data.png'
 
 export const EcoScore: React.FC = () => {
   const { devices } = useDevices()
@@ -65,7 +66,18 @@ export const EcoScore: React.FC = () => {
             <h5>Lorem ipsum dolor sit amet consectetur.</h5>
           </div>
           <div className="eco-score__container">
-            <div className="eco-score-card">Info</div>
+            <div className="eco-score-card">
+              <div className="noEnoughData">
+                <img src={NoEnoughData} />
+                <div className="noEnoughData__text">
+                  <h3>Not enough data</h3>
+                  <p>
+                    Add at least one device to your configuration to calculate
+                    your ECO score
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
