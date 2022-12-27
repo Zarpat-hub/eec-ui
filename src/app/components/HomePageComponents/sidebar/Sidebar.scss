@@ -9,7 +9,7 @@ aside {
   background-color: $backgroudnGray;
   border-right: 1px solid #f0f0f0; // new variable?
   z-index: 5;
-  padding: 2rem 0.4rem;
+  padding: 2rem 0;
   .menuMobile {
     display: none;
   }
@@ -18,11 +18,25 @@ aside {
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+    align-items: center;
+
+    &__section {
+      width: 80%;
+      min-width: min-content;
+
+      &:first-child {
+        border-bottom: 2px solid $dividers;
+      }
+
+      &:last-child {
+        border-top: 2px solid $dividers;
+      }
+    }
   }
 
   @media screen and (max-width: $desktop) {
     height: fit-content;
-    padding: 1rem 0;
+    padding: 1rem;
     grid-row: 1;
 
     .menuMobile {

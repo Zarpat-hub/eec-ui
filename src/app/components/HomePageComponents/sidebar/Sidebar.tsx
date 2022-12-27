@@ -8,6 +8,7 @@ import BarChartIcon from '@mui/icons-material/BarChart'
 import PersonIcon from '@mui/icons-material/Person'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
+import MenuIcon from '@mui/icons-material/Menu'
 
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 export const Sidebar: React.FC = () => {
@@ -23,15 +24,13 @@ export const Sidebar: React.FC = () => {
   return (
     <aside>
       <div className="menuDesktop">
-        <div>
+        <div className="menuDesktop__section">
           <img src={logo} />
           <DesktopMenuItem text="Homepage" icon={HouseIcon} />
           <DesktopMenuItem text="Dashboard" icon={BarChartIcon} />
           <DesktopMenuItem text="Profile" icon={PersonIcon} />
-          <hr />
         </div>
-        <div>
-          <hr />
+        <div className="menuDesktop__section">
           <DesktopMenuItem text="Settings" icon={SettingsIcon} />
           <DesktopMenuItem text="Log out" icon={LogoutIcon} />
         </div>
@@ -46,7 +45,7 @@ export const Sidebar: React.FC = () => {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
         >
-          <MoreVertIcon />
+          <MenuIcon sx={{ width: '1.5em', height: '1.5em' }} />
         </Button>
         <Menu
           id="demo-positioned-menu"
@@ -81,7 +80,7 @@ export const Sidebar: React.FC = () => {
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <LogoutIcon />
-            Logoutff
+            Log out
           </MenuItem>
         </Menu>
       </div>
