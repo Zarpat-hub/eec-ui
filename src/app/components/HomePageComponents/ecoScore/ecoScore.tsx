@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import './ecoScore.scss'
 import NoEnoughData from '../../../../assets/not_enough_data.png'
 import upgradeArrow from '../../../../assets/upgrade_arrow.png'
+import CountUp from 'react-countup'
 
 export const EcoScore: React.FC = () => {
   const { devices, suggestedDevice, activeDevice } = useDevices()
@@ -15,6 +16,8 @@ export const EcoScore: React.FC = () => {
   const [energyUsed, setEnergyUsed] = useState<number>(0)
   const [energyReduced, setEnergyReduced] = useState<number>(0)
   const [energyPercentages, setEnergyPercentages] = useState<number>(0)
+  const [previousMoney, setPreviousMoney] = useState<number[]>([0, 0, 0])
+  const [previousEnergy, setPreviousEnergy] = useState<number[]>([0, 0, 0])
   const moneySavingsRef = useRef<any>()
   const moneyPercentagesRef = useRef<any>()
   const spendingsArrowRef = useRef<any>()
@@ -29,7 +32,8 @@ export const EcoScore: React.FC = () => {
       noSuggestion()
       return
     }
-
+    setPreviousMoney([spendings, moneySavings, moneyPercentages])
+    setPreviousEnergy([energyUsed, energyReduced, energyPercentages])
     suggestion()
     const [x1, x2, x3, x4] = spendingsAndEnergyCalc(devices)
 
@@ -107,7 +111,7 @@ export const EcoScore: React.FC = () => {
       easing: 'ease-in-out',
     })
     spendingsRef.current.animate(
-      [{ transform: 'translateX(125%)', fontSize: '20px' }],
+      [{ transform: 'translateX(100%)', fontSize: '20px' }],
       { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
     )
     energyReducedRef.current.animate(
@@ -124,7 +128,7 @@ export const EcoScore: React.FC = () => {
       easing: 'ease-in-out',
     })
     energyUsedRef.current.animate(
-      [{ transform: 'translateX(125%)', fontSize: '20px' }],
+      [{ transform: 'translateX(100%)', fontSize: '20px' }],
       { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
     )
   }
@@ -188,7 +192,12 @@ export const EcoScore: React.FC = () => {
                 <div className="header__savings savings">
                   <div className="savings__money money eco-score-card--border-right">
                     <span className="money__current" ref={spendingsRef}>
-                      {spendings},-
+                      <CountUp
+                        start={previousMoney[0]}
+                        end={spendings}
+                        duration={1}
+                      />
+                      ,-
                     </span>
                     <img
                       className="money__img"
@@ -200,7 +209,12 @@ export const EcoScore: React.FC = () => {
                         className="money-savings__savings"
                         ref={moneySavingsRef}
                       >
-                        {moneySavings},-
+                        <CountUp
+                          start={previousMoney[1]}
+                          end={moneySavings}
+                          duration={1}
+                        />
+                        ,-
                       </span>
                       <span
                         className="money-savings__percentages"
@@ -212,7 +226,12 @@ export const EcoScore: React.FC = () => {
                   </div>
                   <div className="savings__energy energy">
                     <span className="energy__current" ref={energyUsedRef}>
-                      {energyUsed},-
+                      <CountUp
+                        start={previousEnergy[0]}
+                        end={energyUsed}
+                        duration={1}
+                      />
+                      ,-
                     </span>
                     <img
                       className="energy__img"
@@ -224,7 +243,12 @@ export const EcoScore: React.FC = () => {
                         className="energy-savings__savings"
                         ref={energyReducedRef}
                       >
-                        {energyReduced},-
+                        <CountUp
+                          start={previousEnergy[1]}
+                          end={energyReduced}
+                          duration={1}
+                        />
+                        ,-
                       </span>
                       <span
                         className="energy-savings__percentages"

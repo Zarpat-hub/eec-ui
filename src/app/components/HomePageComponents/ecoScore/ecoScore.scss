@@ -96,7 +96,7 @@ $border: 2px solid #e5e5e5;
       content: '';
       height: 100%;
       width: 100%;
-      opacity: 0.25;
+      opacity: 0.2;
       position: absolute;
       background-repeat: no-repeat;
       background-position: bottom left;
@@ -115,13 +115,6 @@ $border: 2px solid #e5e5e5;
 
   &__energy {
     &::before {
-      content: '';
-      height: 100%;
-      width: 100%;
-      opacity: 0.25;
-      position: absolute;
-      background-repeat: no-repeat;
-      background-position: bottom left;
       background-image: url('../../../../assets/thunder_icon.png');
     }
   }
@@ -132,6 +125,9 @@ $border: 2px solid #e5e5e5;
   font-weight: 600;
 
   &__current {
+    min-width: 2rem;
+    min-width: 3rem;
+    text-align: center;
   }
 
   &__img {
@@ -147,6 +143,8 @@ $border: 2px solid #e5e5e5;
   &__savings {
     color: #4eb64a;
     font-size: 20px;
+    min-width: 4rem;
+    text-align: center;
   }
 
   &__percentages {
