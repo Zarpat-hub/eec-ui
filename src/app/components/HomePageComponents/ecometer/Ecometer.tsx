@@ -22,6 +22,8 @@ const Ecometer: React.FC = () => {
   const indicatorPreviousDotRef = useRef<any>()
   const indicatorRef = useRef<any>()
   const indicatorDotRef = useRef<any>()
+  const indicatorPreviousArrowRef = useRef<any>()
+  const indicatorArrowRef = useRef<any>()
 
   useEffect(() => {
     if (suggestedDevice === undefined) {
@@ -78,13 +80,29 @@ const Ecometer: React.FC = () => {
           opacity: 1,
         },
       ],
-      { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
     )
     indicatorRef.current.animate(
       [
         {
           transform: `rotate(${ecoScore * 1.8}deg)`,
           top: `${83 + Math.abs(ecoScore * 0.015)}%`,
+        },
+      ],
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    indicatorArrowRef.current.animate(
+      [
+        {
+          opacity: 1,
+        },
+      ],
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    indicatorPreviousArrowRef.current.animate(
+      [
+        {
+          opacity: 0,
         },
       ],
       { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
@@ -114,13 +132,29 @@ const Ecometer: React.FC = () => {
     upgradedRef.current.classList.remove('labels__upgraded--upgraded')
     arrowRef.current.classList.remove('labels__arrow--upgraded')
     labelsRef.current.classList.add('ecometer__labels--upgradeless')
+    indicatorArrowRef.current.animate(
+      [
+        {
+          opacity: 0,
+        },
+      ],
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
+    indicatorPreviousArrowRef.current.animate(
+      [
+        {
+          opacity: 1,
+        },
+      ],
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
+    )
     indicatorDotRef.current.animate(
       [
         {
           opacity: 0,
         },
       ],
-      { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
+      { duration: 1000, fill: 'forwards', easing: 'ease-in-out' }
     )
   }
 
@@ -133,11 +167,16 @@ const Ecometer: React.FC = () => {
           ref={indicatorPreviousRef}
         >
           <div
+            className="ecometer__indicator-previous--arrow"
+            ref={indicatorPreviousArrowRef}
+          />
+          <div
             className="ecometer__indicator-previous--dot"
             ref={indicatorPreviousDotRef}
           />
         </div>
         <div className="ecometer__indicator" ref={indicatorRef}>
+          <div className="ecometer__indicator--arrow" ref={indicatorArrowRef} />
           <div className="ecometer__indicator--dot" ref={indicatorDotRef} />
         </div>
         <div
