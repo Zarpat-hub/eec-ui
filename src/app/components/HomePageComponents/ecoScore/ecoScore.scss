@@ -83,40 +83,78 @@ $border: 2px solid #e5e5e5;
 }
 
 .savings {
-  &__money {
+  &__money,
+  &__energy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     min-height: 4rem;
-
-    @media screen and (max-width: $mobile) {
-      border-bottom: $border;
-    }
+    gap: 0.5rem;
 
     &::before {
       content: '';
       height: 100%;
       width: 100%;
-      opacity: 0.25;
+      opacity: 0.2;
       position: absolute;
-      background-image: url('../../../../assets/dollar_icon.png');
       background-repeat: no-repeat;
       background-position: bottom left;
     }
   }
 
-  &__energy {
-    position: relative;
-    min-height: 4rem;
+  &__money {
+    @media screen and (max-width: $mobile) {
+      border-bottom: $border;
+    }
 
     &::before {
-      content: '';
-      height: 100%;
-      width: 100%;
-      opacity: 0.25;
-      position: absolute;
-      background-image: url('../../../../assets/thunder_icon.png');
-      background-repeat: no-repeat;
-      background-position: bottom left;
+      background-image: url('../../../../assets/dollar_icon.png');
     }
+  }
+
+  &__energy {
+    &::before {
+      background-image: url('../../../../assets/thunder_icon.png');
+    }
+  }
+}
+
+.money,
+.energy {
+  font-weight: 600;
+
+  &__current {
+    min-width: 2rem;
+    min-width: 3rem;
+    text-align: center;
+  }
+
+  &__img {
+    transform: rotate(90deg);
+  }
+}
+
+.money-savings,
+.energy-savings {
+  display: flex;
+  flex-direction: column;
+
+  &__savings {
+    color: #4eb64a;
+    font-size: 20px;
+    min-width: 4rem;
+    text-align: center;
+  }
+
+  &__percentages {
+    font-size: 10px;
+    color: #4eb64a;
+    font-weight: 700;
+    text-align: center;
+    background-color: #c8ffc6;
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
   }
 }
 
@@ -125,17 +163,21 @@ $border: 2px solid #e5e5e5;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   img {
     max-width: 80%;
     height: auto;
     padding: 20px 0;
   }
+
   &__text {
     padding: 10px 0;
+
     h3 {
       font-size: 36px;
       color: $primaryBlack;
     }
+
     p {
       font-size: 16px;
       color: $primaryGrey;
