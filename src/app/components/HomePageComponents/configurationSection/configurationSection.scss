@@ -1,38 +1,33 @@
 @import '../../../../index.scss';
 
 .configuration {
-  display: grid;
-  grid-template: repeat(2, minmax(min-content, max-content)) 1fr / 1fr;
-  padding: 2rem;
+  display: flex;
+ flex-direction: column;
   padding-top: 1rem;
-  gap: 1rem;
-
-  &__headers {
-    h2 {
-      font-size: 24px;
-      color: $primaryBlack;
-    }
-    h5 {
-      font-size: 14px;
-      color: $primaryGrey;
-    }
-  }
+  gap: 0.5rem;
+  height: 100%;
 
   &__navbar {
     display: flex;
     flex-wrap: wrap;
-    border: 2px dashed red;
     flex-wrap: wrap;
+
+    // img
+    // {
+    //   width: 100%;
+    // }
   }
 
   &__appliances {
+    align-content: flex-start;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     padding: 1.5rem;
     border-radius: 10px;
     background-color: $backgroudnGray;
-    align-items: center;
+    height: 100%;
   }
 
   &__noDevices {
@@ -54,3 +49,17 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .configuration {
+    &__navbar {
+      img
+      {
+       visibility: hidden;
+       width: 10px;
+      }
+    }
+
+}
+}
+

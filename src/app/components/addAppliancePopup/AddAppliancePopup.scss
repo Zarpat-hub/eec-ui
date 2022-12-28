@@ -130,3 +130,55 @@
     font-size: 0.75rem;
   }
 }
+
+#button_main
+{
+  flex-direction: row;
+  justify-content: center;
+  padding: 0px 16px;
+    width: 159px;
+  height: 47px;
+    background: $accentVibrantBlue;
+  border-radius: 6px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 169.5%;
+text-transform: none;
+
+}
+
+#button_cancel
+{
+  box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 16px;
+
+width: 100px;
+height: 47px;
+
+
+border: 1px solid #E5E5E5;
+border-radius: 6px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 169.5%;
+
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: $primaryBlack;
+text-transform: none;
+}

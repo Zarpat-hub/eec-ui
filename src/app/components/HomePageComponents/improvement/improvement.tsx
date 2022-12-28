@@ -17,6 +17,7 @@ import { EnergyClass } from '../../Shared/EnergyClass/EnergyClass'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import NoBetterDeviceImg from '../../../../assets/no_better_device.png'
 import NoDeviceSelected from '../../../../assets/no_device_selected.png'
+import { SectionHeader } from '../../Shared/SectionHeader/SectionHeader'
 
 export const Improvement: React.FC = () => {
   const {
@@ -98,10 +99,7 @@ export const Improvement: React.FC = () => {
 
   return (
     <div className="improvement">
-      <div className="improvement__labels">
-        <h2>Welcome Back, *Username* 👋</h2>
-        <h4>Suggested Changes</h4>
-      </div>
+      <SectionHeader main="Welcome Back, *Username* 👋" sub="Suggested Changes"></SectionHeader>
       {Object.keys(activeDevice).length > 0 ? (
         <div className="improvement__container">
           <div className="improvement-card">
@@ -150,17 +148,25 @@ export const Improvement: React.FC = () => {
 
           <div className="improvement-card">
             <div className="improvement-card__header improvement-card__header--right improvement-card--border-bottom">
-              <p>Suggested device</p>
+              <p>Suggested Improvement</p>
 
               {categoriesList.length > 0 ? (
                 <FormControl sx={{ m: 1 }} variant="standard">
                   <Select
+                  disableUnderline
+                    sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } ,
+                    color: 'white',
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'white'
+                    },
+                    '& .MuiSvgIcon-root': {
+                        color: '#0085FF'
+                    } }}
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
                     value={energyClass}
                     onChange={handleChange}
                     className="categorySelect"
-                    sx={{ borderTopRightRadius: '20px' }}
                   >
                     {categoriesList}
                   </Select>
@@ -190,7 +196,7 @@ export const Improvement: React.FC = () => {
                   <img src={NoBetterDeviceImg} />
                   <div className="noBetterDevice__text">
                     <h3>Congratulations</h3>
-                    <p>You cannot do any better than this!</p>
+                    <p>You can't do any better than this!</p>
                     <p>No better devices has been found</p>
                   </div>
                 </div>
@@ -204,10 +210,20 @@ export const Improvement: React.FC = () => {
             </p>
             <div className="footer-container__button">
               <Button
+              className='button__upgrade'
                 onClick={upgradeHandler}
                 variant="contained"
-                color="secondary"
-                sx={{ borderRadius: '38px' }}
+                sx={{
+                  textTransform: 'none',
+                  width: 128,
+                  height: 40,
+                  fontFamily: 'Inter',
+                  fontWeight:500,
+                  fontSize: 13,
+                  borderRadius: 47,
+                  color: 'white',
+                  backgroundColor: '#0085FF'
+                }}
                 disabled={Object.keys(activeDevice.upgrades).length === 0}
               >
                 Upgrade

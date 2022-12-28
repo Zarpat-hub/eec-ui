@@ -56,12 +56,14 @@ $border: 2px solid #e5e5e5;
 
 .header {
   &__label {
+    color: $primaryBlack ;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background-color: $backgroudnGray;
     border-top-right-radius: 1.5rem;
     border-top-left-radius: 1.5rem;
+    padding-left: 36px;
   }
 
   &__savings {
@@ -75,7 +77,9 @@ $border: 2px solid #e5e5e5;
 }
 
 .label {
-  font-size: 1.3rem;
+  color: $primaryBlack ;
+  font-weight: 500;
+  font-size: 20px;
 
   &__value {
     font-weight: 700;
@@ -123,8 +127,9 @@ $border: 2px solid #e5e5e5;
 .money,
 .energy {
   font-weight: 600;
-
+  font-size: 36px;
   &__current {
+    color:$primaryBlack;
     min-width: 2rem;
     min-width: 3rem;
     text-align: center;
@@ -148,11 +153,11 @@ $border: 2px solid #e5e5e5;
   }
 
   &__percentages {
-    font-size: 10px;
+    font-size: 14px;
     color: #4eb64a;
     font-weight: 700;
     text-align: center;
-    background-color: #c8ffc6;
+    background-color: #8cea895d;
     border-radius: 4px;
     padding: 0.15rem 0.5rem;
   }

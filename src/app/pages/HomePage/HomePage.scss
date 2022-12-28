@@ -2,10 +2,19 @@
 
 main {
   display: grid;
-  grid-template: minmax(min-content, max-content) 1fr / 1fr 5fr;
-  min-height: 100vh;
+  grid-template: minmax(min-content, max-content) 0fr / 0.5fr 5fr;
+
 
   @media screen and (max-width: $desktop) {
     grid-template: minmax(min-content, max-content) repeat(2, auto) / auto;
   }
+}
+
+.main_container
+{
+padding: 3rem 6rem 3rem 6rem;
+display: flex;
+flex-direction: column;
+height: 100vh;
+
 }

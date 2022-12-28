@@ -193,6 +193,9 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
         </span>
         <CloseIcon
           sx={{
+            width: '28px',
+            height: '28px',
+            borderRadius: '7px',
             cursor: 'pointer',
             backgroundColor: '#F0F0F0',
             transition: '200ms',
@@ -376,10 +379,10 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
         </form>
       </DialogContent>
       <DialogActions sx={{ p: '1.5rem' }}>
-        <Button onClick={handleClose} variant="outlined">
+        <Button onClick={handleClose} variant="outlined" id="button_cancel">
           Cancel
         </Button>
-        <Button onClick={handleSubmit(onSubmit)} variant="contained">
+        <Button onClick={handleSubmit(onSubmit)} variant="contained" id='button_main'>
           Save
         </Button>
       </DialogActions>

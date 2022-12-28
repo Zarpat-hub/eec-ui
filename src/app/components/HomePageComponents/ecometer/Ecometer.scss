@@ -19,7 +19,7 @@ $animation-duration: 500ms;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 40%;
+    top: 30%;
     width: 100%;
   }
 
@@ -79,13 +79,14 @@ $animation-duration: 500ms;
   height: fit-content;
 
   &__current {
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 2rem;
     color: $primaryBlack;
     transition: font-size $animation-duration ease-in-out;
+    visibility: visible;
 
     &--upgradeless {
-      font-size: 3rem;
+      font-size: 86px;
       transform: translateY(2%);
     }
   }
@@ -94,11 +95,11 @@ $animation-duration: 500ms;
     width: 6rem;
     text-align: center;
     font-size: 1.5rem;
-    color: #8dea89;
+    color: #4EB64A;
     transform: translateY(200%);
     font-size: 1.5rem;
     opacity: 0;
-    visibility: hidden;
+    visibility: visible;
     transition: transform $animation-duration ease-in-out,
       opacity $animation-duration ease-in-out,
       font-size $animation-duration ease-in-out,
@@ -108,7 +109,7 @@ $animation-duration: 500ms;
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
-      font-size: 3rem;
+      font-size: 64px;
       transition: transform $animation-duration ease-in-out,
         opacity $animation-duration ease-in-out,
         font-size $animation-duration ease-in-out;

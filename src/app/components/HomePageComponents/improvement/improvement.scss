@@ -48,8 +48,13 @@ $border: 2px solid #e5e5e5;
       padding: 0.75rem 2rem;
 
       .footer-container {
+        .button__upgrade
+        {
+            background-color: red;
+        }
         &__label {
           align-self: flex-start;
+          font-weight: 500;
         }
       }
     }
@@ -57,12 +62,15 @@ $border: 2px solid #e5e5e5;
 }
 .categorySelect {
   background-color: whitesmoke;
-  height: 35px;
+  height: 24px;
   position: relative;
-  width: 55px;
+  left: -30px;
+  width: 59px;
   border-radius: 5px;
-  padding: 5px;
-  border: '10px solid darkgrey';
+  padding-top: 9px;
+  padding-left: 0px;
+  border: none;
+  outline: none;
 }
 
 .improvement-card {
@@ -77,6 +85,7 @@ $border: 2px solid #e5e5e5;
     align-items: center;
     justify-content: space-between;
     font-weight: 500;
+    font-size: 1.2rem;
 
     &--left {
       background-color: $backgroudnGray;
@@ -135,11 +144,12 @@ $border: 2px solid #e5e5e5;
 .appliance {
   &__card {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-end;
 
     &--selected {
       padding-bottom: 20px;
+      padding-left: 2rem ;
     }
   }
 
@@ -147,7 +157,7 @@ $border: 2px solid #e5e5e5;
     display: grid;
     grid-template: auto / 1fr 1fr;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
 }
 
@@ -157,12 +167,15 @@ $border: 2px solid #e5e5e5;
   box-sizing: border-box;
 
   &__label {
+    gap: 4px;
+    color: $primaryGrey;
     display: flex;
     flex-direction: column;
   }
 
   &__value {
     font-weight: bold;
+    color: $primaryBlack;
   }
 }
 

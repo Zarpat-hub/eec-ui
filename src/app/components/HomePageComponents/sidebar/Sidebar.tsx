@@ -1,16 +1,16 @@
 import './Sidebar.scss'
 import logo from '../../../../assets/logo.png'
+import logoNavbar from '../../../../assets/Logo_Navbar.png'
 import { MenuItem, Button, Menu } from '@mui/material'
 import { useState } from 'react'
-import HouseIcon from '@mui/icons-material/House'
 import { DesktopMenuItem } from './MenuItem/DesktopMenuItem'
-import BarChartIcon from '@mui/icons-material/BarChart'
-import PersonIcon from '@mui/icons-material/Person'
-import SettingsIcon from '@mui/icons-material/Settings'
-import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
-
-import MoreVertIcon from '@mui/icons-material/MoreVert'
+import home_icon from '../../../../assets/icons/icon-home.svg'
+import profile_icon from '../../../../assets/icons/icon-user.svg'
+import chart_icon from '../../../../assets/icons/icon-bar-chart-2.svg'
+import logout_icon from '../../../../assets/icons/icon-log-out.svg'
+import settings_icon from '../../../../assets/icons/icon-settings.svg'
+import controls from '../../../../assets/controls.png'
 export const Sidebar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -23,21 +23,24 @@ export const Sidebar: React.FC = () => {
 
   return (
     <aside>
+      <img src={controls} id="controls"></img>
       <div className="menuDesktop">
         <div className="menuDesktop__section">
-          <img src={logo} />
-          <DesktopMenuItem text="Homepage" icon={HouseIcon} />
-          <DesktopMenuItem text="Dashboard" icon={BarChartIcon} />
-          <DesktopMenuItem text="Profile" icon={PersonIcon} />
+          <img src={logoNavbar} />
+          <div className="menuDesktop__section-options">
+          <DesktopMenuItem active text="Homepage" icon={home_icon} />
+          <DesktopMenuItem text="Dashboard" icon={chart_icon} />
+          <DesktopMenuItem text="Profile" icon={profile_icon} />
+          </div>
         </div>
         <div className="menuDesktop__section">
-          <DesktopMenuItem text="Settings" icon={SettingsIcon} />
-          <DesktopMenuItem text="Log out" icon={LogoutIcon} />
+          <DesktopMenuItem text="Settings" icon={settings_icon}  />
+          <DesktopMenuItem text="Log out" icon={logout_icon}  />
         </div>
       </div>
 
       <div className="menuMobile">
-        <img src={logo} />
+        <img src={logoNavbar} />
         <Button
           id="demo-positioned-button"
           aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -62,24 +65,25 @@ export const Sidebar: React.FC = () => {
             horizontal: 'left',
           }}
         >
+          <div className='menu-options-container'>
           <MenuItem onClick={handleClose}>
-            <HouseIcon /> Homepage
+            <img src={home_icon}></img> Homepage
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <BarChartIcon /> Dashboard
+          <img src={chart_icon}></img> Dashboard
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <PersonIcon /> Profile
+          <img src={profile_icon}></img> Profile
           </MenuItem>
-
+          </div>
           <hr />
 
           <MenuItem onClick={handleClose}>
-            <SettingsIcon />
+          <img src={settings_icon}></img>
             Settings
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <LogoutIcon />
+          <img src={logout_icon}></img>
             Log out
           </MenuItem>
         </Menu>

@@ -2,6 +2,8 @@ import { useDevices } from '../../../context/DevicesContext'
 import { ConfigurationItem } from '../../Shared/ConfigurationItem/ConfigurationItem'
 import { DEVICE } from '../../Shared/models/Device'
 import { NewItem } from '../../Shared/NewItem/NewItem'
+import { SectionHeader } from '../../Shared/SectionHeader/SectionHeader'
+import placeholder from '../../../../assets/placeholder.png'
 import './configurationSection.scss'
 
 export const ConfigurationSection = () => {
@@ -24,45 +26,9 @@ export const ConfigurationSection = () => {
 
   return (
     <div className="configuration">
-      <div className="configuration__headers">
-        <h2>Start optimizing your home</h2>
-        <h5>Select your configuration</h5>
-      </div>
-
+    <SectionHeader main='Start optimizing your home' sub='Select your configuration' secondary></SectionHeader>
       <div className="configuration__navbar">
-        {/* placeholder */}
-
-        <div
-          style={{
-            height: '64px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '64px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        <div
-          style={{
-            height: '64px',
-            width: '128px',
-            backgroundColor: 'black',
-            color: 'white',
-          }}
-        >
-          Button
-        </div>
-        {/* placeholder */}
+      <img src={placeholder}></img>
       </div>
 
       {DEVICES.length ? (
