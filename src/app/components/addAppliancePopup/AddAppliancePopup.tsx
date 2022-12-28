@@ -297,7 +297,8 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
             />
           </div>
           {category === 'washingmachines2019' ||
-          category === 'dishwashers2019' ? (
+          category === 'dishwashers2019' ||
+          category === 'ovens' ? (
             <div className="input-group">
               <InputGroupLabel
                 disabled={
