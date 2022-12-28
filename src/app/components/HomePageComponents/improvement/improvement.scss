@@ -110,7 +110,7 @@ $border: 2px solid #e5e5e5;
   &__main {
     display: grid;
     max-height: 350px;
-    grid-template: 150px minmax(160px, auto) / auto;
+    grid-template: 150px 180px / auto;
   }
 
   &__footer {

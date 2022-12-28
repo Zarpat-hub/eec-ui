@@ -224,7 +224,14 @@ export const EcoScore: React.FC = () => {
                         className="money-savings__percentages"
                         ref={moneyPercentagesRef}
                       >
-                        +{moneyPercentages}%
+                        +
+                        <CountUp
+                          start={previousMoney[2]}
+                          end={moneyPercentages}
+                          duration={1}
+                          decimals={2}
+                        />
+                        %
                       </span>
                     </div>
                   </div>
@@ -259,7 +266,14 @@ export const EcoScore: React.FC = () => {
                         className="energy-savings__percentages"
                         ref={energyPercentagesRef}
                       >
-                        +{energyPercentages}%
+                        +
+                        <CountUp
+                          start={previousEnergy[2]}
+                          end={energyPercentages}
+                          duration={1}
+                          decimals={2}
+                        />
+                        %
                       </span>
                     </div>
                   </div>

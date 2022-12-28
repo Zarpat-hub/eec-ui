@@ -8,7 +8,7 @@ export const initialState: STATE = {
       modelIdentifier: '1',
       deviceName: 'test_1',
       annualCost: 500,
-      energyEfficiencyClass: 'A',
+      energyEfficiencyClass: 'C',
       ecoScore: 40,
       category: 'refrigeratingappliances2019',
       powerConsumption: 155,
@@ -35,7 +35,7 @@ export const initialState: STATE = {
             index: 13,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Combisteel',
-            powerConsumption: 101,
+            powerConsumption: 88,
           },
           {
             annualCost: 160,
@@ -46,7 +46,7 @@ export const initialState: STATE = {
             index: 13,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Lyfco',
-            powerConsumption: 66,
+            powerConsumption: 101,
           },
         ],
       },
@@ -54,11 +54,11 @@ export const initialState: STATE = {
     {
       modelIdentifier: '2',
       deviceName: 'test_2',
-      annualCost: 500,
+      annualCost: 300,
       energyEfficiencyClass: 'B',
       category: 'refrigeratingappliances2019',
-      powerConsumption: 111,
-      ecoScore: 50,
+      powerConsumption: 200,
+      ecoScore: 75,
       manufacturer: 'Samsung',
       upgrades: {
         B: [
@@ -71,7 +71,7 @@ export const initialState: STATE = {
             index: 12,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Combisteel',
-            powerConsumption: 100,
+            powerConsumption: 150,
           },
           {
             annualCost: 384,
@@ -82,7 +82,7 @@ export const initialState: STATE = {
             index: 13,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Combisteel',
-            powerConsumption: 122,
+            powerConsumption: 177,
           },
           {
             annualCost: 160,
@@ -93,7 +93,7 @@ export const initialState: STATE = {
             index: 13,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Lyfco',
-            powerConsumption: 122,
+            powerConsumption: 189,
           },
         ],
         A: [
@@ -106,7 +106,7 @@ export const initialState: STATE = {
             index: 1,
             category: 'refrigeratingappliances2019',
             manufacturer: 'MEDION',
-            powerConsumption: 111,
+            powerConsumption: 144,
           },
           {
             annualCost: 1,
@@ -117,7 +117,7 @@ export const initialState: STATE = {
             index: 1,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Scandomestic A/S ',
-            powerConsumption: 105,
+            powerConsumption: 122,
           },
           {
             annualCost: 147,
@@ -128,7 +128,7 @@ export const initialState: STATE = {
             index: 7,
             category: 'refrigeratingappliances2019',
             manufacturer: 'Buschbeck GmbH',
-            powerConsumption: 99,
+            powerConsumption: 111,
           },
         ],
       },
@@ -137,11 +137,11 @@ export const initialState: STATE = {
   activeDevice: {
     modelIdentifier: '2',
     deviceName: 'test_2',
-    annualCost: 500,
+    annualCost: 300,
     energyEfficiencyClass: 'B',
     category: 'refrigeratingappliances2019',
-    powerConsumption: 111,
-    ecoScore: 50,
+    powerConsumption: 200,
+    ecoScore: 75,
     manufacturer: 'Samsung',
     upgrades: {
       B: [
@@ -154,7 +154,7 @@ export const initialState: STATE = {
           index: 12,
           category: 'refrigeratingappliances2019',
           manufacturer: 'Combisteel',
-          powerConsumption: 100,
+          powerConsumption: 150,
         },
         {
           annualCost: 384,
@@ -165,7 +165,7 @@ export const initialState: STATE = {
           index: 13,
           category: 'refrigeratingappliances2019',
           manufacturer: 'Combisteel',
-          powerConsumption: 100,
+          powerConsumption: 177,
         },
         {
           annualCost: 160,
@@ -176,7 +176,7 @@ export const initialState: STATE = {
           index: 13,
           category: 'refrigeratingappliances2019',
           manufacturer: 'Lyfco',
-          powerConsumption: 100,
+          powerConsumption: 189,
         },
       ],
       A: [
@@ -189,7 +189,7 @@ export const initialState: STATE = {
           index: 1,
           category: 'refrigeratingappliances2019',
           manufacturer: 'MEDION',
-          powerConsumption: 100,
+          powerConsumption: 144,
         },
         {
           annualCost: 1,
@@ -200,7 +200,7 @@ export const initialState: STATE = {
           index: 1,
           category: 'refrigeratingappliances2019',
           manufacturer: 'Scandomestic A/S ',
-          powerConsumption: 100,
+          powerConsumption: 122,
         },
         {
           annualCost: 147,
@@ -211,7 +211,7 @@ export const initialState: STATE = {
           index: 7,
           category: 'refrigeratingappliances2019',
           manufacturer: 'Buschbeck GmbH',
-          powerConsumption: 100,
+          powerConsumption: 111,
         },
       ],
     },
