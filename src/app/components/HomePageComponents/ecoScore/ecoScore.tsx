@@ -178,7 +178,7 @@ export const EcoScore: React.FC = () => {
       {devices.length > 0 ? (
         <>
           <div className="eco-score__labels">
-            <h3>Your ECO score</h3>
+            <h3>Your ECO score 🍃</h3>
             <h5>Lorem ipsum dolor sit amet consectetur.</h5>
           </div>
           <div className="eco-score__container">
@@ -222,7 +222,14 @@ export const EcoScore: React.FC = () => {
                         className="money-savings__percentages"
                         ref={moneyPercentagesRef}
                       >
-                        +{moneyPercentages}%
+                        +
+                        <CountUp
+                          start={previousMoney[2]}
+                          end={moneyPercentages}
+                          duration={1}
+                          decimals={2}
+                        />
+                        %
                       </span>
                     </div>
                   </div>
@@ -256,7 +263,14 @@ export const EcoScore: React.FC = () => {
                         className="energy-savings__percentages"
                         ref={energyPercentagesRef}
                       >
-                        +{energyPercentages}%
+                        +
+                        <CountUp
+                          start={previousEnergy[2]}
+                          end={energyPercentages}
+                          duration={1}
+                          decimals={2}
+                        />
+                        %
                       </span>
                     </div>
                   </div>
