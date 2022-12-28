@@ -14,6 +14,11 @@ export const ConfigurationItem = ({
 }: ConfigurationItemProps) => {
   const { activeDevice } = useDevices()
 
+  const imgUrl = new URL(
+    `../../../../assets/CategoriesImg/${deviceParams.category}.png`,
+    import.meta.url
+  ).href
+
   return (
     <div
       className={
@@ -32,7 +37,7 @@ export const ConfigurationItem = ({
       </div>
       <div className="configurationCard__content">
         <div className="configurationCard__content--deviceImg">
-          <img src={`/src/assets/CategoriesImg/${deviceParams.category}.png`} />
+          <img src={imgUrl} />
         </div>
         <div className="configurationCard__content--deviceName">
           <p>{deviceParams.deviceName}</p>
