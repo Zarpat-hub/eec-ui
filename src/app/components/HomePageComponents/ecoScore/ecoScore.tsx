@@ -28,6 +28,8 @@ export const EcoScore: React.FC = () => {
   const energyPercentagesRef = useRef<any>()
 
   useEffect(() => {
+    if (devices.length === 0) return
+
     if (suggestedDevice === undefined) {
       noSuggestion()
       return
