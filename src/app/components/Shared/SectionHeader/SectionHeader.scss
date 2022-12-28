@@ -1,25 +1,21 @@
 @import '../../../../index.scss';
-.SectionHeader
-{
+.SectionHeader {
 }
 
-.Title
-{
-    font-size: 36px;
-    font-weight: 700;
-    padding-bottom: 0.6rem;
-    color: $primaryBlack;
+.Title {
+  font-size: 36px;
+  font-weight: 700;
+  padding-bottom: 0.6rem;
+  color: $primaryBlack;
 }
 
-.Title__Secondary
-{
-    @extend .Title;
-    font-size: 24px;
+.Title__Secondary {
+  @extend .Title;
+  font-size: 24px;
 }
 
-.SubTitle
-{
-    color: $primaryGrey;
-    font-weight: 600;
-    font-size: 18px;
+.SubTitle {
+  color: $primaryGrey;
+  font-weight: 600;
+  font-size: 18px;
 }

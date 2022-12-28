@@ -48,9 +48,8 @@ $border: 2px solid #e5e5e5;
       padding: 0.75rem 2rem;
 
       .footer-container {
-        .button__upgrade
-        {
-            background-color: red;
+        .button__upgrade {
+          background-color: red;
         }
         &__label {
           align-self: flex-start;
@@ -149,7 +148,7 @@ $border: 2px solid #e5e5e5;
 
     &--selected {
       padding-bottom: 20px;
-      padding-left: 2rem ;
+      padding-left: 2rem;
     }
   }
 

@@ -382,7 +382,11 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
         <Button onClick={handleClose} variant="outlined" id="button_cancel">
           Cancel
         </Button>
-        <Button onClick={handleSubmit(onSubmit)} variant="contained" id='button_main'>
+        <Button
+          onClick={handleSubmit(onSubmit)}
+          variant="contained"
+          id="button_main"
+        >
           Save
         </Button>
       </DialogActions>

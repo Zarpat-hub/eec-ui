@@ -16,7 +16,7 @@ export const initialState: STATE = {
       upgrades: {
         B: [
           {
-            annualCost: 477.7849,
+            annualCost: 477,
             ecoScore: 100,
             deviceName: 'test_1_upgraded',
             energyEfficiencyClass: 'B',
@@ -27,7 +27,7 @@ export const initialState: STATE = {
             powerConsumption: 111,
           },
           {
-            annualCost: 384.99999,
+            annualCost: 384,
             ecoScore: 100,
             energyEfficiencyClass: 'B',
             deviceName: 'test_1_upgraded',
@@ -38,7 +38,7 @@ export const initialState: STATE = {
             powerConsumption: 101,
           },
           {
-            annualCost: 160.15999,
+            annualCost: 160,
             ecoScore: 100,
             energyEfficiencyClass: 'B',
             deviceName: 'test_1_upgraded',
@@ -63,7 +63,7 @@ export const initialState: STATE = {
       upgrades: {
         B: [
           {
-            annualCost: 477.7849,
+            annualCost: 477,
             ecoScore: 60,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
@@ -74,7 +74,7 @@ export const initialState: STATE = {
             powerConsumption: 100,
           },
           {
-            annualCost: 384.99999,
+            annualCost: 384,
             ecoScore: 70,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
@@ -85,7 +85,7 @@ export const initialState: STATE = {
             powerConsumption: 122,
           },
           {
-            annualCost: 160.15999,
+            annualCost: 160,
             ecoScore: 80,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
@@ -98,7 +98,7 @@ export const initialState: STATE = {
         ],
         A: [
           {
-            annualCost: 0.7699999,
+            annualCost: 1,
             ecoScore: 90,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
@@ -109,7 +109,7 @@ export const initialState: STATE = {
             powerConsumption: 111,
           },
           {
-            annualCost: 0.76999998,
+            annualCost: 1,
             ecoScore: 95,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
@@ -120,7 +120,7 @@ export const initialState: STATE = {
             powerConsumption: 105,
           },
           {
-            annualCost: 147.8399963,
+            annualCost: 147,
             ecoScore: 100,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
@@ -146,7 +146,7 @@ export const initialState: STATE = {
     upgrades: {
       B: [
         {
-          annualCost: 477.7849,
+          annualCost: 477,
           ecoScore: 60,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
@@ -157,7 +157,7 @@ export const initialState: STATE = {
           powerConsumption: 100,
         },
         {
-          annualCost: 384.99999,
+          annualCost: 384,
           ecoScore: 70,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
@@ -168,7 +168,7 @@ export const initialState: STATE = {
           powerConsumption: 100,
         },
         {
-          annualCost: 160.15999,
+          annualCost: 160,
           ecoScore: 80,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
@@ -181,7 +181,7 @@ export const initialState: STATE = {
       ],
       A: [
         {
-          annualCost: 0.7699999,
+          annualCost: 1,
           ecoScore: 90,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
@@ -192,7 +192,7 @@ export const initialState: STATE = {
           powerConsumption: 100,
         },
         {
-          annualCost: 0.76999998,
+          annualCost: 1,
           ecoScore: 95,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
@@ -203,7 +203,7 @@ export const initialState: STATE = {
           powerConsumption: 100,
         },
         {
-          annualCost: 147.8399963,
+          annualCost: 147,
           ecoScore: 100,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
@@ -217,7 +217,7 @@ export const initialState: STATE = {
     },
   },
   suggestedDevice: {
-    annualCost: 477.7849,
+    annualCost: 477,
     ecoScore: 60,
     deviceName: 'test_2_upgraded',
     energyEfficiencyClass: 'B',

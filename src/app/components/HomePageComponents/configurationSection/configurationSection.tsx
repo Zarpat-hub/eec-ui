@@ -26,9 +26,13 @@ export const ConfigurationSection = () => {
 
   return (
     <div className="configuration">
-    <SectionHeader main='Start optimizing your home' sub='Select your configuration' secondary></SectionHeader>
+      <SectionHeader
+        main="Start optimizing your home"
+        sub="Select your configuration"
+        secondary
+      />
       <div className="configuration__navbar">
-      <img src={placeholder}></img>
+        <img src={placeholder} />
       </div>
 
       {DEVICES.length ? (

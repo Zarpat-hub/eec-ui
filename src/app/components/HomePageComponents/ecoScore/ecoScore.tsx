@@ -173,12 +173,15 @@ export const EcoScore: React.FC = () => {
     )
   }
 
-  // console.log(devices.length)
   return (
     <div className="eco-score">
       {devices.length > 0 ? (
         <>
-      <SectionHeader main="Your ECO score 🍃" sub="Calculate your housheold energy efficiency" secondary></SectionHeader>
+          <SectionHeader
+            main="Your ECO score 🍃"
+            sub="Calculate your housheold energy efficiency"
+            secondary
+          />
           <div className="eco-score__container">
             <div className="eco-score-card">
               <div className="eco-score-card__header eco-score-card--border-bottom header">
@@ -196,7 +199,7 @@ export const EcoScore: React.FC = () => {
                         start={previousMoney[0]}
                         end={spendings}
                         duration={1}
-                        style={{ fontSize: 24}}
+                        style={{ fontSize: 24 }}
                       />
                       ,-
                     </span>
@@ -231,7 +234,7 @@ export const EcoScore: React.FC = () => {
                         start={previousEnergy[0]}
                         end={energyUsed}
                         duration={1}
-                        style={{ fontSize: 24}}
+                        style={{ fontSize: 24 }}
                       />
                       ,-
                     </span>

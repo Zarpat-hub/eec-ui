@@ -2,7 +2,7 @@
 
 .configuration {
   display: flex;
- flex-direction: column;
+  flex-direction: column;
   padding-top: 1rem;
   gap: 0.5rem;
   height: 100%;
@@ -53,13 +53,10 @@
 @media screen and (max-width: 1200px) {
   .configuration {
     &__navbar {
-      img
-      {
-       visibility: hidden;
-       width: 10px;
+      img {
+        visibility: hidden;
+        width: 10px;
       }
     }
-
+  }
 }
-}
-
