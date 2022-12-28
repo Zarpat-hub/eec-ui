@@ -99,7 +99,10 @@ export const Improvement: React.FC = () => {
 
   return (
     <div className="improvement">
-      <SectionHeader main="Welcome Back, *Username* 👋" sub="Suggested Changes"></SectionHeader>
+      <SectionHeader
+        main="Welcome Back, *Username* 👋"
+        sub="Suggested Changes"
+      />
       {Object.keys(activeDevice).length > 0 ? (
         <div className="improvement__container">
           <div className="improvement-card">
@@ -153,15 +156,18 @@ export const Improvement: React.FC = () => {
               {categoriesList.length > 0 ? (
                 <FormControl sx={{ m: 1 }} variant="standard">
                   <Select
-                  disableUnderline
-                    sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } ,
-                    color: 'white',
-                    '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: 'white'
-                    },
-                    '& .MuiSvgIcon-root': {
-                        color: '#0085FF'
-                    } }}
+                    disableUnderline
+                    sx={{
+                      boxShadow: 'none',
+                      '.MuiOutlinedInput-notchedOutline': { border: 0 },
+                      color: 'white',
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'white',
+                      },
+                      '& .MuiSvgIcon-root': {
+                        color: '#0085FF',
+                      },
+                    }}
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
                     value={energyClass}
@@ -196,7 +202,7 @@ export const Improvement: React.FC = () => {
                   <img src={NoBetterDeviceImg} />
                   <div className="noBetterDevice__text">
                     <h3>Congratulations</h3>
-                    <p>You can't do any better than this!</p>
+                    <p>You cannot do any better than this!</p>
                     <p>No better devices has been found</p>
                   </div>
                 </div>
@@ -210,7 +216,7 @@ export const Improvement: React.FC = () => {
             </p>
             <div className="footer-container__button">
               <Button
-              className='button__upgrade'
+                className="button__upgrade"
                 onClick={upgradeHandler}
                 variant="contained"
                 sx={{
@@ -218,11 +224,11 @@ export const Improvement: React.FC = () => {
                   width: 128,
                   height: 40,
                   fontFamily: 'Inter',
-                  fontWeight:500,
+                  fontWeight: 500,
                   fontSize: 13,
                   borderRadius: 47,
                   color: 'white',
-                  backgroundColor: '#0085FF'
+                  backgroundColor: '#0085FF',
                 }}
                 disabled={Object.keys(activeDevice.upgrades).length === 0}
               >

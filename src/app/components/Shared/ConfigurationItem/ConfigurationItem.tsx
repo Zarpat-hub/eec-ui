@@ -40,7 +40,13 @@ export const ConfigurationItem = ({
           <img src={imgUrl} />
         </div>
         <div className="configurationCard__content--deviceName">
-        <div className={deviceParams.previousDevice && configSection ? 'configurationCard__tag_upgraded' : ""}>
+          <div
+            className={
+              deviceParams.previousDevice && configSection
+                ? 'configurationCard__tag_upgraded'
+                : ''
+            }
+          >
             {deviceParams.previousDevice && configSection ? 'NEW' : null}
           </div>
           <p>{deviceParams.deviceName}</p>

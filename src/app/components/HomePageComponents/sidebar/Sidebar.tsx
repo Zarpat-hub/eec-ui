@@ -23,19 +23,19 @@ export const Sidebar: React.FC = () => {
 
   return (
     <aside>
-      <img src={controls} id="controls"></img>
+      <img src={controls} id="controls" />
       <div className="menuDesktop">
         <div className="menuDesktop__section">
           <img src={logoNavbar} />
           <div className="menuDesktop__section-options">
-          <DesktopMenuItem active text="Homepage" icon={home_icon} />
-          <DesktopMenuItem text="Dashboard" icon={chart_icon} />
-          <DesktopMenuItem text="Profile" icon={profile_icon} />
+            <DesktopMenuItem active text="Homepage" icon={home_icon} />
+            <DesktopMenuItem text="Dashboard" icon={chart_icon} />
+            <DesktopMenuItem text="Profile" icon={profile_icon} />
           </div>
         </div>
         <div className="menuDesktop__section">
-          <DesktopMenuItem text="Settings" icon={settings_icon}  />
-          <DesktopMenuItem text="Log out" icon={logout_icon}  />
+          <DesktopMenuItem text="Settings" icon={settings_icon} />
+          <DesktopMenuItem text="Log out" icon={logout_icon} />
         </div>
       </div>
 
@@ -65,25 +65,25 @@ export const Sidebar: React.FC = () => {
             horizontal: 'left',
           }}
         >
-          <div className='menu-options-container'>
-          <MenuItem onClick={handleClose}>
-            <img src={home_icon}></img> Homepage
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <img src={chart_icon}></img> Dashboard
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <img src={profile_icon}></img> Profile
-          </MenuItem>
+          <div className="menu-options-container">
+            <MenuItem onClick={handleClose}>
+              <img src={home_icon} /> Homepage
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <img src={chart_icon} /> Dashboard
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <img src={profile_icon} /> Profile
+            </MenuItem>
           </div>
           <hr />
 
           <MenuItem onClick={handleClose}>
-          <img src={settings_icon}></img>
+            <img src={settings_icon} />
             Settings
           </MenuItem>
           <MenuItem onClick={handleClose}>
-          <img src={logout_icon}></img>
+            <img src={logout_icon} />
             Log out
           </MenuItem>
         </Menu>

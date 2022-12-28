@@ -1,12 +1,10 @@
 @import '../../../../index.scss';
-#controls
-{
+#controls {
   position: relative;
-  top:-40px;
-  left:20px;
+  top: -40px;
+  left: 20px;
 }
 aside {
-
   font-weight: 500;
   position: sticky;
   top: 0;
@@ -20,7 +18,7 @@ aside {
   max-width: 280px;
   padding-top: 4rem;
   padding-bottom: 5rem;
-  border-right: 2px solid #F0F0F0;
+  border-right: 2px solid #f0f0f0;
   backdrop-filter: blur(2px);
   .menuMobile {
     display: none;
@@ -45,12 +43,10 @@ aside {
       }
     }
   }
-  .menuDesktop__section-options
-  {
+  .menuDesktop__section-options {
     margin-top: 50px;
   }
-  .menu-options-container
-  {
+  .menu-options-container {
     padding-top: 72px;
   }
   @media screen and (max-width: $desktop) {
