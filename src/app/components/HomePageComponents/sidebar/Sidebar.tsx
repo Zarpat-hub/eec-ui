@@ -11,6 +11,9 @@ import chart_icon from '../../../../assets/icons/icon-bar-chart-2.svg'
 import logout_icon from '../../../../assets/icons/icon-log-out.svg'
 import settings_icon from '../../../../assets/icons/icon-settings.svg'
 import controls from '../../../../assets/controls.png'
+import { ChangeCostsPopup } from '../../changeCostsPopup/ChangeCostsPopup'
+import { AddAppliancePopup } from '../../addAppliancePopup/AddAppliancePopup'
+
 export const Sidebar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -19,6 +22,12 @@ export const Sidebar: React.FC = () => {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const [openPopup, setOpenPopup] = useState<boolean>(false)
+
+  const handlePopupClick = () => {
+    setOpenPopup(true)
   }
 
   return (
@@ -30,7 +39,10 @@ export const Sidebar: React.FC = () => {
           <div className="menuDesktop__section-options">
             <DesktopMenuItem active text="Homepage" icon={home_icon} />
             <DesktopMenuItem text="Dashboard" icon={chart_icon} />
-            <DesktopMenuItem text="Profile" icon={profile_icon} />
+            <span onClick={handlePopupClick}>
+              <DesktopMenuItem text="Profile" icon={profile_icon} />
+              <ChangeCostsPopup openPopup={openPopup} setOpen={setOpenPopup} />
+            </span>
           </div>
         </div>
         <div className="menuDesktop__section">
