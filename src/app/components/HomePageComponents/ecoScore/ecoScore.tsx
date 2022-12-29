@@ -288,10 +288,11 @@ export const EcoScore: React.FC = () => {
         </>
       ) : (
         <div className="eco-score">
-          <div className="eco-score__labels">
-            <h3>Your ECO score</h3>
-            <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-          </div>
+          <SectionHeader
+            main="Your ECO score 🍃"
+            sub="Calculate your housheold energy efficiency"
+            secondary
+          />
           <div className="eco-score__container">
             <div className="eco-score-card">
               <div className="noEnoughData">
