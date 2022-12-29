@@ -16,10 +16,7 @@ export const ConfigurationSection = () => {
 
   const DEVICES: JSX.Element[] = devices.map((device: DEVICE) => {
     return (
-      <div
-        key={device.modelIdentifier}
-        onClick={() => handleClick(device.modelIdentifier)}
-      >
+      <div key={device.uuid} onClick={() => handleClick(device.uuid)}>
         <ConfigurationItem deviceParams={device} configSection={true} />
       </div>
     )

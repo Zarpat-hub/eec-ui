@@ -22,7 +22,7 @@ export const ConfigurationItem = ({
   return (
     <div
       className={
-        deviceParams.modelIdentifier !== activeDevice.modelIdentifier
+        deviceParams.uuid !== activeDevice.uuid
           ? 'configurationCard'
           : 'configurationCardActive'
       }
