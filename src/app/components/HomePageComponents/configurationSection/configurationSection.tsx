@@ -37,8 +37,8 @@ export const ConfigurationSection = () => {
           <Button
             variant="contained"
             sx={{
-              boxShadow: "none",
-              textTransform:"none",
+              boxShadow: 'none',
+              textTransform: 'none',
               fontWeight: 700,
               backgroundColor: '#3F3F3F',
               '&:hover': { backgroundColor: '#3F3F3F' },
@@ -48,7 +48,7 @@ export const ConfigurationSection = () => {
           </Button>
           <Button
             sx={{
-              textTransform:"none",
+              textTransform: 'none',
               fontWeight: 700,
               borderColor: '#E5E5E5',
               borderWidth: '2px',
