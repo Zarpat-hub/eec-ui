@@ -1,5 +1,4 @@
 import './Sidebar.scss'
-import logo from '../../../../assets/logo.png'
 import logoNavbar from '../../../../assets/Logo_Navbar.png'
 import { MenuItem, Button, Menu } from '@mui/material'
 import { useState } from 'react'
@@ -12,7 +11,6 @@ import logout_icon from '../../../../assets/icons/icon-log-out.svg'
 import settings_icon from '../../../../assets/icons/icon-settings.svg'
 import controls from '../../../../assets/controls.png'
 import { ChangeCostsPopup } from '../../changeCostsPopup/ChangeCostsPopup'
-import { AddAppliancePopup } from '../../addAppliancePopup/AddAppliancePopup'
 
 export const Sidebar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -32,6 +30,7 @@ export const Sidebar: React.FC = () => {
 
   return (
     <aside>
+      <ChangeCostsPopup openPopup={openPopup} setOpen={setOpenPopup} />
       <img src={controls} id="controls" />
       <div className="menuDesktop">
         <div className="menuDesktop__section">
@@ -41,7 +40,6 @@ export const Sidebar: React.FC = () => {
             <DesktopMenuItem text="Dashboard" icon={chart_icon} />
             <span onClick={handlePopupClick}>
               <DesktopMenuItem text="Profile" icon={profile_icon} />
-              <ChangeCostsPopup openPopup={openPopup} setOpen={setOpenPopup} />
             </span>
           </div>
         </div>
@@ -84,7 +82,7 @@ export const Sidebar: React.FC = () => {
             <MenuItem onClick={handleClose}>
               <img src={chart_icon} /> Dashboard
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={handlePopupClick}>
               <img src={profile_icon} /> Profile
             </MenuItem>
           </div>

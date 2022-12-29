@@ -4,7 +4,6 @@ import {
   TextField,
   DialogActions,
   Button,
-  useMediaQuery,
 } from '@mui/material'
 import { Dispatch, SetStateAction, useState } from 'react'
 
@@ -46,7 +45,7 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
         <span>
           <p className="header-group__label">Chage costs</p>
           <p className="header-group__text">
-            Change costs proper to your housheold
+            Change costs proper to your household
           </p>
         </span>
         <CloseIcon
@@ -67,7 +66,7 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
           <div className="input-group">
             <p className="input-group__label">Energy price</p>
             <p className="input-group__text">
-              Enter the household energy price.
+              Enter the household energy price for 1kWh
             </p>
             <TextField
               sx={{ '& div input': { pl: '15px' } }}
@@ -81,7 +80,7 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
           <div className="input-group">
             <p className="input-group__label">Water price</p>
             <p className="input-group__text">
-              Enter the household water price.
+              Enter the household water price for 1m<sup>3</sup>
             </p>
             <TextField
               sx={{ '& div input': { pl: '15px' } }}
