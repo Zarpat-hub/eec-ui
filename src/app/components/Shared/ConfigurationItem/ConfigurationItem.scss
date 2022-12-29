@@ -7,12 +7,31 @@
   height: 109px;
   width: 174px;
   border-radius: 10px;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   background-color: white;
-  color: black;
+  color: $primaryBlack;
+  font-weight: 600;
+
+  .configurationCard {
+    &__header {
+      color: white;
+      border-bottom: 1px solid $dividers;
+
+      &--price {
+        background-color: $primaryBlue;
+        border-radius: 9px 0px 0px 0px;
+        color: white;
+        width: 68px;
+        font-weight: 700;
+        text-align: center;
+        padding: 5px;
+      }
+    }
+  }
 
   &:hover {
     cursor: pointer;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   }
 
   &::after {
@@ -23,22 +42,24 @@
     width: 100%;
     top: 0;
     left: 0;
-    border: 3px solid $accentVibrantBlueDarker;
+    border: 2px solid $primaryBlue;
     border-radius: 10px;
   }
 }
 
 .configurationCard {
   position: relative;
-  height: 109px;
+  height: 106.5px;
   width: 174px;
   border-radius: 10px;
-  border: 1px solid $dividers;
   background-color: white;
-  color: black;
+  color: $primaryBlack;
+  font-weight: 600;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08);
 
   &:hover {
     cursor: pointer;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   }
 
   &__header {
@@ -52,18 +73,22 @@
       font-weight: 700;
       text-align: center;
       padding: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
   &__content {
     display: flex;
     color: $accentVibrantBlueDarker;
-    height: 72px;
+    height: 76px;
 
     &--deviceImg {
       color: $primaryBlue;
       min-width: 68px;
-      border-radius: 0px 0px 0px 9px;
+      border-radius: 0 0 0 10px;
+      height: 76px;
       background-color: #f1f8ff;
       display: flex;
       justify-content: center;
@@ -82,7 +107,16 @@
       justify-content: center;
       flex-direction: column;
       align-items: flex-start;
-      margin: 5px;
+      margin: 20px;
+
+      .configurationCard__tag_upgraded {
+        font-size: 11px;
+        background-color: #8cea895d;
+        color: #4eb64a;
+        padding: 2px 8px;
+        font-weight: 600;
+        border-radius: 2px;
+      }
     }
   }
 }

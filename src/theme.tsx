@@ -31,6 +31,14 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Inter, Roboto, Arial',
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

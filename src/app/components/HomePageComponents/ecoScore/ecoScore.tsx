@@ -6,6 +6,7 @@ import './ecoScore.scss'
 import NoEnoughData from '../../../../assets/not_enough_data.png'
 import upgradeArrow from '../../../../assets/upgrade_arrow.png'
 import CountUp from 'react-countup'
+import { SectionHeader } from '../../Shared/SectionHeader/SectionHeader'
 
 export const EcoScore: React.FC = () => {
   const { devices, suggestedDevice, activeDevice } = useDevices()
@@ -172,15 +173,15 @@ export const EcoScore: React.FC = () => {
     )
   }
 
-  // console.log(devices.length)
   return (
     <div className="eco-score">
       {devices.length > 0 ? (
         <>
-          <div className="eco-score__labels">
-            <h3>Your ECO score 🍃</h3>
-            <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-          </div>
+          <SectionHeader
+            main="Your ECO score 🍃"
+            sub="Calculate your housheold energy efficiency"
+            secondary
+          />
           <div className="eco-score__container">
             <div className="eco-score-card">
               <div className="eco-score-card__header eco-score-card--border-bottom header">
@@ -198,6 +199,7 @@ export const EcoScore: React.FC = () => {
                         start={previousMoney[0]}
                         end={spendings}
                         duration={1}
+                        style={{ fontSize: 24 }}
                       />
                       ,-
                     </span>
@@ -239,6 +241,7 @@ export const EcoScore: React.FC = () => {
                         start={previousEnergy[0]}
                         end={energyUsed}
                         duration={1}
+                        style={{ fontSize: 24 }}
                       />
                       ,-
                     </span>
@@ -285,10 +288,11 @@ export const EcoScore: React.FC = () => {
         </>
       ) : (
         <div className="eco-score">
-          <div className="eco-score__labels">
-            <h3>Your ECO score</h3>
-            <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-          </div>
+          <SectionHeader
+            main="Your ECO score 🍃"
+            sub="Calculate your housheold energy efficiency"
+            secondary
+          />
           <div className="eco-score__container">
             <div className="eco-score-card">
               <div className="noEnoughData">
@@ -297,7 +301,7 @@ export const EcoScore: React.FC = () => {
                   <h3>Not enough data</h3>
                   <p>
                     Add at least one device to your configuration to calculate
-                    your ECO score
+                    your ECO score.
                   </p>
                 </div>
               </div>

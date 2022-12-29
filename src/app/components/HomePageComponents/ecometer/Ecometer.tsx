@@ -34,14 +34,11 @@ const Ecometer: React.FC = () => {
     setPreviousUpgradedEcoScore(upgradedEcoScore)
     const [e1, e2] = ecoScoreCalc(devices)
 
-    console.log(defaultEcoScore, e1)
-    console.log(upgradedEcoScore, e2)
     setDefaultEcoScore((prev) => {
       updateDefaultEcoScore(prev, e1)
       return e1
     })
 
-    console.log(suggestedDevice)
     setUpgradedEcoScore((prev) => {
       updateUpgradedEcoScore(prev, e2)
       return e2
@@ -58,7 +55,6 @@ const Ecometer: React.FC = () => {
         device.modelIdentifier === activeDevice.modelIdentifier &&
         suggestedDevice !== undefined
       ) {
-        console.log('x')
         ecoScoreUpgraded += Number(suggestedDevice.ecoScore)
         ecoScoreDefault += Number(activeDevice.ecoScore)
       } else {
