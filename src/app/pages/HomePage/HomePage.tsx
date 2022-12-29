@@ -10,10 +10,8 @@ export const HomePage: React.FC = () => {
     <DevicesProvider>
       <main>
         <Sidebar />
-        <div className="main_container">
-          <AnalysisSection />
-          <ConfigurationSection />
-        </div>
+        <AnalysisSection />
+        <ConfigurationSection />
       </main>
     </DevicesProvider>
   )

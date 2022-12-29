@@ -5,6 +5,7 @@ import { NewItem } from '../../Shared/NewItem/NewItem'
 import { SectionHeader } from '../../Shared/SectionHeader/SectionHeader'
 import placeholder from '../../../../assets/placeholder.png'
 import './configurationSection.scss'
+import { Button, ButtonGroup } from '@mui/material'
 
 export const ConfigurationSection = () => {
   const { devices, changeActiveDevice } = useDevices()
@@ -31,8 +32,51 @@ export const ConfigurationSection = () => {
         sub="Select your configuration"
         secondary
       />
-      <div className="configuration__navbar">
-        <img src={placeholder} />
+      <div className="configuration__navbar navbar">
+        <ButtonGroup>
+          <Button
+            variant="contained"
+            sx={{
+              fontWeight: 700,
+              backgroundColor: '#3F3F3F',
+              '&:hover': { backgroundColor: '#3F3F3F' },
+            }}
+          >
+            Home 1
+          </Button>
+          <Button
+            sx={{
+              fontWeight: 700,
+              borderColor: '#E5E5E5',
+              borderWidth: '2px',
+              color: '#3F3F3F',
+              '&:hover': { borderColor: '#E5E5E5', borderWidth: '2px' },
+            }}
+          >
+            Home 2
+          </Button>
+        </ButtonGroup>
+
+        <div className="navbar__scrollbar">
+          <div className="navbar__rooms">
+            <div className="navbar__button navbar__button--selected">All</div>
+            <div className="navbar__button">Kitchen</div>
+            <div className="navbar__button">Dining Room</div>
+            <div className="navbar__button">Sleeping room</div>
+            <div className="navbar__button">Living Room</div>
+            <div className="navbar__button">Garage</div>
+            <div className="navbar__button">Laundry Room</div>
+            <div className="navbar__button">Bathroom</div>
+          </div>
+          <div className="navbar__new">
+            <div className="newRoom">
+              <span className="newRoom__sign">
+                <span>+</span>
+              </span>
+              <span>Add room</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {DEVICES.length ? (

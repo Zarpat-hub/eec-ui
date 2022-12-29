@@ -45,11 +45,15 @@ $animation-duration: 500ms;
     &--arrow {
       width: 1rem;
       aspect-ratio: 1/1;
-      top: -4px;
+      top: -3px;
       left: 30px;
       background-color: $primaryBlack;
       position: absolute;
       clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+      @media screen and (max-width: $mobile) {
+        left: 20px;
+      }
     }
 
     &--dot {

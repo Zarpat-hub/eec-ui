@@ -1,16 +1,23 @@
 @import '../../../../index.scss';
 
 .configuration {
-  display: flex;
-  flex-direction: column;
   padding-top: 1rem;
   gap: 0.5rem;
   height: 100%;
+  display: grid;
+  grid-template: repeat(2, minmax(min-content, max-content)) 1fr / 100%;
+  overflow-x: hidden;
 
   &__navbar {
+    height: 3rem;
     display: flex;
-    flex-wrap: wrap;
-    flex-wrap: wrap;
+    gap: 4rem;
+
+    @media screen and (max-width: 900px) {
+      flex-wrap: wrap;
+      height: fit-content;
+      gap: 0.5rem;
+    }
   }
 
   &__appliances {
@@ -30,14 +37,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     &--text {
       padding: 20px 0;
       text-align: center;
     }
+
     h3 {
       color: $primaryBlack;
       font-size: 36px;
     }
+
     p {
       color: $primaryGrey;
       font-size: 16px;
@@ -45,13 +55,78 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .configuration {
-    &__navbar {
-      img {
-        visibility: hidden;
-        width: 10px;
-      }
+.navbar {
+  &__scrollbar {
+    display: grid;
+    grid-template: 1fr / 1fr auto;
+    background-color: #f7f8fa;
+    border-radius: 38px;
+    width: 100%;
+  }
+
+  &__rooms,
+  &__new {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    overflow: hidden;
+    gap: 1rem;
+  }
+
+  &__new {
+    background-color: #ffffff;
+    border-radius: 0px 38px 38px 0px;
+    border: 2px solid #f7f8fa;
+    box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  &__button {
+    width: 128px;
+    height: 36px;
+    border-radius: 47px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &--selected {
+      background-color: $secondaryBlue;
+      color: $primaryBlue;
+      box-shadow: none;
     }
+  }
+}
+
+.newRoom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  color: $primaryBlue;
+  font-size: 14px;
+  cursor: pointer;
+
+  &__sign {
+    font-size: 2em;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+
+    &::after {
+      content: '';
+      background-color: $secondaryBlue;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 20%;
+      left: -18%;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    // border: 2px solid $secondaryBlue;
   }
 }

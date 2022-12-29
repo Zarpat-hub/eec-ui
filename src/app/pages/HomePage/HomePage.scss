@@ -2,10 +2,20 @@
 
 main {
   display: grid;
-  grid-template: minmax(min-content, max-content) 0fr / 0.5fr 5fr;
+  grid-template: minmax(min-content, max-content) 1fr / 0.5fr 5fr;
+
+  & > div {
+    padding: 2rem 6rem;
+  }
 
   @media screen and (max-width: $desktop) {
     grid-template: minmax(min-content, max-content) repeat(2, auto) / auto;
+  }
+
+  @media screen and (max-width: $mobile) {
+    & > div {
+      padding: 2rem;
+    }
   }
 }
 
