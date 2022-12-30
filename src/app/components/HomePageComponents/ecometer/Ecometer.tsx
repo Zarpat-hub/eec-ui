@@ -51,10 +51,7 @@ const Ecometer: React.FC = () => {
     let ecoScoreUpgraded = 0
 
     for (const device of devices) {
-      if (
-        device.modelIdentifier === activeDevice.modelIdentifier &&
-        suggestedDevice !== undefined
-      ) {
+      if (device.uuid === activeDevice.uuid && suggestedDevice !== undefined) {
         ecoScoreUpgraded += Number(suggestedDevice.ecoScore)
         ecoScoreDefault += Number(activeDevice.ecoScore)
       } else {
