@@ -325,9 +325,6 @@ function devicesReducer(state: any, action: ACTION): STATE {
       }
 
     case ACTIONS.RESTORE:
-      // console.log(state.devices)
-      // console.log(state.activeDevice)
-
       const findIndexOfOriginDevice: number = state.devices.findIndex(
         (device: DEVICE) => {
           return state.activeDevice.uuid === device.uuid
@@ -358,8 +355,83 @@ function devicesReducer(state: any, action: ACTION): STATE {
         suggestedDevice: newSuggestedDevice,
       }
     case ACTIONS.CHANGE_COSTS:
+      const updatedDevices = state.devices.map((el: any) => {
+        const annualCost =
+          (el.annualCost / state.energyCost) * Number(payload.energyCost)
+
+        const upgrades = Object.keys(el.upgrades)
+          .map((key: any) => {
+            const upgradedDevices = el.upgrades[key].map((device: any) => {
+              const annualCost =
+                (device.annualCost / state.energyCost) *
+                Number(payload.energyCost)
+              return {
+                ...device,
+                annualCost,
+              }
+            })
+
+            return {
+              [key]: upgradedDevices,
+            }
+          })
+          .reduce((accumulator, value1) => {
+            const tag: any = Object.keys(value1)
+            const value = Object.values(value1)
+            return { ...accumulator, [tag]: value[0] }
+          }, {})
+
+        return {
+          ...el,
+          annualCost,
+          upgrades,
+        }
+      })
+
+      const upgrades = Object.keys(state.activeDevice.upgrades)
+        .map((key: any) => {
+          const upgradedDevices = state.activeDevice.upgrades[key].map(
+            (device: any) => {
+              const annualCost =
+                (device.annualCost / state.energyCost) *
+                Number(payload.energyCost)
+              return {
+                ...device,
+                annualCost,
+              }
+            }
+          )
+
+          return {
+            [key]: upgradedDevices,
+          }
+        })
+        .reduce((accumulator, value1) => {
+          const tag: any = Object.keys(value1)
+          const value = Object.values(value1)
+          return { ...accumulator, [tag]: value[0] }
+        }, {})
+
+      const updatedActiveDevice = {
+        ...state.activeDevice,
+        upgrades,
+        annualCost:
+          (state.activeDevice.annualCost / state.energyCost) *
+          Number(payload.energyCost),
+      }
+
+      const updatedSuggestedDevice = {
+        ...state.suggestedDevice,
+        annualCost:
+          (state.suggestedDevice.annualCost / state.energyCost) *
+          Number(payload.energyCost),
+      }
+
       return {
         ...state,
+        activeDevice: updatedActiveDevice,
+        suggestedDevice: updatedSuggestedDevice,
+        devices: updatedDevices,
         energyCost: Number(payload.energyCost),
         waterCost: Number(payload.waterCost),
       }
