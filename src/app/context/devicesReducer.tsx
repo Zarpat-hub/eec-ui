@@ -360,8 +360,8 @@ function devicesReducer(state: any, action: ACTION): STATE {
     case ACTIONS.CHANGE_COSTS:
       return {
         ...state,
-        energyCost: payload.energyCost as number,
-        waterCost: payload.waterCost as number,
+        energyCost: Number(payload.energyCost),
+        waterCost: Number(payload.waterCost),
       }
     default:
       return state

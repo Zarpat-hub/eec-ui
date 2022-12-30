@@ -73,7 +73,7 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
               className="input-group__input"
               inputProps={{ inputMode: 'numeric' }}
               type="number"
-              placeholder={energyPrice.toString()}
+              placeholder={String(energyPrice)}
               onChange={(e) => setNewEnergyPrice(e.target.value)}
             />
           </div>
@@ -87,7 +87,7 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
               className="input-group__input"
               inputProps={{ inputMode: 'numeric' }}
               type="number"
-              placeholder={waterPrice.toString()}
+              placeholder={String(waterPrice)}
               onChange={(e) => setNewWaterPrice(e.target.value)}
             />
           </div>
