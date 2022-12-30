@@ -19,12 +19,16 @@ export function DevicesProvider({ children }: DevicesProviderProps) {
     dispatch({ type: 'remove', payload: { modelIdentifier } })
   }
 
-  const changeActiveDevice = (modelIdentifier: string) => {
+  const changeActiveDevice = (modelIdentifier: any) => {
     dispatch({ type: 'change', payload: { modelIdentifier } })
   }
 
-  const upgradeDevice = (modelIdentifier: string, category: string) => {
-    dispatch({ type: 'upgrade', payload: { modelIdentifier, category } })
+  const upgradeDevice = (
+    modelIdentifier: string,
+    category: string,
+    uuid: string
+  ) => {
+    dispatch({ type: 'upgrade', payload: { modelIdentifier, category, uuid } })
   }
 
   const restoreDevice = (modelIdentifier: string) => {

@@ -10,6 +10,7 @@ export type DEVICE = {
   ecoScore?: number
   upgrade?: DEVICE[]
   upgrades?: any
+  uuid: string
 }
 export type STATE = {
   energyCost: number
@@ -25,6 +26,7 @@ export type PAYLOAD = {
   category?: any
   index?: number
   energyClass?: string
+  uuid?: string
   energyCost?: number
   waterCost?: number
 }

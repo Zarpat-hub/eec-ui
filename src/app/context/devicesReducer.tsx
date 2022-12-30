@@ -5,6 +5,7 @@ export const initialState: STATE = {
   waterCost: 0.44,
   devices: [
     {
+      uuid: '1',
       modelIdentifier: '1',
       deviceName: 'test_1',
       annualCost: 500,
@@ -52,6 +53,7 @@ export const initialState: STATE = {
       },
     },
     {
+      uuid: '2',
       modelIdentifier: '2',
       deviceName: 'test_2',
       annualCost: 300,
@@ -135,6 +137,7 @@ export const initialState: STATE = {
     },
   ],
   activeDevice: {
+    uuid: '2',
     modelIdentifier: '2',
     deviceName: 'test_2',
     annualCost: 300,
@@ -217,6 +220,7 @@ export const initialState: STATE = {
     },
   },
   suggestedDevice: {
+    uuid: '2',
     annualCost: 477,
     ecoScore: 60,
     deviceName: 'test_2_upgraded',
@@ -245,15 +249,19 @@ function devicesReducer(state: any, action: ACTION): STATE {
 
   switch (type) {
     case ACTIONS.ADD:
+      const UUID = crypto.randomUUID()
+
+      const newDevice = { ...payload.device, uuid: UUID }
+
       return {
         ...state,
-        devices: [...state.devices, payload.device],
-        activeDevice: payload.device,
+        devices: [...state.devices, newDevice],
+        activeDevice: newDevice,
       }
 
     case ACTIONS.REMOVE:
       const index: number = state.devices.findIndex(
-        (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
+        (device: DEVICE) => device.uuid === payload.modelIdentifier
       )
 
       const devices = [...state.devices]
@@ -287,12 +295,13 @@ function devicesReducer(state: any, action: ACTION): STATE {
       )
 
       const findIndex: number = state.devices.findIndex((device: DEVICE) => {
-        return state.activeDevice.modelIdentifier === device.modelIdentifier
+        return state.activeDevice.uuid === device.uuid
       })
 
       const upgradedDevice = {
         ...findUpgradedDevice,
         upgrades: {},
+        uuid: state.activeDevice.uuid,
         previousDevice: { ...state.activeDevice },
       }
 
@@ -307,7 +316,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
 
     case ACTIONS.CHANGE_ACTIVE_DEVICE:
       const device = state.devices.find(
-        (device: DEVICE) => device.modelIdentifier === payload.modelIdentifier
+        (device: DEVICE) => device.uuid === payload.modelIdentifier
       )
 
       return {
@@ -316,9 +325,12 @@ function devicesReducer(state: any, action: ACTION): STATE {
       }
 
     case ACTIONS.RESTORE:
+      // console.log(state.devices)
+      // console.log(state.activeDevice)
+
       const findIndexOfOriginDevice: number = state.devices.findIndex(
         (device: DEVICE) => {
-          return state.activeDevice.modelIdentifier === device.modelIdentifier
+          return state.activeDevice.uuid === device.uuid
         }
       )
 

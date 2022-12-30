@@ -65,10 +65,7 @@ export const EcoScore: React.FC = () => {
     let energyReduced = 0
 
     for (const device of devices) {
-      if (
-        device.modelIdentifier === activeDevice.modelIdentifier &&
-        suggestedDevice !== undefined
-      ) {
+      if (device.uuid === activeDevice.uuid && suggestedDevice !== undefined) {
         savings += Number(suggestedDevice.annualCost)
         spendings += Number(activeDevice.annualCost)
         energyReduced += Number(suggestedDevice.powerConsumption)

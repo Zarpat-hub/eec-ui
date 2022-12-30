@@ -63,19 +63,16 @@ export const Improvement: React.FC = () => {
   }, [upgradeIndex, energyClass])
 
   const handleRemove = () => {
-    removeDevice(activeDevice.modelIdentifier)
+    removeDevice(activeDevice.uuid)
     setEnergyClass('')
     handleClose()
-  }
-
-  const handleUpgrade = (modelIdentifier: string) => {
-    upgradeDevice(modelIdentifier)
   }
 
   const upgradeHandler = () => {
     upgradeDevice(
       activeDevice.upgrades[energyClass][upgradeIndex].modelIdentifier,
-      energyClass
+      energyClass,
+      activeDevice.uuid
     )
   }
 
@@ -93,7 +90,7 @@ export const Improvement: React.FC = () => {
   }
 
   const handleRestore = () => {
-    restoreDevice(activeDevice.modelIdentifier)
+    restoreDevice(activeDevice.uuid)
     handleClose()
   }
 
