@@ -1,5 +1,4 @@
 import './Sidebar.scss'
-import logo from '../../../../assets/logo.png'
 import logoNavbar from '../../../../assets/Logo_Navbar.png'
 import { MenuItem, Button, Menu } from '@mui/material'
 import { useState } from 'react'
@@ -11,6 +10,8 @@ import chart_icon from '../../../../assets/icons/icon-bar-chart-2.svg'
 import logout_icon from '../../../../assets/icons/icon-log-out.svg'
 import settings_icon from '../../../../assets/icons/icon-settings.svg'
 import controls from '../../../../assets/controls.png'
+import { ChangeCostsPopup } from '../../changeCostsPopup/ChangeCostsPopup'
+
 export const Sidebar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -21,8 +22,15 @@ export const Sidebar: React.FC = () => {
     setAnchorEl(null)
   }
 
+  const [openPopup, setOpenPopup] = useState<boolean>(false)
+
+  const handlePopupClick = () => {
+    setOpenPopup(true)
+  }
+
   return (
     <aside>
+      <ChangeCostsPopup openPopup={openPopup} setOpen={setOpenPopup} />
       <img src={controls} id="controls" />
       <div className="menuDesktop">
         <div className="menuDesktop__section">
@@ -30,7 +38,9 @@ export const Sidebar: React.FC = () => {
           <div className="menuDesktop__section-options">
             <DesktopMenuItem active text="Homepage" icon={home_icon} />
             <DesktopMenuItem text="Dashboard" icon={chart_icon} />
-            <DesktopMenuItem text="Profile" icon={profile_icon} />
+            <span onClick={handlePopupClick}>
+              <DesktopMenuItem text="Profile" icon={profile_icon} />
+            </span>
           </div>
         </div>
         <div className="menuDesktop__section">
@@ -72,7 +82,7 @@ export const Sidebar: React.FC = () => {
             <MenuItem onClick={handleClose}>
               <img src={chart_icon} /> Dashboard
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={handlePopupClick}>
               <img src={profile_icon} /> Profile
             </MenuItem>
           </div>

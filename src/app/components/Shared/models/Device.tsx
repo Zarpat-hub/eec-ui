@@ -27,6 +27,8 @@ export type PAYLOAD = {
   index?: number
   energyClass?: string
   uuid?: string
+  energyCost?: number
+  waterCost?: number
 }
 
 export type ACTION = {

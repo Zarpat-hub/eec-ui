@@ -239,6 +239,7 @@ enum ACTIONS {
   CHANGE_ACTIVE_DEVICE = 'change',
   RESTORE = 'restore',
   UPDATE_SUGGESTED_DEVICE = 'update',
+  CHANGE_COSTS = 'changeCosts',
 }
 
 function devicesReducer(state: any, action: ACTION): STATE {
@@ -356,7 +357,12 @@ function devicesReducer(state: any, action: ACTION): STATE {
         ...state,
         suggestedDevice: newSuggestedDevice,
       }
-
+    case ACTIONS.CHANGE_COSTS:
+      return {
+        ...state,
+        energyCost: payload.energyCost as number,
+        waterCost: payload.waterCost as number,
+      }
     default:
       return state
   }
