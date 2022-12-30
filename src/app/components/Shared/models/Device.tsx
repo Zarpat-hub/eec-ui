@@ -25,6 +25,8 @@ export type PAYLOAD = {
   category?: any
   index?: number
   energyClass?: string
+  energyCost?: number
+  waterCost?: number
 }
 
 export type ACTION = {

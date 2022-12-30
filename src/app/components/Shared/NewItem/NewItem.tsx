@@ -9,7 +9,6 @@ type newItemProps = {
 }
 
 export const NewItem = ({ text, first }: newItemProps) => {
-  const { addDevice } = useDevices()
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
   const handleClick = () => {
