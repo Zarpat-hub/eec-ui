@@ -27,10 +27,8 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
   }
 
   const handleSave = () => {
-    if (!newEnergyPrice) setNewEnergyPrice(energyPrice)
-    if (!newWaterPrice) setNewWaterPrice(energyPrice)
-
     changeCosts(newEnergyPrice, newWaterPrice)
+
     handleClose()
   }
 

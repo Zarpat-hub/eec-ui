@@ -370,6 +370,13 @@ function devicesReducer(state: any, action: ACTION): STATE {
         suggestedDevice: newSuggestedDevice,
       }
     case ACTIONS.CHANGE_COSTS:
+      if (!payload.energyCost) {
+        payload.energyCost = state.energyCost
+      }
+      if (!payload.waterCost) {
+        payload.waterCost = state.waterCost
+      }
+
       const updatedDevices = state.devices.map((device: DEVICE) => {
         const annualCost = calculateAnnualCost(device)
 
@@ -439,21 +446,25 @@ function devicesReducer(state: any, action: ACTION): STATE {
       }
 
       let updatedActiveDevice
-      // let updatedSuggestedDevice
+
       if (state.devices.length > 0) {
         updatedActiveDevice = {
           ...state.activeDevice,
           upgrades: activeDeviceUpgrades,
           annualCost: calculateAnnualCost(state.activeDevice),
         }
-        // updatedSuggestedDevice = {
-        //   ...state.suggestedDevice,
-        //   annualCost: calculateAnnualCost(state.suggestedDevice),
-        // }
       } else {
         updatedActiveDevice = {}
-        //  updatedSuggestedDevice = {}
       }
+
+      // let updatedSuggestedDevice
+
+      // if (state.suggestedDevice) {
+      //   updatedSuggestedDevice = {
+      //     ...state,
+      //     annualCost: calculateAnnualCost(state.suggestedDevice),
+      //   }
+      // }
 
       return {
         ...state,
