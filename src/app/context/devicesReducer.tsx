@@ -1,4 +1,9 @@
-import { ACTION, DEVICE, STATE } from '../components/Shared/models/Device'
+import {
+  ACTION,
+  DEVICE,
+  DEVICE_CATEGORIES,
+  STATE,
+} from '../components/Shared/models/Device'
 
 export const initialState: STATE = {
   energyCost: 1,
@@ -245,7 +250,17 @@ enum ACTIONS {
 function devicesReducer(state: any, action: ACTION): STATE {
   const { type, payload } = action
 
-  const findDevice = () => {}
+  const calculateAnnualCost = (device: any) => {
+    let annualCost =
+      (device.annualCost / state.energyCost) * Number(payload.energyCost)
+    if (
+      device.category === DEVICE_CATEGORIES.WASHING_MASHINE ||
+      device.category === DEVICE_CATEGORIES.DISH_WASHER
+    ) {
+      annualCost = (annualCost / state.waterCost) * Number(payload.waterCost)
+    }
+    return annualCost.toFixed()
+  }
 
   switch (type) {
     case ACTIONS.ADD:
@@ -355,21 +370,60 @@ function devicesReducer(state: any, action: ACTION): STATE {
         suggestedDevice: newSuggestedDevice,
       }
     case ACTIONS.CHANGE_COSTS:
-      const updatedDevices = state.devices.map((el: any) => {
-        const annualCost =
-          (el.annualCost / state.energyCost) * Number(payload.energyCost)
+      const updatedDevices = state.devices.map((device: DEVICE) => {
+        const annualCost = calculateAnnualCost(device)
 
-        const upgrades = Object.keys(el.upgrades)
-          .map((key: any) => {
-            const upgradedDevices = el.upgrades[key].map((device: any) => {
-              const annualCost =
-                (device.annualCost / state.energyCost) *
-                Number(payload.energyCost)
+        let upgrades
+        if (Object.keys(device.upgrades).length > 0) {
+          upgrades = Object.keys(device.upgrades)
+            .map((key: any) => {
+              const upgradedDevices = device.upgrades[key].map(
+                (device: any) => {
+                  const annualCost = calculateAnnualCost(device)
+                  return {
+                    ...device,
+                    annualCost,
+                  }
+                }
+              )
+
               return {
-                ...device,
-                annualCost,
+                [key]: upgradedDevices,
               }
             })
+            .reduce((accumulator, value1) => {
+              const tag: any = Object.keys(value1)
+              const value = Object.values(value1)
+              return { ...accumulator, [tag]: value[0] }
+            }, {})
+        } else {
+          upgrades = {}
+        }
+
+        return {
+          ...device,
+          annualCost,
+          upgrades,
+        }
+      })
+
+      let activeDeviceUpgrades
+      if (
+        Object.keys(state.activeDevice).length > 0 &&
+        Object.keys(state.activeDevice.upgrades).length > 0
+      ) {
+        activeDeviceUpgrades = Object.keys(state.activeDevice.upgrades)
+          .map((key: any) => {
+            const upgradedDevices = state.activeDevice.upgrades[key].map(
+              (device: any) => {
+                const annualCost = calculateAnnualCost(device)
+
+                return {
+                  ...device,
+                  annualCost,
+                }
+              }
+            )
 
             return {
               [key]: upgradedDevices,
@@ -380,57 +434,31 @@ function devicesReducer(state: any, action: ACTION): STATE {
             const value = Object.values(value1)
             return { ...accumulator, [tag]: value[0] }
           }, {})
-
-        return {
-          ...el,
-          annualCost,
-          upgrades,
-        }
-      })
-
-      const upgrades = Object.keys(state.activeDevice.upgrades)
-        .map((key: any) => {
-          const upgradedDevices = state.activeDevice.upgrades[key].map(
-            (device: any) => {
-              const annualCost =
-                (device.annualCost / state.energyCost) *
-                Number(payload.energyCost)
-              return {
-                ...device,
-                annualCost,
-              }
-            }
-          )
-
-          return {
-            [key]: upgradedDevices,
-          }
-        })
-        .reduce((accumulator, value1) => {
-          const tag: any = Object.keys(value1)
-          const value = Object.values(value1)
-          return { ...accumulator, [tag]: value[0] }
-        }, {})
-
-      const updatedActiveDevice = {
-        ...state.activeDevice,
-        upgrades,
-        annualCost:
-          (state.activeDevice.annualCost / state.energyCost) *
-          Number(payload.energyCost),
+      } else {
+        activeDeviceUpgrades = {}
       }
 
-      const updatedSuggestedDevice = {
-        ...state.suggestedDevice,
-        annualCost:
-          (state.suggestedDevice.annualCost / state.energyCost) *
-          Number(payload.energyCost),
+      let updatedActiveDevice
+      // let updatedSuggestedDevice
+      if (state.devices.length > 0) {
+        updatedActiveDevice = {
+          ...state.activeDevice,
+          upgrades: activeDeviceUpgrades,
+          annualCost: calculateAnnualCost(state.activeDevice),
+        }
+        // updatedSuggestedDevice = {
+        //   ...state.suggestedDevice,
+        //   annualCost: calculateAnnualCost(state.suggestedDevice),
+        // }
+      } else {
+        updatedActiveDevice = {}
+        //  updatedSuggestedDevice = {}
       }
 
       return {
         ...state,
         activeDevice: updatedActiveDevice,
-        suggestedDevice: updatedSuggestedDevice,
+        // suggestedDevice: updatedSuggestedDevice,
         devices: updatedDevices,
         energyCost: Number(payload.energyCost),
         waterCost: Number(payload.waterCost),
