@@ -128,7 +128,7 @@ export const EcoScore: React.FC = () => {
       easing: 'ease-in-out',
     })
     energyUsedRef.current.animate(
-      [{ transform: 'translateX(100%)', fontSize: '20px' }],
+      [{ transform: 'translateX(70%)', fontSize: '20px' }],
       { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
     )
   }

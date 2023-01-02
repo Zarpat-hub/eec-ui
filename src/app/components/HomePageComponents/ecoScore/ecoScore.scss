@@ -68,7 +68,7 @@ $border: 2px solid #e5e5e5;
 
   &__savings {
     display: grid;
-    grid-template: auto / 1fr 1fr;
+    grid-template: auto / 50% 50%;
 
     @media screen and (max-width: $mobile) {
       grid-template: 1fr 1fr / auto;
