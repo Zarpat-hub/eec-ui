@@ -51,6 +51,7 @@ $border: 2px solid #e5e5e5;
         .button__upgrade {
           background-color: red;
         }
+
         &__label {
           align-self: flex-start;
           font-weight: 500;
@@ -59,6 +60,7 @@ $border: 2px solid #e5e5e5;
     }
   }
 }
+
 .categorySelect {
   background-color: whitesmoke;
   height: 24px;
@@ -147,13 +149,13 @@ $border: 2px solid #e5e5e5;
 .appliance {
   &__card {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 
-    &--selected {
-      padding-bottom: 20px;
-      padding-left: 2rem;
-    }
+    // &--selected {
+    //   padding-bottom: 20px;
+    //   padding-left: 2rem;
+    // }
   }
 
   &__info {
@@ -168,17 +170,31 @@ $border: 2px solid #e5e5e5;
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  cursor: pointer;
+  max-width: 6vw;
+
+  @media screen and (max-width: $desktop) {
+    max-width: 12vw;
+  }
+
+  @media screen and (max-width: $mobile) {
+    max-width: 25vw;
+  }
 
   &__label {
     gap: 4px;
     color: $primaryGrey;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   &__value {
     font-weight: bold;
     color: $primaryBlack;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
@@ -190,9 +206,11 @@ $border: 2px solid #e5e5e5;
 
   &__text {
     padding: 10px 0;
+
     h3 {
       color: $primaryBlack;
     }
+
     p {
       color: $primaryGrey;
     }
@@ -204,6 +222,7 @@ $border: 2px solid #e5e5e5;
     height: auto;
   }
 }
+
 .noDeviceSelected {
   display: flex;
   flex-direction: column;
@@ -212,18 +231,22 @@ $border: 2px solid #e5e5e5;
   justify-content: center;
   border: $border;
   border-radius: 1.5rem;
+
   img {
     max-width: 40%;
     height: auto;
     padding: 20px 0;
   }
+
   &__text {
     padding: 10px 0;
     text-align: center;
+
     h3 {
       font-size: 36px;
       color: $primaryBlack;
     }
+
     p {
       font-size: 16px;
       color: $primaryGrey;

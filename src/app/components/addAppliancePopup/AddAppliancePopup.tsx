@@ -77,7 +77,6 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       })
       .then((res) => {
         const newDevice = res.data
-        setLoader(false)
 
         addDevice(newDevice)
         setCategory(null)
@@ -90,6 +89,9 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
           deviceName: '',
         })
         props.setOpen(false)
+      })
+      .finally(() => {
+        setLoader(false)
       })
   }
 
@@ -183,7 +185,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       fullScreen={fullScreen}
       sx={{ '& > div > div': { borderRadius: '16px' } }}
     >
-      {loader ? <LinearProgress /> : null}
+      {loader ? <LinearProgress /> : <div style={{ height: 4 }}></div>}
       <div className="header-group">
         <span>
           <p className="header-group__label">Add Device</p>
@@ -327,7 +329,9 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
                   manufacturer == null ||
                   serialNumber == null
                 }
-                {...register('weeklyCycles')}
+                {...register('weeklyCycles', {
+                  required: true,
+                })}
               />
             </div>
           ) : null}
