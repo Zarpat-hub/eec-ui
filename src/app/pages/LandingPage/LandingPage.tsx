@@ -3,7 +3,7 @@ import './LandingPage.scss'
 import { AboutProject } from '../../components/LandingPageComponents/About_Section/AboutProject'
 import { Navigation } from '../../components/LandingPageComponents/Navbar/Navigation'
 import { Header } from '../../components/LandingPageComponents/Hero_Section/Header'
-import { Footer } from '../../components/LandingPageComponents/Footer/Footer'
+import { Footer } from '../../components/LandingPageComponents/footer/Footer'
 
 export const LandingPage: React.FC = () => {
   return (
