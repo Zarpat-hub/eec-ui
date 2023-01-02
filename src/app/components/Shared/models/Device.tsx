@@ -35,3 +35,11 @@ export type ACTION = {
   type: string
   payload: PAYLOAD
 }
+
+export enum DEVICE_CATEGORIES {
+  FRIDGE = 'refrigeratingappliances2019',
+  OVEN = 'ovens',
+  AIRCONDITIONER = 'airconditioners',
+  WASHING_MASHINE = 'washingmachines2019',
+  DISH_WASHER = 'dishwashers2019',
+}

@@ -1,4 +1,9 @@
-import { ACTION, DEVICE, STATE } from '../components/Shared/models/Device'
+import {
+  ACTION,
+  DEVICE,
+  DEVICE_CATEGORIES,
+  STATE,
+} from '../components/Shared/models/Device'
 
 export const initialState: STATE = {
   energyCost: 1,
@@ -245,7 +250,17 @@ enum ACTIONS {
 function devicesReducer(state: any, action: ACTION): STATE {
   const { type, payload } = action
 
-  const findDevice = () => {}
+  const calculateAnnualCost = (device: any) => {
+    let annualCost =
+      (device.annualCost / state.energyCost) * Number(payload.energyCost)
+    if (
+      device.category === DEVICE_CATEGORIES.WASHING_MASHINE ||
+      device.category === DEVICE_CATEGORIES.DISH_WASHER
+    ) {
+      annualCost = (annualCost / state.waterCost) * Number(payload.waterCost)
+    }
+    return annualCost.toFixed()
+  }
 
   switch (type) {
     case ACTIONS.ADD:
@@ -325,9 +340,6 @@ function devicesReducer(state: any, action: ACTION): STATE {
       }
 
     case ACTIONS.RESTORE:
-      // console.log(state.devices)
-      // console.log(state.activeDevice)
-
       const findIndexOfOriginDevice: number = state.devices.findIndex(
         (device: DEVICE) => {
           return state.activeDevice.uuid === device.uuid
@@ -358,8 +370,107 @@ function devicesReducer(state: any, action: ACTION): STATE {
         suggestedDevice: newSuggestedDevice,
       }
     case ACTIONS.CHANGE_COSTS:
+      if (!payload.energyCost) {
+        payload.energyCost = state.energyCost
+      }
+      if (!payload.waterCost) {
+        payload.waterCost = state.waterCost
+      }
+
+      const updatedDevices = state.devices.map((device: DEVICE) => {
+        const annualCost = calculateAnnualCost(device)
+
+        let upgrades
+        if (Object.keys(device.upgrades).length > 0) {
+          upgrades = Object.keys(device.upgrades)
+            .map((key: any) => {
+              const upgradedDevices = device.upgrades[key].map(
+                (device: any) => {
+                  const annualCost = calculateAnnualCost(device)
+                  return {
+                    ...device,
+                    annualCost,
+                  }
+                }
+              )
+
+              return {
+                [key]: upgradedDevices,
+              }
+            })
+            .reduce((accumulator, value1) => {
+              const tag: any = Object.keys(value1)
+              const value = Object.values(value1)
+              return { ...accumulator, [tag]: value[0] }
+            }, {})
+        } else {
+          upgrades = {}
+        }
+
+        return {
+          ...device,
+          annualCost,
+          upgrades,
+        }
+      })
+
+      let activeDeviceUpgrades
+      if (
+        Object.keys(state.activeDevice).length > 0 &&
+        Object.keys(state.activeDevice.upgrades).length > 0
+      ) {
+        activeDeviceUpgrades = Object.keys(state.activeDevice.upgrades)
+          .map((key: any) => {
+            const upgradedDevices = state.activeDevice.upgrades[key].map(
+              (device: any) => {
+                const annualCost = calculateAnnualCost(device)
+
+                return {
+                  ...device,
+                  annualCost,
+                }
+              }
+            )
+
+            return {
+              [key]: upgradedDevices,
+            }
+          })
+          .reduce((accumulator, value1) => {
+            const tag: any = Object.keys(value1)
+            const value = Object.values(value1)
+            return { ...accumulator, [tag]: value[0] }
+          }, {})
+      } else {
+        activeDeviceUpgrades = {}
+      }
+
+      let updatedActiveDevice
+
+      if (state.devices.length > 0) {
+        updatedActiveDevice = {
+          ...state.activeDevice,
+          upgrades: activeDeviceUpgrades,
+          annualCost: calculateAnnualCost(state.activeDevice),
+        }
+      } else {
+        updatedActiveDevice = {}
+      }
+
+      // let updatedSuggestedDevice
+
+      // if (state.suggestedDevice) {
+      //   updatedSuggestedDevice = {
+      //     ...state,
+      //     annualCost: calculateAnnualCost(state.suggestedDevice),
+      //   }
+      // }
+
       return {
         ...state,
+        activeDevice: updatedActiveDevice,
+        // suggestedDevice: updatedSuggestedDevice,
+        devices: updatedDevices,
         energyCost: Number(payload.energyCost),
         waterCost: Number(payload.waterCost),
       }
