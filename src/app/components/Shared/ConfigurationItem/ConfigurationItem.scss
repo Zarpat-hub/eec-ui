@@ -7,7 +7,6 @@
   height: 109px;
   width: 174px;
   border-radius: 10px;
-  border: 0px solid transparent;
   background-color: white;
   color: $primaryBlack;
   font-weight: 600;
@@ -49,7 +48,7 @@
 
 .configurationCard {
   position: relative;
-  height: 106.5px;
+  height: 109px;
   width: 174px;
   border-radius: 10px;
   background-color: white;
@@ -107,7 +106,9 @@
       justify-content: center;
       flex-direction: column;
       align-items: flex-start;
-      margin: 20px;
+      max-width: 80px;
+      height: 2.5rem;
+      margin: auto;
 
       .configurationCard__tag_upgraded {
         font-size: 11px;
@@ -116,6 +117,11 @@
         padding: 2px 8px;
         font-weight: 600;
         border-radius: 2px;
+      }
+
+      & p {
+        width: 100%;
+        overflow: hidden;
       }
     }
   }

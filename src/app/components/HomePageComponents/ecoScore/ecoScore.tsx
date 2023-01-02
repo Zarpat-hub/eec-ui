@@ -42,10 +42,10 @@ export const EcoScore: React.FC = () => {
 
     setSpendings(x1)
     setMoneySavings(x2)
-    setMoneyPercentages(Number(((x1 - x2) / x1).toFixed(2)))
+    setMoneyPercentages(Number((((x1 - x2) / x1) * 100).toFixed(2)))
     setEnergyUsed(x3)
     setEnergyReduced(x4)
-    setEnergyPercentages(Number(((x3 - x4) / x3).toFixed(2)))
+    setEnergyPercentages(Number((((x3 - x4) / x3) * 100).toFixed(2)))
   }, [suggestedDevice, devices])
 
   useEffect(() => {
@@ -128,7 +128,7 @@ export const EcoScore: React.FC = () => {
       easing: 'ease-in-out',
     })
     energyUsedRef.current.animate(
-      [{ transform: 'translateX(100%)', fontSize: '20px' }],
+      [{ transform: 'translateX(70%)', fontSize: '20px' }],
       { duration: 500, fill: 'forwards', easing: 'ease-in-out' }
     )
   }
@@ -214,6 +214,7 @@ export const EcoScore: React.FC = () => {
                           start={previousMoney[1]}
                           end={moneySavings}
                           duration={1}
+                          style={{ fontSize: 20 }}
                         />
                         ,-
                       </span>
@@ -240,7 +241,7 @@ export const EcoScore: React.FC = () => {
                         duration={1}
                         style={{ fontSize: 24 }}
                       />
-                      ,-
+                      kWh
                     </span>
                     <img
                       className="energy__img"
@@ -256,8 +257,9 @@ export const EcoScore: React.FC = () => {
                           start={previousEnergy[1]}
                           end={energyReduced}
                           duration={1}
+                          style={{ fontSize: 20 }}
                         />
-                        ,-
+                        kWh
                       </span>
                       <span
                         className="energy-savings__percentages"

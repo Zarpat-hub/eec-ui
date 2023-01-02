@@ -2,9 +2,9 @@
 
 .analysis {
   display: grid;
-  grid-template-columns: 5fr 3fr;
+  grid-template-columns: 10fr 7fr;
   padding-bottom: 1rem;
-  gap: 6rem;
+  gap: 5rem;
 
   @media screen and (max-width: $desktop) {
     grid-template-columns: 1fr;
