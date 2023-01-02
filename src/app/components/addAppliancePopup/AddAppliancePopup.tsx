@@ -58,6 +58,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   const [manufacturersDummy, setManufacturersDummy] = useState<string[]>([])
   const [serialNumbersDummy, setSerialNumbersDummy] = useState<string[]>([])
   const [loader, setLoader] = useState<boolean>(false)
+  const watchWeeklyCycles = watch('weeklyCycles', null)
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('mobile'))
 
@@ -185,7 +186,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       fullScreen={fullScreen}
       sx={{ '& > div > div': { borderRadius: '16px' } }}
     >
-      {loader ? <LinearProgress /> : <div style={{ height: 4 }}></div>}
+      {loader ? <LinearProgress /> : <div style={{ height: 4 }} />}
       <div className="header-group">
         <span>
           <p className="header-group__label">Add Device</p>
@@ -321,8 +322,11 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
               <TextField
                 sx={{ '& div input': { pl: '15px' } }}
                 className="input-group__input"
-                inputProps={{ inputMode: 'numeric' }}
+                inputProps={{ inputMode: 'numeric', min: 1 }}
                 type="number"
+                error={
+                  Boolean(watchWeeklyCycles) && Number(watchWeeklyCycles) <= 0
+                }
                 disabled={
                   !(errors.category == null) ||
                   category == null ||
@@ -330,6 +334,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
                   serialNumber == null
                 }
                 {...register('weeklyCycles', {
+                  min: 1,
                   required: true,
                 })}
               />

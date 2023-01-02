@@ -5,7 +5,7 @@ import {
   DialogActions,
   Button,
 } from '@mui/material'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState, useRef } from 'react'
 
 import './ChangeCostsPopup.scss'
 import CloseIcon from '@mui/icons-material/Close'
@@ -21,12 +21,24 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
 
   const [newWaterPrice, setNewWaterPrice] = useState<string>('')
   const [newEnergyPrice, setNewEnergyPrice] = useState<string>('')
+  const energyPriceRef = useRef<any>()
+  const waterPriceRef = useRef<any>()
 
   const handleClose = () => {
     setOpen(false)
   }
 
   const handleSave = () => {
+    if (Number(newEnergyPrice) <= 0) {
+      energyPriceRef.current.focus()
+      return
+    }
+
+    if (Number(newWaterPrice) <= 0) {
+      waterPriceRef.current.focus()
+      return
+    }
+
     changeCosts(newEnergyPrice, newWaterPrice)
 
     handleClose()
@@ -69,8 +81,10 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
             <TextField
               sx={{ '& div input': { pl: '15px' } }}
               className="input-group__input"
-              inputProps={{ inputMode: 'numeric' }}
+              inputProps={{ inputMode: 'numeric', min: 0.01 }}
               type="number"
+              inputRef={energyPriceRef}
+              error={Boolean(newEnergyPrice) && Number(newEnergyPrice) <= 0}
               placeholder={String(energyPrice)}
               onChange={(e) => setNewEnergyPrice(e.target.value)}
             />
@@ -83,8 +97,10 @@ export const ChangeCostsPopup = ({ openPopup, setOpen }: Props) => {
             <TextField
               sx={{ '& div input': { pl: '15px' } }}
               className="input-group__input"
-              inputProps={{ inputMode: 'numeric' }}
+              inputProps={{ inputMode: 'numeric', min: 0.01 }}
               type="number"
+              inputRef={waterPriceRef}
+              error={Boolean(newWaterPrice) && Number(newWaterPrice) <= 0}
               placeholder={String(waterPrice)}
               onChange={(e) => setNewWaterPrice(e.target.value)}
             />
