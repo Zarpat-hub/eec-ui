@@ -48,7 +48,7 @@
 
 .configurationCard {
   position: relative;
-  height: 109px;
+  // height: 109px;
   width: 174px;
   border-radius: 10px;
   background-color: white;
@@ -63,11 +63,13 @@
 
   &__header {
     border-bottom: 1px solid $dividers;
+    height: 33px;
 
     &--price {
       background-color: #cae2f7;
       border-radius: 9px 0px 0px 0px;
       color: $primaryBlue;
+      height: 100%;
       width: 68px;
       font-weight: 700;
       text-align: center;

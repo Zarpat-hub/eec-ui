@@ -295,6 +295,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
       } else {
         activeDevice = devices[index - 1]
       }
+
       return {
         ...state,
         devices,
@@ -457,19 +458,19 @@ function devicesReducer(state: any, action: ACTION): STATE {
         updatedActiveDevice = {}
       }
 
-      // let updatedSuggestedDevice
+      let updatedSuggestedDevice
 
-      // if (state.suggestedDevice) {
-      //   updatedSuggestedDevice = {
-      //     ...state,
-      //     annualCost: calculateAnnualCost(state.suggestedDevice),
-      //   }
-      // }
+      if (state.suggestedDevice) {
+        updatedSuggestedDevice = {
+          ...state,
+          annualCost: calculateAnnualCost(state.suggestedDevice),
+        }
+      }
 
       return {
         ...state,
         activeDevice: updatedActiveDevice,
-        // suggestedDevice: updatedSuggestedDevice,
+        suggestedDevice: updatedSuggestedDevice,
         devices: updatedDevices,
         energyCost: Number(payload.energyCost),
         waterCost: Number(payload.waterCost),

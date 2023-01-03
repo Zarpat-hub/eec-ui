@@ -9,7 +9,8 @@ import CountUp from 'react-countup'
 import { SectionHeader } from '../../Shared/SectionHeader/SectionHeader'
 
 export const EcoScore: React.FC = () => {
-  const { devices, suggestedDevice, activeDevice } = useDevices()
+  const { waterPrice, energyPrice, devices, suggestedDevice, activeDevice } =
+    useDevices()
   const [ecoScore, setEcoScore] = useState<number>(0)
   const [spendings, setSpendings] = useState<number>(0)
   const [moneySavings, setMoneySavings] = useState<number>(0)
@@ -49,6 +50,22 @@ export const EcoScore: React.FC = () => {
   }, [suggestedDevice, devices])
 
   useEffect(() => {
+    if (devices.length === 0) return
+
+    setPreviousMoney([spendings, moneySavings, moneyPercentages])
+    setPreviousEnergy([energyUsed, energyReduced, energyPercentages])
+    noSuggestion()
+    const [x1, x2, x3, x4] = spendingsAndEnergyCalc(devices)
+
+    setSpendings(x1)
+    setMoneySavings(x2)
+    setMoneyPercentages(Number((((x1 - x2) / x1) * 100).toFixed(2)))
+    setEnergyUsed(x3)
+    setEnergyReduced(x4)
+    setEnergyPercentages(Number((((x3 - x4) / x3) * 100).toFixed(2)))
+  }, [waterPrice, energyPrice])
+
+  useEffect(() => {
     if (devices.length === 0) {
       setEcoScore(0)
       return
@@ -79,10 +96,10 @@ export const EcoScore: React.FC = () => {
     }
 
     return [
-      Math.floor(spendings / devices.length),
-      Math.floor(savings / devices.length),
-      Math.floor(energyUsed / devices.length),
-      Math.floor(energyReduced / devices.length),
+      Math.floor(spendings),
+      Math.floor(savings),
+      Math.floor(energyUsed),
+      Math.floor(energyReduced),
     ]
   }
 
