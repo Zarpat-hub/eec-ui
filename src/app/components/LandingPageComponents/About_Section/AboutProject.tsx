@@ -2,10 +2,16 @@ import './AboutProject.scss'
 import HomeIcon from '@mui/icons-material/Home'
 import MenuIcon from '@mui/icons-material/Menu'
 import TimelineIcon from '@mui/icons-material/Timeline'
+import aboutImg from '../../../../assets/el_about.png'
 
 export const AboutProject: React.FC = () => {
   return (
-    <section className="about">
+    <section
+      className="about"
+      style={{
+        backgroundImage: `url(${aboutImg})`,
+      }}
+    >
       <div className="about__container">
         <h2 className="about__header">Your ECO household starts today 🍃</h2>
         <h3 className="about__ndHeader">How we do it</h3>
