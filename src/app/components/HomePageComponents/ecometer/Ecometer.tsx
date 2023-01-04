@@ -26,10 +26,6 @@ const Ecometer: React.FC = () => {
   const indicatorArrowRef = useRef<any>()
 
   useEffect(() => {
-    if (suggestedDevice === undefined) {
-      hideUpgradeDot()
-      return
-    }
     setPreviousDefaultEcoScore(defaultEcoScore)
     setPreviousUpgradedEcoScore(upgradedEcoScore)
     const [e1, e2] = ecoScoreCalc(devices)
@@ -39,11 +35,16 @@ const Ecometer: React.FC = () => {
       return e1
     })
 
+    if (!suggestedDevice?.modelIdentifier) {
+      hideUpgradeDot()
+      return
+    }
+
     setUpgradedEcoScore((prev) => {
       updateUpgradedEcoScore(prev, e2)
       return e2
     })
-  }, [suggestedDevice, devices])
+  }, [suggestedDevice])
 
   const ecoScoreCalc = (devices: DEVICE[]): number[] => {
     if (devices.length === 0) return [0, 0]
@@ -51,7 +52,10 @@ const Ecometer: React.FC = () => {
     let ecoScoreUpgraded = 0
 
     for (const device of devices) {
-      if (device.uuid === activeDevice.uuid && suggestedDevice !== undefined) {
+      if (
+        device.uuid === activeDevice.uuid &&
+        suggestedDevice?.modelIdentifier
+      ) {
         ecoScoreUpgraded += Number(suggestedDevice.ecoScore)
         ecoScoreDefault += Number(activeDevice.ecoScore)
       } else {

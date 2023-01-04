@@ -15,7 +15,7 @@ export const initialState: STATE = {
       deviceName: 'test_1',
       annualCost: 500,
       energyEfficiencyClass: 'C',
-      ecoScore: 40,
+      ecoScore: 50,
       category: 'refrigeratingappliances2019',
       powerConsumption: 155,
       manufacturer: 'Bosh',
@@ -23,7 +23,7 @@ export const initialState: STATE = {
         B: [
           {
             annualCost: 477,
-            ecoScore: 100,
+            ecoScore: 60,
             deviceName: 'test_1_upgraded',
             energyEfficiencyClass: 'B',
             modelIdentifier: '7525.0110',
@@ -33,8 +33,8 @@ export const initialState: STATE = {
             powerConsumption: 111,
           },
           {
-            annualCost: 384,
-            ecoScore: 100,
+            annualCost: 432,
+            ecoScore: 66,
             energyEfficiencyClass: 'B',
             deviceName: 'test_1_upgraded',
             modelIdentifier: '7525.0100',
@@ -44,8 +44,8 @@ export const initialState: STATE = {
             powerConsumption: 88,
           },
           {
-            annualCost: 160,
-            ecoScore: 100,
+            annualCost: 413,
+            ecoScore: 70,
             energyEfficiencyClass: 'B',
             deviceName: 'test_1_upgraded',
             modelIdentifier: 'AR51N',
@@ -65,13 +65,13 @@ export const initialState: STATE = {
       energyEfficiencyClass: 'B',
       category: 'refrigeratingappliances2019',
       powerConsumption: 200,
-      ecoScore: 75,
+      ecoScore: 67,
       manufacturer: 'Samsung',
       upgrades: {
         B: [
           {
-            annualCost: 477,
-            ecoScore: 60,
+            annualCost: 280,
+            ecoScore: 73,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
             modelIdentifier: '7525.0110',
@@ -81,7 +81,7 @@ export const initialState: STATE = {
             powerConsumption: 150,
           },
           {
-            annualCost: 384,
+            annualCost: 292,
             ecoScore: 70,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
@@ -92,7 +92,7 @@ export const initialState: STATE = {
             powerConsumption: 177,
           },
           {
-            annualCost: 160,
+            annualCost: 266,
             ecoScore: 80,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'B',
@@ -105,8 +105,8 @@ export const initialState: STATE = {
         ],
         A: [
           {
-            annualCost: 1,
-            ecoScore: 90,
+            annualCost: 211,
+            ecoScore: 93,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'MD 30000',
@@ -116,8 +116,8 @@ export const initialState: STATE = {
             powerConsumption: 144,
           },
           {
-            annualCost: 1,
-            ecoScore: 95,
+            annualCost: 232,
+            ecoScore: 86,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'SKF 502 W',
@@ -127,8 +127,8 @@ export const initialState: STATE = {
             powerConsumption: 122,
           },
           {
-            annualCost: 147,
-            ecoScore: 100,
+            annualCost: 198,
+            ecoScore: 97,
             deviceName: 'test_2_upgraded',
             energyEfficiencyClass: 'A',
             modelIdentifier: 'SL-65',
@@ -149,13 +149,13 @@ export const initialState: STATE = {
     energyEfficiencyClass: 'B',
     category: 'refrigeratingappliances2019',
     powerConsumption: 200,
-    ecoScore: 75,
+    ecoScore: 67,
     manufacturer: 'Samsung',
     upgrades: {
       B: [
         {
-          annualCost: 477,
-          ecoScore: 60,
+          annualCost: 280,
+          ecoScore: 73,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
           modelIdentifier: '7525.0110',
@@ -165,7 +165,7 @@ export const initialState: STATE = {
           powerConsumption: 150,
         },
         {
-          annualCost: 384,
+          annualCost: 292,
           ecoScore: 70,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
@@ -176,7 +176,7 @@ export const initialState: STATE = {
           powerConsumption: 177,
         },
         {
-          annualCost: 160,
+          annualCost: 266,
           ecoScore: 80,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'B',
@@ -189,8 +189,8 @@ export const initialState: STATE = {
       ],
       A: [
         {
-          annualCost: 1,
-          ecoScore: 90,
+          annualCost: 211,
+          ecoScore: 93,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'MD 30000',
@@ -200,8 +200,8 @@ export const initialState: STATE = {
           powerConsumption: 144,
         },
         {
-          annualCost: 1,
-          ecoScore: 95,
+          annualCost: 232,
+          ecoScore: 86,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'SKF 502 W',
@@ -211,8 +211,8 @@ export const initialState: STATE = {
           powerConsumption: 122,
         },
         {
-          annualCost: 147,
-          ecoScore: 100,
+          annualCost: 198,
+          ecoScore: 97,
           deviceName: 'test_2_upgraded',
           energyEfficiencyClass: 'A',
           modelIdentifier: 'SL-65',
@@ -226,14 +226,14 @@ export const initialState: STATE = {
   },
   suggestedDevice: {
     uuid: '2',
-    annualCost: 477,
-    ecoScore: 60,
+    annualCost: 280,
+    ecoScore: 73,
     deviceName: 'test_2_upgraded',
     energyEfficiencyClass: 'B',
     modelIdentifier: '7525.0110',
     category: 'refrigeratingappliances2019',
     manufacturer: 'Combisteel',
-    powerConsumption: 100,
+    powerConsumption: 150,
   },
 }
 
@@ -360,7 +360,7 @@ function devicesReducer(state: any, action: ACTION): STATE {
       if (payload?.energyClass === undefined || payload?.index === undefined)
         return {
           ...state,
-          suggestedDevice: undefined,
+          suggestedDevice: {},
         }
 
       const newSuggestedDevice: DEVICE =

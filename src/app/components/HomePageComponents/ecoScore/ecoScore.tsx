@@ -32,13 +32,9 @@ export const EcoScore: React.FC = () => {
   useEffect(() => {
     if (devices.length === 0) return
 
-    if (suggestedDevice === undefined) {
-      noSuggestion()
-      return
-    }
     setPreviousMoney([spendings, moneySavings, moneyPercentages])
     setPreviousEnergy([energyUsed, energyReduced, energyPercentages])
-    suggestion()
+    // suggestion()
     const [x1, x2, x3, x4] = spendingsAndEnergyCalc(devices)
 
     setSpendings(x1)
@@ -47,7 +43,13 @@ export const EcoScore: React.FC = () => {
     setEnergyUsed(x3)
     setEnergyReduced(x4)
     setEnergyPercentages(Number((((x3 - x4) / x3) * 100).toFixed(2)))
-  }, [suggestedDevice, devices])
+
+    if (!suggestedDevice?.modelIdentifier) {
+      noSuggestion()
+    } else {
+      suggestion()
+    }
+  }, [suggestedDevice])
 
   useEffect(() => {
     if (devices.length === 0) return
@@ -82,7 +84,10 @@ export const EcoScore: React.FC = () => {
     let energyReduced = 0
 
     for (const device of devices) {
-      if (device.uuid === activeDevice.uuid && suggestedDevice !== undefined) {
+      if (
+        device.uuid === activeDevice.uuid &&
+        suggestedDevice?.modelIdentifier
+      ) {
         savings += Number(suggestedDevice.annualCost)
         spendings += Number(activeDevice.annualCost)
         energyReduced += Number(suggestedDevice.powerConsumption)

@@ -57,6 +57,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
   const [categoriesDummy, setCategoriesDummy] = useState<string[]>([])
   const [manufacturersDummy, setManufacturersDummy] = useState<string[]>([])
   const [serialNumbersDummy, setSerialNumbersDummy] = useState<string[]>([])
+  const [isEnabled, setIsEnabled] = useState<boolean>(true)
   const [loader, setLoader] = useState<boolean>(false)
   const watchWeeklyCycles = watch('weeklyCycles', null)
   const theme = useTheme()
@@ -68,6 +69,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
 
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     setLoader(true)
+    setIsEnabled(false)
     client
       .post(`Calculation`, {
         modelIdentifier: serialNumber,
@@ -93,6 +95,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
       })
       .finally(() => {
         setLoader(false)
+        setIsEnabled(true)
       })
   }
 
@@ -302,9 +305,9 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
               )}
             />
           </div>
-          {category === 'washingmachines2019' ||
-          category === 'dishwashers2019' ||
-          category === 'ovens' ? (
+          {category === 'Washing Machines' ||
+          category === 'Dishwashers' ||
+          category === 'Ovens' ? (
             <div className="input-group">
               <InputGroupLabel
                 disabled={
@@ -395,6 +398,7 @@ export const AddAppliancePopup: React.FC<Props> = (props: Props) => {
           onClick={handleSubmit(onSubmit)}
           variant="contained"
           id="button_main"
+          disabled={!isEnabled}
         >
           Save
         </Button>
