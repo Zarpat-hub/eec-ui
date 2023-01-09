@@ -6,6 +6,10 @@ import { DevicesProvider } from '../../context/DevicesContext'
 import './HomePage.scss'
 
 export const HomePage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <DevicesProvider>
       <main>
