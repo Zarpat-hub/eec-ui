@@ -30,6 +30,9 @@ export const SuggestionsStepper: React.FC<Props> = ({
 
   useEffect(() => {
     setCategory(category)
+    setUpgradeIndex(0)
+    setActiveStep(0)
+    setDelayedStep(0)
   }, [upgrades[category]])
 
   useEffect(() => {
@@ -102,7 +105,9 @@ export const SuggestionsStepper: React.FC<Props> = ({
           onAnimationEnd={animationEndHandler}
           onAnimationStart={animationStartHandler}
         >
-          <ConfigurationItem deviceParams={upgrades[category][delayedStep]} />
+          {upgrades[category][delayedStep] ? (
+            <ConfigurationItem deviceParams={upgrades[category][delayedStep]} />
+          ) : null}
         </div>
 
         <MobileStepper
