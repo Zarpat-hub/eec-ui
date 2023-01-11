@@ -39,10 +39,10 @@ export const EcoScore: React.FC = () => {
 
     setSpendings(x1)
     setMoneySavings(x2)
-    setMoneyPercentages(Number((((x1 - x2) / x1) * 100).toFixed(2)))
+    setMoneyPercentages(Number((((x2 - x1) / x1) * 100).toFixed(2)))
     setEnergyUsed(x3)
     setEnergyReduced(x4)
-    setEnergyPercentages(Number((((x3 - x4) / x3) * 100).toFixed(2)))
+    setEnergyPercentages(Number((((x4 - x3) / x3) * 100).toFixed(2)))
 
     if (!suggestedDevice?.modelIdentifier) {
       noSuggestion()
@@ -61,10 +61,10 @@ export const EcoScore: React.FC = () => {
 
     setSpendings(x1)
     setMoneySavings(x2)
-    setMoneyPercentages(Number((((x1 - x2) / x1) * 100).toFixed(2)))
+    setMoneyPercentages(Number((((x2 - x1) / x1) * 100).toFixed(2)))
     setEnergyUsed(x3)
     setEnergyReduced(x4)
-    setEnergyPercentages(Number((((x3 - x4) / x3) * 100).toFixed(2)))
+    setEnergyPercentages(Number((((x4 - x3) / x3) * 100).toFixed(2)))
   }, [waterPrice, energyPrice])
 
   useEffect(() => {
@@ -244,7 +244,6 @@ export const EcoScore: React.FC = () => {
                         className="money-savings__percentages"
                         ref={moneyPercentagesRef}
                       >
-                        +
                         <CountUp
                           start={previousMoney[2]}
                           end={moneyPercentages}
@@ -287,7 +286,6 @@ export const EcoScore: React.FC = () => {
                         className="energy-savings__percentages"
                         ref={energyPercentagesRef}
                       >
-                        +
                         <CountUp
                           start={previousEnergy[2]}
                           end={energyPercentages}
